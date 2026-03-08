@@ -1,0 +1,24 @@
+{
+  "repos": [
+    {
+      "owner": "vllm-project",
+      "repo": "vllm",
+      "url": "https://github.com/vllm-project/vllm.git",
+      "branch": "main"
+    },
+    {
+      "owner": "pytorch",
+      "repo": "pytorch",
+      "url": "https://github.com/pytorch/pytorch.git",
+      "branch": "main"
+    },
+    {
+      "owner": "sgl-project",
+      "repo": "sglang",
+      "url": "https://github.com/sgl-project/sglang.git",
+      "branch": "main"
+    }
+  ],
+  "deepseek_api_key": "sk-fe9924e6121042e1b060b5b183474f0e",
+  "max_commits": 3
+}
