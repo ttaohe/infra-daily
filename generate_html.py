@@ -4,16 +4,30 @@
 """
 
 import json
+import os
 from datetime import datetime
 from pathlib import Path
 
 def generate_html():
     """生成 HTML 报告"""
     
-    # 自动检测工作目录
-    reports_dir = Path("/root/.openclaw/workspace/infra-daily/reports")
-    if not reports_dir.exists():
-        reports_dir = Path.cwd() / "reports"
+    # 查找报告目录
+    possible_dirs = [
+        Path("/root/.openclaw/workspace/infra-daily/reports"),
+        Path("reports"),
+        Path.cwd() / "reports",
+    ]
+    
+    reports_dir = None
+    for d in possible_dirs:
+        if d.exists():
+            reports_dir = d
+            break
+    
+    if not reports_dir:
+        print("❌ 找不到 reports 目录")
+        print(f"当前目录: {os.getcwd()}")
+        return None
     
     print(f"📁 报告目录: {reports_dir}")
     
@@ -21,9 +35,11 @@ def generate_html():
     report_files = sorted(reports_dir.glob("report_*.json"))
     
     if not report_files:
+        print("❌ 没有找到报告文件")
         return None
     
     latest_report = report_files[-1]
+    print(f"📄 最新报告: {latest_report.name}")
     
     with open(latest_report, 'r', encoding='utf-8') as f:
         data = json.load(f)
@@ -104,17 +120,11 @@ def generate_html():
             border-left: 4px solid #667eea;
         }}
         
-        .commit-header {{
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 15px;
-        }}
-        
         .commit-title {{
             font-size: 1.2em;
             font-weight: bold;
             color: #333;
+            margin-bottom: 10px;
         }}
         
         .commit-title a {{
@@ -138,6 +148,7 @@ def generate_html():
             border-radius: 8px;
             line-height: 1.6;
             color: #444;
+            white-space: pre-wrap;
         }}
         
         .footer {{
@@ -172,16 +183,20 @@ def generate_html():
     # 添加每个 commit
     for item in data['commits']:
         commit = item['commit']
-        analysis = item['analysis']
+        analysis = item.get('analysis', '分析失败')
+        
+        # 处理 analysis 可能是字符串或字典
+        if isinstance(analysis, dict):
+            analysis_text = analysis.get('functionality', str(analysis))
+        else:
+            analysis_text = str(analysis)
         
         html += f"""
             <div class="commit-item">
-                <div class="commit-header">
-                    <div class="commit-title">
-                        <a href="{item['github_url']}" target="_blank">
-                            {commit['title']}
-                        </a>
-                    </div>
+                <div class="commit-title">
+                    <a href="{item['github_url']}" target="_blank">
+                        {commit['title']}
+                    </a>
                 </div>
                 
                 <div class="commit-meta">
@@ -192,7 +207,7 @@ def generate_html():
                 
                 <div class="commit-analysis">
                     📝 <strong>AI 分析:</strong><br>
-                    {analysis.replace(chr(10), '<br>')}
+                    {analysis_text}
                 </div>
             </div>
 """
@@ -213,12 +228,10 @@ def generate_html():
     with open(html_file, 'w', encoding='utf-8') as f:
         f.write(html)
     
+    print(f"✅ HTML 报告已生成: {html_file}")
+    print(f"🌐 访问: http://43.153.105.132:8080/infra-daily-report.html")
+    
     return html_file
 
 if __name__ == "__main__":
-    html_file = generate_html()
-    if html_file:
-        print(f"✅ HTML 报告已生成: {html_file}")
-        print(f"🌐 访问: http://43.153.105.132:8080/index.html")
-    else:
-        print("❌ 没有找到报告数据")
+    generate_html()
