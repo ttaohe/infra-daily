@@ -185,6 +185,13 @@ def generate_html():
         commit = item['commit']
         analysis = item.get('analysis', '分析失败')
         
+        # 构造 GitHub URL（如果不存在）
+        if 'github_url' not in item:
+            repo = item['repo']
+            sha = commit['sha']
+            owner, repo_name = repo.split('/')
+            item['github_url'] = f"https://github.com/{owner}/{repo_name}/commit/{sha}"
+        
         # 处理 analysis 可能是字符串或字典
         if isinstance(analysis, dict):
             analysis_text = analysis.get('functionality', str(analysis))
