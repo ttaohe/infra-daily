@@ -45,7 +45,7 @@ def clone_or_update_repo(owner, repo, branch="main"):
         # 更新现有仓库
         subprocess.run(
             ["git", "fetch", "origin"],
-            cwd=repo_path,
+            cwd=str(repo_path),  # 转换为字符串
             capture_output=True,
             check=True
         )
@@ -56,7 +56,7 @@ def clone_or_update_repo(owner, repo, branch="main"):
         subprocess.run(
             ["git", "clone", "--depth", "1", "-b", branch, 
              f"https://github.com/{owner}/{repo}.git"],
-            cwd=Path("repos"),
+            cwd=str(Path("repos")),  # 转换为字符串
             capture_output=True,
             check=True
         )
@@ -71,7 +71,7 @@ def get_commits_since(repo_path, owner, repo, since_date):
     result = subprocess.run(
         ["git", "log", f"--since={since_str}", 
          "--pretty=format:%H|%ai|%s|%an", "--max-count=50"],
-        cwd=repo_path,
+        cwd=str(repo_path),  # 转换为字符串
         capture_output=True,
         text=True,
         check=True
