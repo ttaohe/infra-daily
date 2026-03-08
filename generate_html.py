@@ -11,25 +11,17 @@ from pathlib import Path
 def generate_html():
     """生成 HTML 报告"""
     
-    # 查找报告目录
-    possible_dirs = [
-        Path("/root/.openclaw/workspace/infra-daily/reports"),
-        Path("reports"),
-        Path.cwd() / "reports",
-    ]
+    # 使用相对路径查找报告目录
+    # GitHub Actions 的工作目录是 /home/runner/work/infra-daily/infra-daily
+    reports_dir = Path("reports")
     
-    reports_dir = None
-    for d in possible_dirs:
-        if d.exists():
-            reports_dir = d
-            break
-    
-    if not reports_dir:
-        print("❌ 找不到 reports 目录")
+    if not reports_dir.exists():
+        print(f"❌ 找不到 reports 目录")
         print(f"当前目录: {os.getcwd()}")
+        print(f"查找的路径: {reports_dir.absolute()}")
         return None
     
-    print(f"📁 报告目录: {reports_dir}")
+    print(f"📁 报告目录: {reports_dir.absolute()}")
     
     # 读取最新的报告
     report_files = sorted(reports_dir.glob("report_*.json"))
@@ -236,7 +228,7 @@ def generate_html():
         f.write(html)
     
     print(f"✅ HTML 报告已生成: {html_file}")
-    print(f"🌐 访问: http://43.153.105.132:8080/infra-daily-report.html")
+    print(f"📁 绝对路径: {html_file.absolute()}")
     
     return html_file
 
