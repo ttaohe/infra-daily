@@ -60,18 +60,19 @@ def clone_or_update_repo(owner, repo, branch="main"):
             shutil.rmtree(repo_path)
             return clone_or_update_repo(owner, repo, branch)
     else:
-        # 克隆新仓库
+        # 克隆新仓库（不用 --depth 1，需要完整历史）
         repo_path.parent.mkdir(parents=True, exist_ok=True)
         try:
             # git clone 会创建最后一层目录，所以只需要到 parent
+            # 不使用 --depth 1，因为需要获取历史 commits
             result = subprocess.run(
-                ["git", "clone", "--depth", "1", "-b", branch, 
+                ["git", "clone", "-b", branch, 
                  f"https://github.com/{owner}/{repo}.git"],
                 cwd=str(repo_path.parent),
                 capture_output=True,
                 text=True,
                 check=True,
-                timeout=300  # 5分钟超时
+                timeout=600  # 10分钟超时（完整克隆需要更长时间）
             )
             print(f"✅ 已克隆 {repo_name}")
         except subprocess.CalledProcessError as e:
