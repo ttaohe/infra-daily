@@ -10,8 +10,14 @@ from pathlib import Path
 def generate_html():
     """生成 HTML 报告"""
     
-    # 读取最新的报告
+    # 自动检测工作目录
     reports_dir = Path("/root/.openclaw/workspace/infra-daily/reports")
+    if not reports_dir.exists():
+        reports_dir = Path.cwd() / "reports"
+    
+    print(f"📁 报告目录: {reports_dir}")
+    
+    # 读取最新的报告
     report_files = sorted(reports_dir.glob("report_*.json"))
     
     if not report_files:

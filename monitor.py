@@ -13,13 +13,20 @@ from pathlib import Path
 
 class GitHubMonitor:
     def __init__(self, config_path="config.json"):
-        self.base_dir = Path("/root/.openclaw/workspace/infra-daily")
+        # 自动检测工作目录
+        self.base_dir = Path.cwd()
+        
+        # 如果当前目录没有 config.json，尝试使用绝对路径
+        if not (self.base_dir / config_path).exists():
+            self.base_dir = Path("/root/.openclaw/workspace/infra-daily")
+        
         self.repos_dir = self.base_dir / "repos"
         self.data_dir = self.base_dir / "data"
         self.reports_dir = self.base_dir / "reports"
         
         # 加载配置
-        with open(self.base_dir / config_path) as f:
+        config_file = self.base_dir / config_path
+        with open(config_file) as f:
             self.config = json.load(f)
         
         self.api_key = self.config["deepseek_api_key"]
@@ -124,7 +131,9 @@ class GitHubMonitor:
     
     def run(self):
         """运行监控"""
-        print("🚀 开始 GitHub 监控...")
+        print(f"🚀 开始 GitHub 监控...")
+        print(f"📁 工作目录: {self.base_dir}")
+        print()
         
         all_results = []
         
