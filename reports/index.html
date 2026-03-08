@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>REST DAY 🎉 - Infra Daily</title>
+    <title>GitHub 仓库监控报告 - Infra Daily</title>
     <style>
         * {
             margin: 0;
@@ -16,80 +16,199 @@
             background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             min-height: 100vh;
             padding: 20px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
         }
         
         .container {
-            max-width: 800px;
+            max-width: 1200px;
+            margin: 0 auto;
             background: white;
             border-radius: 20px;
             box-shadow: 0 20px 60px rgba(0,0,0,0.3);
-            padding: 60px 40px;
+            overflow: hidden;
+        }
+        
+        .header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 40px;
             text-align: center;
         }
         
-        .emoji {
-            font-size: 8em;
-            margin-bottom: 30px;
-            animation: bounce 2s infinite;
-        }
-        
-        @keyframes bounce {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-20px); }
-        }
-        
-        h1 {
-            font-size: 3em;
-            margin-bottom: 20px;
-            color: #333;
-        }
-        
-        p {
-            font-size: 1.3em;
-            color: #666;
-            margin-bottom: 15px;
-            line-height: 1.6;
+        .header h1 {
+            font-size: 2.5em;
+            margin-bottom: 10px;
         }
         
         .time-range {
-            background: #f8f9fa;
-            padding: 20px;
+            background: rgba(255,255,255,0.2);
+            padding: 15px;
             border-radius: 10px;
-            margin: 30px 0;
-            font-size: 1.1em;
+            margin-top: 20px;
+            font-size: 0.9em;
         }
         
-        .time-range strong {
+        .stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            padding: 30px;
+            background: #f8f9fa;
+        }
+        
+        .stat-card {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            text-align: center;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+        
+        .stat-number {
+            font-size: 2.5em;
+            font-weight: bold;
             color: #667eea;
         }
         
-        .footer {
-            margin-top: 40px;
-            color: rgba(255,255,255,0.8);
+        .content {
+            padding: 30px;
+        }
+        
+        .commit-item {
+            background: #f8f9fa;
+            padding: 20px;
+            border-radius: 10px;
+            margin-bottom: 20px;
+            border-left: 4px solid #667eea;
+        }
+        
+        .commit-title {
+            font-size: 1.2em;
+            font-weight: bold;
+            color: #333;
+            margin-bottom: 10px;
+        }
+        
+        .commit-title a {
+            color: #333;
+            text-decoration: none;
+        }
+        
+        .commit-title a:hover {
+            color: #667eea;
+        }
+        
+        .commit-meta {
+            color: #666;
             font-size: 0.9em;
+            margin-bottom: 10px;
+        }
+        
+        .commit-analysis {
+            background: white;
+            padding: 15px;
+            border-radius: 8px;
+            line-height: 1.6;
+            color: #444;
+            white-space: pre-wrap;
+        }
+        
+        .footer {
+            text-align: center;
+            padding: 20px;
+            color: white;
+            background: rgba(0,0,0,0.2);
         }
     </style>
 </head>
 <body>
     <div class="container">
-        <div class="emoji">🏖️</div>
-        <h1>REST DAY!</h1>
-        <p>今天没有新的 commits</p>
-        <p>大家都在休息，享受宁静的一天吧~</p>
-        
-        <div class="time-range">
-            <p>监控时间范围:</p>
-            <p><strong>从: 2026-01-01 00:00</strong></p>
-            <p><strong>到: 2026-03-08 11:39</strong></p>
+        <div class="header">
+            <h1>🚀 GitHub 仓库监控报告</h1>
+            <p>生成时间: 2026-03-08 11:51:53</p>
+            
+            <div class="time-range">
+                <p>📅 监控时间范围: <strong>2026-01-01 00:00</strong> → <strong>2026-03-08 11:51</strong></p>
+            </div>
         </div>
         
-        <p>监控的仓库都在保持稳定运行 ✅</p>
+        <div class="stats">
+            <div class="stat-card">
+                <div class="stat-number">3</div>
+                <div>新 Commits</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number">3</div>
+                <div>活跃仓库</div>
+            </div>
+        </div>
+        
+        <div class="content">
+
+            <div class="commit-item">
+                <div class="commit-title">
+                    <a href="https://github.com/vllm-project/vllm/commit/b7332b058c3b0d8533395b49dea9273aa0973b4e" target="_blank">
+                        [Model] Nano Nemotron VL - fast media preprocessing (#35657)
+                    </a>
+                </div>
+                
+                <div class="commit-meta">
+                    📦 vllm-project/vllm | 
+                    👤 nvnbagrov | 
+                    🕒 2026-03-08 12:04:05 +0200
+                </div>
+                
+                <div class="commit-analysis">
+                    📝 <strong>AI 分析:</strong><br>
+                    1. 该 commit 为 vLLM 添加了对 NVIDIA Nano Nemotron 视觉语言模型的支持，主要实现了高效的媒体数据预处理功能。  
+2. 技术亮点是优化了图像/视频的预处理流水线，显著提升了媒体数据的处理速度，从而加快模型推理的整体效率。  
+3. 对项目而言，这扩展了支持的模型范围，用户能更快地处理多模态输入，开发者也能参考其优化方法改进其他视觉模型的集成。
+                </div>
+            </div>
+
+            <div class="commit-item">
+                <div class="commit-title">
+                    <a href="https://github.com/pytorch/pytorch/commit/764350935dcc573221dd3fa8e29fd16abc641a62" target="_blank">
+                        [Inductor] fix performance regression caused by #173662 (#176772)
+                    </a>
+                </div>
+                
+                <div class="commit-meta">
+                    📦 pytorch/pytorch | 
+                    👤 Dunfan Lu | 
+                    🕒 2026-03-08 08:48:09 +0000
+                </div>
+                
+                <div class="commit-analysis">
+                    📝 <strong>AI 分析:</strong><br>
+                    1. 这是一个性能修复提交，解决了由先前提交 #173662 引起的 Inductor 编译器性能回归问题。  
+2. 技术亮点是优化了 Inductor 的代码生成逻辑，避免了不必要的计算或内存操作，恢复了编译效率。  
+3. 对项目而言，它提升了 PyTorch 模型编译速度，改善了开发者体验，并确保了训练/推理性能不受影响。
+                </div>
+            </div>
+
+            <div class="commit-item">
+                <div class="commit-title">
+                    <a href="https://github.com/sgl-project/sglang/commit/ab9de886c57bfa4160cf8f41c4d97c23df7e5af0" target="_blank">
+                        [diffusion] reduce LayerwiseOffloadManager reserved GPU memory  (#20042)
+                    </a>
+                </div>
+                
+                <div class="commit-meta">
+                    📦 sgl-project/sglang | 
+                    👤 Ratish P | 
+                    🕒 2026-03-08 16:56:17 +0530
+                </div>
+                
+                <div class="commit-analysis">
+                    📝 <strong>AI 分析:</strong><br>
+                    这是一个针对扩散模型推理的性能优化提交，主要减少了LayerwiseOffloadManager在GPU上预留的显存空间。技术亮点是通过更精确地计算所需缓冲区大小来降低显存占用，从而提升大模型在有限显存设备上的运行效率。对用户而言，这意味着能在相同硬件条件下运行更大的扩散模型或获得更稳定的推理性能。
+                </div>
+            </div>
+
+        </div>
         
         <div class="footer">
-            <p>⚡ Powered by DeepSeek AI | 🔄 下次更新: 2天后</p>
+            <p>⚡ Powered by DeepSeek AI | 🔄 自动更新</p>
         </div>
     </div>
 </body>
