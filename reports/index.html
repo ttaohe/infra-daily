@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="refresh" content="0;url=../">
+    <title>监控报告 - 重定向...</title>
+</head>
+<body>
+    <p>正在重定向到最新报告...</p>
+    <script>
+        // 尝试查找最新的 JSON 报告
+        const baseUrl = '../';
+        const reportDates = ['20260308_190000', '20260308_170724'];
+        const reportDate = reportDates.find(date => fetch(`${baseUrl}report_${date}.json`).then(r => r.ok));
+        if (reportDate) {
+            const url = `${baseUrl}report_${reportDate}.json`;
+            // 解析 JSON 并显示
+            fetch(url)
+                .then(r => r.json())
+                .then(data => {
+                    // 生成 HTML 页面
+                    document.body.innerHTML = `
+                        <h1>🚀 AI Infrastructure 仓库监控报告</h1>
+                        <p>生成时间: ${new Date().toLocaleString('zh-CN')}</p>
+                        <h2>📊 监控仓库</h2>
+                        <ul>
+                            <li><a href="https://github.com/vllm-project/vllm">vllm-project/vllm</a> - LLM 推理引擎</li>
+                            <li><a href="https://github.com/pytorch/pytorch">pytorch/pytorch</a> - PyTorch</li>
+                            <li><a href="https://github.com/sgl-project/sglang">sgl-project/sglang</a> - SGLang</a></li>
+                        </ul>
+                        <h2>📝 最新分析 (Run #8)</h2>
+                        <pre style="background: #f5f5f5; padding: 20px; border-radius: 8px; overflow-x: auto;">${JSON.stringify(data, null, 2)}</pre>
+                        <p><a href="../">返回主页</a></p>
+                    `;
+                });
+        }
+    </script>
+</body>
+</html>
