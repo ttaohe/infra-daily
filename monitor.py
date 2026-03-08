@@ -39,7 +39,8 @@ def save_run_time():
 
 def clone_or_update_repo(owner, repo, branch="main"):
     """克隆或更新仓库"""
-    repo_path = Path(f"repos/{owner}/{repo}")
+    repo_name = f"{owner}/{repo}"
+    repo_path = Path(f"repos/{repo_name}")
     
     if repo_path.exists():
         # 更新现有仓库
@@ -51,7 +52,7 @@ def clone_or_update_repo(owner, repo, branch="main"):
                 check=True,
                 text=True
             )
-            print(f"✅ 已更新 {owner}/{repo}")
+            print(f"✅ 已更新 {repo_name}")
         except subprocess.CalledProcessError as e:
             print(f"⚠️ 更新失败: {e.stderr}")
             # 删除旧目录，重新克隆
@@ -62,16 +63,17 @@ def clone_or_update_repo(owner, repo, branch="main"):
         # 克隆新仓库
         repo_path.parent.mkdir(parents=True, exist_ok=True)
         try:
+            # git clone 会创建最后一层目录，所以只需要到 parent
             result = subprocess.run(
                 ["git", "clone", "--depth", "1", "-b", branch, 
                  f"https://github.com/{owner}/{repo}.git"],
-                cwd=str(Path("repos").resolve()),
+                cwd=str(repo_path.parent),
                 capture_output=True,
                 text=True,
                 check=True,
                 timeout=300  # 5分钟超时
             )
-            print(f"✅ 已克隆 {owner}/{repo}")
+            print(f"✅ 已克隆 {repo_name}")
         except subprocess.CalledProcessError as e:
             print(f"❌ 克隆失败: {e.stderr}")
             raise
@@ -98,7 +100,7 @@ def get_commits_since(repo_path, owner, repo, since_date):
         result = subprocess.run(
             ["git", "log", f"--since={since_str}", 
              "--pretty=format:%H|%ai|%s|%an", "--max-count=50"],
-            cwd=str(repo_path.resolve()),
+            cwd=str(repo_path),
             capture_output=True,
             text=True,
             check=True,
