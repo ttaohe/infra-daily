@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 """
 生成 HTML 报告
+支持 REST DAY 显示
 """
 
 import json
@@ -12,7 +13,6 @@ def generate_html():
     """生成 HTML 报告"""
     
     # 使用相对路径查找报告目录
-    # GitHub Actions 的工作目录是 /home/runner/work/infra-daily/infra-daily
     reports_dir = Path("reports")
     
     if not reports_dir.exists():
@@ -36,13 +36,138 @@ def generate_html():
     with open(latest_report, 'r', encoding='utf-8') as f:
         data = json.load(f)
     
+    # 解析时间信息
+    generated_at = datetime.fromisoformat(data['generated_at'])
+    last_run = datetime.fromisoformat(data['last_run'])
+    total_commits = data['total_commits']
+    
     # 生成 HTML
+    if total_commits == 0:
+        # REST DAY 页面
+        html = generate_rest_day_html(last_run, generated_at)
+    else:
+        # 正常报告页面
+        html = generate_normal_html(data, generated_at, last_run)
+    
+    # 保存 HTML
+    html_file = reports_dir / "index.html"
+    with open(html_file, 'w', encoding='utf-8') as f:
+        f.write(html)
+    
+    print(f"✅ HTML 报告已生成: {html_file}")
+    print(f"📁 绝对路径: {html_file.absolute()}")
+    
+    return html_file
+
+def generate_rest_day_html(last_run, generated_at):
+    """生成 REST DAY 页面"""
+    return f"""<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>REST DAY 🎉 - Infra Daily</title>
+    <style>
+        * {{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }}
+        
+        body {{
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }}
+        
+        .container {{
+            max-width: 800px;
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+            padding: 60px 40px;
+            text-align: center;
+        }}
+        
+        .emoji {{
+            font-size: 8em;
+            margin-bottom: 30px;
+            animation: bounce 2s infinite;
+        }}
+        
+        @keyframes bounce {{
+            0%, 100% {{ transform: translateY(0); }}
+            50% {{ transform: translateY(-20px); }}
+        }}
+        
+        h1 {{
+            font-size: 3em;
+            margin-bottom: 20px;
+            color: #333;
+        }}
+        
+        p {{
+            font-size: 1.3em;
+            color: #666;
+            margin-bottom: 15px;
+            line-height: 1.6;
+        }}
+        
+        .time-range {{
+            background: #f8f9fa;
+            padding: 20px;
+            border-radius: 10px;
+            margin: 30px 0;
+            font-size: 1.1em;
+        }}
+        
+        .time-range strong {{
+            color: #667eea;
+        }}
+        
+        .footer {{
+            margin-top: 40px;
+            color: rgba(255,255,255,0.8);
+            font-size: 0.9em;
+        }}
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="emoji">🏖️</div>
+        <h1>REST DAY!</h1>
+        <p>今天没有新的 commits</p>
+        <p>大家都在休息，享受宁静的一天吧~</p>
+        
+        <div class="time-range">
+            <p>监控时间范围:</p>
+            <p><strong>从: {last_run.strftime('%Y-%m-%d %H:%M')}</strong></p>
+            <p><strong>到: {generated_at.strftime('%Y-%m-%d %H:%M')}</strong></p>
+        </div>
+        
+        <p>监控的仓库都在保持稳定运行 ✅</p>
+        
+        <div class="footer">
+            <p>⚡ Powered by DeepSeek AI | 🔄 下次更新: 2天后</p>
+        </div>
+    </div>
+</body>
+</html>"""
+
+def generate_normal_html(data, generated_at, last_run):
+    """生成正常报告页面"""
+    commits = data['commits']
+    
     html = f"""<!DOCTYPE html>
 <html lang="zh-CN">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>GitHub 仓库监控报告</title>
+    <title>GitHub 仓库监控报告 - Infra Daily</title>
     <style>
         * {{
             margin: 0;
@@ -76,6 +201,14 @@ def generate_html():
         .header h1 {{
             font-size: 2.5em;
             margin-bottom: 10px;
+        }}
+        
+        .time-range {{
+            background: rgba(255,255,255,0.2);
+            padding: 15px;
+            border-radius: 10px;
+            margin-top: 20px;
+            font-size: 0.9em;
         }}
         
         .stats {{
@@ -155,17 +288,21 @@ def generate_html():
     <div class="container">
         <div class="header">
             <h1>🚀 GitHub 仓库监控报告</h1>
-            <p>生成时间: {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}</p>
+            <p>生成时间: {generated_at.strftime('%Y-%m-%d %H:%M:%S')}</p>
+            
+            <div class="time-range">
+                <p>📅 监控时间范围: <strong>{last_run.strftime('%Y-%m-%d %H:%M')}</strong> → <strong>{generated_at.strftime('%Y-%m-%d %H:%M')}</strong></p>
+            </div>
         </div>
         
         <div class="stats">
             <div class="stat-card">
-                <div class="stat-number">{len(data['commits'])}</div>
-                <div>分析 Commits</div>
+                <div class="stat-number">{len(commits)}</div>
+                <div>新 Commits</div>
             </div>
             <div class="stat-card">
-                <div class="stat-number">{len(set(c['repo'] for c in data['commits']))}</div>
-                <div>监控仓库</div>
+                <div class="stat-number">{len(set(c['repo'] for c in commits))}</div>
+                <div>活跃仓库</div>
             </div>
         </div>
         
@@ -173,7 +310,7 @@ def generate_html():
 """
     
     # 添加每个 commit
-    for item in data['commits']:
+    for item in commits:
         commit = item['commit']
         analysis = item.get('analysis', '分析失败')
         
@@ -222,15 +359,7 @@ def generate_html():
 </html>
 """
     
-    # 保存 HTML
-    html_file = reports_dir / "index.html"
-    with open(html_file, 'w', encoding='utf-8') as f:
-        f.write(html)
-    
-    print(f"✅ HTML 报告已生成: {html_file}")
-    print(f"📁 绝对路径: {html_file.absolute()}")
-    
-    return html_file
+    return html
 
 if __name__ == "__main__":
     generate_html()

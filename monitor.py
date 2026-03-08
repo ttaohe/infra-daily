@@ -1,193 +1,228 @@
 #!/usr/bin/env python3
 """
-GitHub Monitor - 测试版本
-简化流程，快速验证
+AI Infrastructure 仓库监控脚本
+- 增量分析：只分析自上次运行以来的新 commits
+- 支持 REST DAY：无新 commits 时显示休息日
 """
 
-import os
 import json
+import os
 import subprocess
-import requests
-from datetime import datetime
+from datetime import datetime, timedelta
 from pathlib import Path
+import requests
 
-class GitHubMonitor:
-    def __init__(self, config_path="config.json"):
-        # 自动检测工作目录
-        self.base_dir = Path.cwd()
-        
-        # 如果当前目录没有 config.json，尝试使用绝对路径
-        if not (self.base_dir / config_path).exists():
-            self.base_dir = Path("/root/.openclaw/workspace/infra-daily")
-        
-        self.repos_dir = self.base_dir / "repos"
-        self.data_dir = self.base_dir / "data"
-        self.reports_dir = self.base_dir / "reports"
-        
-        # 加载配置
-        config_file = self.base_dir / config_path
-        with open(config_file) as f:
-            self.config = json.load(f)
-        
-        self.api_key = self.config["deepseek_api_key"]
+# 加载配置
+config_path = Path(__file__).parent / "config.json"
+with open(config_path) as f:
+    config = json.load(f)
+
+DEEPSEEK_API_KEY = os.environ.get("DEEPSEEK_API_KEY", config.get("deepseek_api_key"))
+
+def get_last_run_time():
+    """获取上次运行的时间"""
+    state_file = Path("data/state.json")
+    if state_file.exists():
+        with open(state_file) as f:
+            state = json.load(f)
+            return datetime.fromisoformat(state.get("last_run", "2026-01-01"))
+    else:
+        # 虚拟起点：2026年1月1日
+        return datetime(2026, 1, 1)
+
+def save_run_time():
+    """保存本次运行时间"""
+    state_file = Path("data/state.json")
+    state_file.parent.mkdir(exist_ok=True)
+    with open(state_file, "w") as f:
+        json.dump({"last_run": datetime.now().isoformat()}, f, indent=2)
+
+def clone_or_update_repo(owner, repo, branch="main"):
+    """克隆或更新仓库"""
+    repo_path = Path(f"repos/{owner}/{repo}")
     
-    def clone_repo(self, owner, repo, url):
-        """克隆仓库"""
-        repo_path = self.repos_dir / repo
-        
-        if repo_path.exists():
-            print(f"✅ 仓库已存在: {repo}")
-            subprocess.run(["git", "-C", str(repo_path), "pull"], 
-                          capture_output=True)
-            return repo_path
-        
-        print(f"📦 正在克隆 {owner}/{repo}...")
-        result = subprocess.run(
-            ["git", "clone", "--depth", "1", url, str(repo_path)],
+    if repo_path.exists():
+        # 更新现有仓库
+        subprocess.run(
+            ["git", "fetch", "origin"],
+            cwd=repo_path,
             capture_output=True,
-            text=True
+            check=True
         )
-        
-        if result.returncode != 0:
-            print(f"❌ 克隆失败: {result.stderr}")
-            return None
-        
-        print(f"✅ 克隆成功: {repo}")
-        return repo_path
+        print(f"✅ 已更新 {owner}/{repo}")
+    else:
+        # 克隆新仓库（--depth 1 减少克隆时间）
+        repo_path.parent.mkdir(parents=True, exist_ok=True)
+        subprocess.run(
+            ["git", "clone", "--depth", "1", "-b", branch, 
+             f"https://github.com/{owner}/{repo}.git"],
+            cwd=Path("repos"),
+            capture_output=True,
+            check=True
+        )
+        print(f"✅ 已克隆 {owner}/{repo}")
     
-    def get_commits(self, repo_path, limit=5):
-        """获取最近的 commits"""
-        result = subprocess.run([
-            "git", "-C", str(repo_path),
-            "log", f"-{limit}", "--pretty=format:%H|%s|%an|%ai"
-        ], capture_output=True, text=True)
-        
-        commits = []
-        for line in result.stdout.strip().split('\n'):
-            if line:
-                sha, title, author, date = line.split('|')
-                commits.append({
-                    "sha": sha,
-                    "title": title,
-                    "author": author,
-                    "date": date
-                })
-        
-        return commits
+    return repo_path
+
+def get_commits_since(repo_path, owner, repo, since_date):
+    """获取指定日期之后的 commits"""
+    since_str = since_date.strftime("%Y-%m-%d %H:%M:%S")
     
-    def get_diff(self, repo_path, sha):
-        """获取 commit diff"""
-        result = subprocess.run([
-            "git", "-C", str(repo_path),
-            "show", sha, "--stat", "--format="
-        ], capture_output=True, text=True)
-        
-        return result.stdout
+    result = subprocess.run(
+        ["git", "log", f"--since={since_str}", 
+         "--pretty=format:%H|%ai|%s|%an", "--max-count=50"],
+        cwd=repo_path,
+        capture_output=True,
+        text=True,
+        check=True
+    )
     
-    def analyze_with_deepseek(self, commit, diff):
-        """使用 DeepSeek 分析"""
-        prompt = f"""请分析以下 commit：
+    commits = []
+    for line in result.stdout.strip().split("\n"):
+        if line:
+            sha, date, title, author = line.split("|", 3)
+            commits.append({
+                "sha": sha,
+                "date": date,
+                "title": title,
+                "author": author
+            })
+    
+    return commits
 
-**标题**: {commit['title']}
-**作者**: {commit['author']}
-**时间**: {commit['date']}
+def analyze_with_deepseek(owner, repo, commits):
+    """使用 DeepSeek 分析 commits"""
+    if not commits:
+        return []
+    
+    headers = {
+        "Authorization": f"Bearer {DEEPSEEK_API_KEY}",
+        "Content-Type": "application/json"
+    }
+    
+    results = []
+    for commit in commits:
+        # 构造分析请求
+        prompt = f"""你是一个专业的代码审查专家。请分析这个 commit：
 
-**代码变更**:
-```
-{diff[:1000]}
-```
+仓库: {owner}/{repo}
+Commit: {commit['sha'][:8]}
+标题: {commit['title']}
+作者: {commit['author']}
+时间: {commit['date']}
 
-请简要分析：
-1. 这段代码做了什么？
-2. 主要功能是什么？
-3. 有什么技术亮点？
+请分析：
+1. 这个 commit 做了什么？（功能、bug修复、重构、文档等）
+2. 技术亮点是什么？（性能优化、新特性、架构改进等）
+3. 对项目有什么影响？（用户、开发者、性能等）
 
-请用中文回答，3-5句话。"""
+请用简洁的中文回答（2-3句话）。"""
         
         try:
             response = requests.post(
                 "https://api.deepseek.com/v1/chat/completions",
-                headers={
-                    "Authorization": f"Bearer {self.api_key}",
-                    "Content-Type": "application/json"
-                },
+                headers=headers,
                 json={
                     "model": "deepseek-chat",
                     "messages": [{"role": "user", "content": prompt}],
-                    "temperature": 0.3
+                    "max_tokens": 300,
+                    "temperature": 0.7
                 },
                 timeout=30
             )
             
-            if response.status_code != 200:
-                return f"❌ API 错误: {response.status_code}"
+            if response.status_code == 200:
+                analysis = response.json()["choices"][0]["message"]["content"]
+                print(f"✅ 分析成功: {commit['sha'][:8]}")
+            else:
+                analysis = f"分析失败: {response.status_code}"
+                print(f"⚠️ 分析失败: {commit['sha'][:8]}")
             
-            result = response.json()
-            content = result['choices'][0]['message']['content']
-            return content.strip()
-        
+            results.append({
+                "repo": f"{owner}/{repo}",
+                "commit": commit,
+                "analysis": analysis,
+                "github_url": f"https://github.com/{owner}/{repo}/commit/{commit['sha']}"
+            })
+            
         except Exception as e:
-            return f"❌ 分析失败: {str(e)}"
+            print(f"❌ 分析错误: {commit['sha'][:8]} - {e}")
+            results.append({
+                "repo": f"{owner}/{repo}",
+                "commit": commit,
+                "analysis": f"分析异常: {str(e)}",
+                "github_url": f"https://github.com/{owner}/{repo}/commit/{commit['sha']}"
+            })
     
-    def run(self):
-        """运行监控"""
-        print(f"🚀 开始 GitHub 监控...")
-        print(f"📁 工作目录: {self.base_dir}")
-        print()
+    return results
+
+def main():
+    """主函数"""
+    print("=" * 60)
+    print("🚀 AI Infrastructure 仓库监控")
+    print("=" * 60)
+    
+    # 获取上次运行时间
+    last_run = get_last_run_time()
+    print(f"\n📅 上次运行: {last_run.strftime('%Y-%m-%d %H:%M:%S')}")
+    print(f"📅 本次运行: {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}")
+    
+    # 分析每个仓库
+    all_results = []
+    total_commits = 0
+    
+    for repo_config in config["repos"]:
+        owner = repo_config["owner"]
+        repo = repo_config["repo"]
+        branch = repo_config.get("branch", "main")
         
-        all_results = []
+        print(f"\n{'=' * 60}")
+        print(f"📦 分析仓库: {owner}/{repo}")
+        print(f"{'=' * 60}")
         
-        for repo_config in self.config["repos"]:
-            owner = repo_config["owner"]
-            repo = repo_config["repo"]
-            url = repo_config["url"]
-            
-            print(f"\n📊 监控仓库: {owner}/{repo}")
-            
-            # 克隆仓库
-            repo_path = self.clone_repo(owner, repo, url)
-            if not repo_path:
-                continue
-            
-            # 获取 commits
-            commits = self.get_commits(
-                repo_path, 
-                limit=self.config.get("max_commits", 5)
-            )
-            
-            print(f"📝 找到 {len(commits)} 个 commits")
-            
-            # 分析每个 commit
-            for i, commit in enumerate(commits, 1):
-                print(f"  [{i}/{len(commits)}] 分析: {commit['title'][:50]}...")
-                
-                diff = self.get_diff(repo_path, commit["sha"])
-                analysis = self.analyze_with_deepseek(commit, diff)
-                
-                all_results.append({
-                    "repo": f"{owner}/{repo}",
-                    "commit": commit,
-                    "analysis": analysis,
-                    "github_url": f"https://github.com/{owner}/{repo}/commit/{commit['sha']}"
-                })
+        # 克隆或更新仓库
+        repo_path = clone_or_update_repo(owner, repo, branch)
         
-        # 保存报告
-        report = {
-            "timestamp": datetime.now().isoformat(),
-            "total_commits": len(all_results),
-            "commits": all_results
-        }
+        # 获取新 commits
+        commits = get_commits_since(repo_path, owner, repo, last_run)
         
-        report_file = self.reports_dir / f"report_{datetime.now().strftime('%Y%m%d_%H%M%S')}.json"
-        with open(report_file, 'w', encoding='utf-8') as f:
-            json.dump(report, f, ensure_ascii=False, indent=2)
+        if not commits:
+            print(f"💤 无新 commits - REST DAY! 🎉")
+            continue
         
-        print(f"\n✅ 报告已保存: {report_file}")
-        print(f"📊 总共分析 {len(all_results)} 个 commits")
+        print(f"📊 发现 {len(commits)} 个新 commits")
         
-        return report_file
+        # 分析 commits
+        results = analyze_with_deepseek(owner, repo, commits)
+        all_results.extend(results)
+        total_commits += len(commits)
+    
+    # 保存结果
+    reports_dir = Path("reports")
+    reports_dir.mkdir(exist_ok=True)
+    
+    timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
+    report_file = reports_dir / f"report_{timestamp}.json"
+    
+    report_data = {
+        "generated_at": datetime.now().isoformat(),
+        "last_run": last_run.isoformat(),
+        "total_commits": total_commits,
+        "commits": all_results
+    }
+    
+    with open(report_file, "w", encoding="utf-8") as f:
+        json.dump(report_data, f, indent=2, ensure_ascii=False)
+    
+    print(f"\n{'=' * 60}")
+    print(f"✅ 报告已生成: {report_file}")
+    print(f"📊 总共分析了 {total_commits} 个 commits")
+    print(f"{'=' * 60}\n")
+    
+    # 保存本次运行时间
+    save_run_time()
+    
+    return report_file
 
 if __name__ == "__main__":
-    monitor = GitHubMonitor()
-    report_file = monitor.run()
-    print(f"\n🎉 完成！查看报告: {report_file}")
+    main()
