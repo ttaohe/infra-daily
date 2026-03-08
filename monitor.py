@@ -43,24 +43,50 @@ def clone_or_update_repo(owner, repo, branch="main"):
     
     if repo_path.exists():
         # 更新现有仓库
-        subprocess.run(
-            ["git", "fetch", "origin"],
-            cwd=str(repo_path),  # 转换为字符串
-            capture_output=True,
-            check=True
-        )
-        print(f"✅ 已更新 {owner}/{repo}")
+        try:
+            subprocess.run(
+                ["git", "fetch", "origin"],
+                cwd=str(repo_path),
+                capture_output=True,
+                check=True,
+                text=True
+            )
+            print(f"✅ 已更新 {owner}/{repo}")
+        except subprocess.CalledProcessError as e:
+            print(f"⚠️ 更新失败: {e.stderr}")
+            # 删除旧目录，重新克隆
+            import shutil
+            shutil.rmtree(repo_path)
+            return clone_or_update_repo(owner, repo, branch)
     else:
-        # 克隆新仓库（--depth 1 减少克隆时间）
+        # 克隆新仓库
         repo_path.parent.mkdir(parents=True, exist_ok=True)
-        subprocess.run(
-            ["git", "clone", "--depth", "1", "-b", branch, 
-             f"https://github.com/{owner}/{repo}.git"],
-            cwd=str(Path("repos")),  # 转换为字符串
-            capture_output=True,
-            check=True
-        )
-        print(f"✅ 已克隆 {owner}/{repo}")
+        try:
+            result = subprocess.run(
+                ["git", "clone", "--depth", "1", "-b", branch, 
+                 f"https://github.com/{owner}/{repo}.git"],
+                cwd=str(Path("repos").resolve()),
+                capture_output=True,
+                text=True,
+                check=True,
+                timeout=300  # 5分钟超时
+            )
+            print(f"✅ 已克隆 {owner}/{repo}")
+        except subprocess.CalledProcessError as e:
+            print(f"❌ 克隆失败: {e.stderr}")
+            raise
+        except subprocess.TimeoutExpired:
+            print(f"❌ 克隆超时")
+            raise
+    
+    # 验证仓库是否存在
+    if not repo_path.exists():
+        raise FileNotFoundError(f"仓库目录不存在: {repo_path}")
+    
+    # 验证是否是 git 仓库
+    git_dir = repo_path / ".git"
+    if not git_dir.exists():
+        raise FileNotFoundError(f"不是有效的 git 仓库: {repo_path}")
     
     return repo_path
 
@@ -68,25 +94,37 @@ def get_commits_since(repo_path, owner, repo, since_date):
     """获取指定日期之后的 commits"""
     since_str = since_date.strftime("%Y-%m-%d %H:%M:%S")
     
-    result = subprocess.run(
-        ["git", "log", f"--since={since_str}", 
-         "--pretty=format:%H|%ai|%s|%an", "--max-count=50"],
-        cwd=str(repo_path),  # 转换为字符串
-        capture_output=True,
-        text=True,
-        check=True
-    )
+    try:
+        result = subprocess.run(
+            ["git", "log", f"--since={since_str}", 
+             "--pretty=format:%H|%ai|%s|%an", "--max-count=50"],
+            cwd=str(repo_path.resolve()),
+            capture_output=True,
+            text=True,
+            check=True,
+            timeout=60
+        )
+    except subprocess.CalledProcessError as e:
+        print(f"⚠️ git log 失败: {e.stderr}")
+        return []
+    except subprocess.TimeoutExpired:
+        print(f"⚠️ git log 超时")
+        return []
     
     commits = []
     for line in result.stdout.strip().split("\n"):
         if line:
-            sha, date, title, author = line.split("|", 3)
-            commits.append({
-                "sha": sha,
-                "date": date,
-                "title": title,
-                "author": author
-            })
+            try:
+                sha, date, title, author = line.split("|", 3)
+                commits.append({
+                    "sha": sha,
+                    "date": date,
+                    "title": title,
+                    "author": author
+                })
+            except ValueError as e:
+                print(f"⚠️ 解析 commit 失败: {line}")
+                continue
     
     return commits
 
@@ -180,22 +218,27 @@ def main():
         print(f"📦 分析仓库: {owner}/{repo}")
         print(f"{'=' * 60}")
         
-        # 克隆或更新仓库
-        repo_path = clone_or_update_repo(owner, repo, branch)
-        
-        # 获取新 commits
-        commits = get_commits_since(repo_path, owner, repo, last_run)
-        
-        if not commits:
-            print(f"💤 无新 commits - REST DAY! 🎉")
+        try:
+            # 克隆或更新仓库
+            repo_path = clone_or_update_repo(owner, repo, branch)
+            
+            # 获取新 commits
+            commits = get_commits_since(repo_path, owner, repo, last_run)
+            
+            if not commits:
+                print(f"💤 无新 commits - REST DAY! 🎉")
+                continue
+            
+            print(f"📊 发现 {len(commits)} 个新 commits")
+            
+            # 分析 commits
+            results = analyze_with_deepseek(owner, repo, commits)
+            all_results.extend(results)
+            total_commits += len(commits)
+            
+        except Exception as e:
+            print(f"❌ 处理仓库失败: {e}")
             continue
-        
-        print(f"📊 发现 {len(commits)} 个新 commits")
-        
-        # 分析 commits
-        results = analyze_with_deepseek(owner, repo, commits)
-        all_results.extend(results)
-        total_commits += len(commits)
     
     # 保存结果
     reports_dir = Path("reports")
