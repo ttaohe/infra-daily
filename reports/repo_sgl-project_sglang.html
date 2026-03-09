@@ -147,15 +147,259 @@
         <div class="header">
             <a href="index.html" class="back-btn">← 返回主页</a>
             <h1>📦 sgl-project/sglang</h1>
-            <p>生成时间: 2026-03-08 13:32:07</p>
+            <p>生成时间: 2026-03-09 02:24:34</p>
             
             <div class="category-stats">
-                <span class="category-stat">🐛 BugFix: 25</span><span class="category-stat">♻️ Refactor: 14</span><span class="category-stat">⚡ Performance: 5</span><span class="category-stat">🔧 Config: 3</span><span class="category-stat">🚀 Feature: 3</span>
+                <span class="category-stat">🐛 BugFix: 21</span><span class="category-stat">⚡ Performance: 11</span><span class="category-stat">♻️ Refactor: 10</span><span class="category-stat">🚀 Feature: 4</span><span class="category-stat">🔧 Config: 2</span><span class="category-stat">✅ Test: 1</span><span class="category-stat">📚 Docs: 1</span>
             </div>
         </div>
         
         <div class="content">
             
+        <div class="commit-item">
+            <div class="commit-header">
+                <span class="category-badge" data-category="Performance">⚡ Performance</span>
+                <div class="commit-title">
+                    <a href="https://github.com/sgl-project/sglang/commit/fc543df2899582729ef23cbcd9f9362393624222" target="_blank">
+                        [NPU] qwen3_vl encoder support graph
+                    </a>
+                </div>
+            </div>
+            
+            <div class="commit-meta">
+                👤 cen121212 | 🕒 2026-03-09 10:13:35 +0800
+            </div>
+            
+            <div class="commit-analysis">
+                📝 <strong>AI 分析:</strong>
+                1. 该 commit 为 Qwen3-VL 模型的图像编码器添加了 NPU 图模式支持，属于功能增强和性能优化。  
+2. 技术亮点是通过图模式优化 NPU 上的计算性能，提升图像编码效率。  
+3. 对项目的影响是增强了 NPU 平台的多模态处理能力，为开发者提供了更高效的视觉语言模型推理支持。
+            </div>
+        </div>
+        
+        <div class="commit-item">
+            <div class="commit-header">
+                <span class="category-badge" data-category="Refactor">♻️ Refactor</span>
+                <div class="commit-title">
+                    <a href="https://github.com/sgl-project/sglang/commit/8c5ca37aef2c2d85a466332e9ce29a58770e7777" target="_blank">
+                        Batch `copy_` with `torch._foreach_copy_` (#18558)
+                    </a>
+                </div>
+            </div>
+            
+            <div class="commit-meta">
+                👤 Kaixi | 🕒 2026-03-09 03:09:02 +0100
+            </div>
+            
+            <div class="commit-analysis">
+                📝 <strong>AI 分析:</strong>
+                1. 这是一个性能优化提交，将多个独立的 `copy_` 操作批量替换为 `torch._foreach_copy_`，属于代码重构。  
+2. 技术亮点是利用 PyTorch 的内部批量拷贝函数减少 GPU 内核调用次数，提升张量复制效率。  
+3. 对项目的影响是提升了运行时性能，减少了 GPU 开销，但不会改变外部功能或接口。
+            </div>
+        </div>
+        
+        <div class="commit-item">
+            <div class="commit-header">
+                <span class="category-badge" data-category="Feature">🚀 Feature</span>
+                <div class="commit-title">
+                    <a href="https://github.com/sgl-project/sglang/commit/57f28fda906488e71f0454e7512fff9baaf4098a" target="_blank">
+                        [diffusion] chore: add diffusion new model skill (#19605)
+                    </a>
+                </div>
+            </div>
+            
+            <div class="commit-meta">
+                👤 Yuhao Yang | 🕒 2026-03-09 09:45:23 +0800
+            </div>
+            
+            <div class="commit-analysis">
+                📝 <strong>AI 分析:</strong>
+                1. 这是一个功能增强提交，为扩散模型添加了新的模型技能支持，属于新特性开发。  
+2. 技术亮点是扩展了框架对扩散模型的能力支持，提升了模型的功能灵活性。  
+3. 对项目的影响是丰富了扩散模型的功能集，为开发者提供了更多模型定制选项，但可能增加使用复杂度。
+            </div>
+        </div>
+        
+        <div class="commit-item">
+            <div class="commit-header">
+                <span class="category-badge" data-category="Feature">🚀 Feature</span>
+                <div class="commit-title">
+                    <a href="https://github.com/sgl-project/sglang/commit/3f3eb206fa9c24299f69439cfc4f883a2870fbeb" target="_blank">
+                        feat(grpc): add SubscribeKvEvents RPC for KV cache event streaming (#20112)
+                    </a>
+                </div>
+            </div>
+            
+            <div class="commit-meta">
+                👤 Simo Lin | 🕒 2026-03-08 16:00:29 -0700
+            </div>
+            
+            <div class="commit-analysis">
+                📝 <strong>AI 分析:</strong>
+                1. 这个 commit 新增了 SubscribeKvEvents RPC 功能，实现了 KV 缓存事件流式传输，属于新特性开发。  
+2. 技术亮点是引入了 gRPC 流式接口，支持服务端主动推送 KV 缓存事件，提升了实时性和可扩展性。  
+3. 对项目的影响是为开发者提供了更灵活的缓存监控机制，有助于优化分布式场景下的缓存一致性管理。
+            </div>
+        </div>
+        
+        <div class="commit-item">
+            <div class="commit-header">
+                <span class="category-badge" data-category="BugFix">🐛 BugFix</span>
+                <div class="commit-title">
+                    <a href="https://github.com/sgl-project/sglang/commit/7105bf3782ca92ee58402c08815165bd71db022a" target="_blank">
+                        [Bug] Fix missing TTFT histogram for single-batch requests (#20122)
+                    </a>
+                </div>
+            </div>
+            
+            <div class="commit-meta">
+                👤 Liangsheng Yin | 🕒 2026-03-08 15:18:51 -0700
+            </div>
+            
+            <div class="commit-analysis">
+                📝 <strong>AI 分析:</strong>
+                1. 这是一个bug修复，解决了单批次请求中TTFT（Time To First Token）直方图缺失的问题，确保监控数据的完整性。  
+2. 技术亮点是修复了直方图记录逻辑，避免在特定条件下遗漏关键性能指标的统计。  
+3. 对项目影响是提升了监控系统的准确性，帮助开发者更可靠地分析首令牌延迟性能。
+            </div>
+        </div>
+        
+        <div class="commit-item">
+            <div class="commit-header">
+                <span class="category-badge" data-category="Feature">🚀 Feature</span>
+                <div class="commit-title">
+                    <a href="https://github.com/sgl-project/sglang/commit/7662b8b919be05f285e6110634ea6d58863449c0" target="_blank">
+                        [diffusion] feat: implement upscaling (#19723)
+                    </a>
+                </div>
+            </div>
+            
+            <div class="commit-meta">
+                👤 Junhao Liu | 🕒 2026-03-08 11:06:40 -0700
+            </div>
+            
+            <div class="commit-analysis">
+                📝 <strong>AI 分析:</strong>
+                1. 这是一个功能新增提交，为扩散模型实现了图像超分辨率（upscaling）功能，属于新特性开发。  
+2. 技术亮点是扩展了扩散模型的能力，使其能够生成更高分辨率的图像输出。  
+3. 对项目的影响是增强了图像生成模块的功能，为用户提供了更高质量的图像生成选项。
+            </div>
+        </div>
+        
+        <div class="commit-item">
+            <div class="commit-header">
+                <span class="category-badge" data-category="BugFix">🐛 BugFix</span>
+                <div class="commit-title">
+                    <a href="https://github.com/sgl-project/sglang/commit/b77dd41db018c30bbd6a030eabe44402a410b801" target="_blank">
+                        [diffusion] fix: fix temporary resolution workaround (#20046)
+                    </a>
+                </div>
+            </div>
+            
+            <div class="commit-meta">
+                👤 xingsy97 | 🕒 2026-03-09 02:05:35 +0800
+            </div>
+            
+            <div class="commit-analysis">
+                📝 <strong>AI 分析:</strong>
+                1. 这是一个bug修复，移除了扩散模型中临时分辨率处理的临时解决方案，修复了相关逻辑问题。  
+2. 技术亮点是清理了临时工作区代码，使分辨率处理逻辑更加清晰和规范。  
+3. 对项目的影响是提升了扩散模型在处理不同分辨率输入时的稳定性和代码可维护性。
+            </div>
+        </div>
+        
+        <div class="commit-item">
+            <div class="commit-header">
+                <span class="category-badge" data-category="BugFix">🐛 BugFix</span>
+                <div class="commit-title">
+                    <a href="https://github.com/sgl-project/sglang/commit/0ac6c63ae43fe19fa0cccc0c1675b0371c9fc22d" target="_blank">
+                        [SpecV2-Mamba]: Refactor additional_ratio calculation when init mamba pool (#19660)
+                    </a>
+                </div>
+            </div>
+            
+            <div class="commit-meta">
+                👤 hzh0425 | 🕒 2026-03-09 00:39:26 +0800
+            </div>
+            
+            <div class="commit-analysis">
+                📝 <strong>AI 分析:</strong>
+                1. 这是一个重构提交，主要优化了 Mamba 池初始化时 `additional_ratio` 的计算逻辑，使其更清晰合理。
+
+2. 技术亮点是改进了内存池的动态扩展策略，通过重构计算方式避免了潜在的比例计算错误，提升了内存分配的准确性。
+
+3. 对项目的影响是增强了 Mamba 推理后端的内存管理可靠性，对开发者而言代码更易维护，但普通用户无感知变化。
+            </div>
+        </div>
+        
+        <div class="commit-item">
+            <div class="commit-header">
+                <span class="category-badge" data-category="BugFix">🐛 BugFix</span>
+                <div class="commit-title">
+                    <a href="https://github.com/sgl-project/sglang/commit/07359efce92ccef05bed214284002436353a9928" target="_blank">
+                        Fix missing clone in hicache (#20130)
+                    </a>
+                </div>
+            </div>
+            
+            <div class="commit-meta">
+                👤 Ke Bao | 🕒 2026-03-08 23:21:18 +0800
+            </div>
+            
+            <div class="commit-analysis">
+                📝 <strong>AI 分析:</strong>
+                1. 这是一个bug修复，修复了hicache中因缺少clone操作导致的问题，确保数据正确复制以避免潜在错误。
+2. 技术亮点是修复了对象所有权处理问题，通过显式clone避免了数据共享可能引发的逻辑错误。
+3. 对项目影响是提高了缓存模块的可靠性，开发者无需再手动处理该边缘情况，提升了代码健壮性。
+            </div>
+        </div>
+        
+        <div class="commit-item">
+            <div class="commit-header">
+                <span class="category-badge" data-category="Performance">⚡ Performance</span>
+                <div class="commit-title">
+                    <a href="https://github.com/sgl-project/sglang/commit/051427c0a30b74c671a96e0f945edc81bfd01f94" target="_blank">
+                        [diffusion] benchmark: add SLO metric forinbench_serving (#18907)
+                    </a>
+                </div>
+            </div>
+            
+            <div class="commit-meta">
+                👤 Junhao Liu | 🕒 2026-03-08 07:35:57 -0700
+            </div>
+            
+            <div class="commit-analysis">
+                📝 <strong>AI 分析:</strong>
+                1. 这是一个功能增强提交，在扩散模型基准测试中添加了SLO（服务级别目标）指标来衡量服务性能。  
+2. 技术亮点是引入了更贴近实际生产环境的服务质量评估维度，使性能基准测试更加全面。  
+3. 对开发者而言，这提供了更精细的服务质量监控能力，有助于优化服务端性能配置。
+            </div>
+        </div>
+        
+        <div class="commit-item">
+            <div class="commit-header">
+                <span class="category-badge" data-category="BugFix">🐛 BugFix</span>
+                <div class="commit-title">
+                    <a href="https://github.com/sgl-project/sglang/commit/cc73355a1fbd2607743da32b7082edc3b1040a01" target="_blank">
+                        [Feature] Add SLRU eviction policy & fix RadixCache hit_count bug (#18843)
+                    </a>
+                </div>
+            </div>
+            
+            <div class="commit-meta">
+                👤 liubiyongge | 🕒 2026-03-08 21:30:55 +0800
+            </div>
+            
+            <div class="commit-analysis">
+                📝 <strong>AI 分析:</strong>
+                1. 该 commit 新增了 SLRU（Segmented LRU）缓存淘汰策略，并修复了 RadixCache 中 hit_count 计数的 bug，属于功能增强与问题修复。  
+2. 技术亮点是引入了更高效的缓存淘汰算法（SLRU）以优化内存管理，同时修正了原有缓存命中统计的逻辑错误。  
+3. 对项目而言，提升了缓存系统的性能和准确性，开发者能更可靠地管理内存，用户可能体验到更稳定的推理服务。
+            </div>
+        </div>
+        
         <div class="commit-item">
             <div class="commit-header">
                 <span class="category-badge" data-category="BugFix">🐛 BugFix</span>
@@ -172,11 +416,9 @@
             
             <div class="commit-analysis">
                 📝 <strong>AI 分析:</strong>
-                1. 这是一个bug修复，修正了qwen-image-edit-plus-2511模型的错误DIT配置，确保模型能正确加载和使用。
-
-2. 技术亮点是修复了模型配置映射关系，解决了特定模型版本因配置不匹配导致的运行时错误。
-
-3. 对项目的影响是修复后用户能正常使用该图像编辑模型，开发者无需再处理相关配置异常，提升了功能可靠性。
+                1. 这是一个bug修复，修正了qwen-image-edit-plus-2511模型的错误DIT配置，确保模型能正确加载和使用。  
+2. 技术亮点是修复了模型配置映射关系，避免了因配置错误导致的运行时异常或性能问题。  
+3. 对项目影响是提升了该图像编辑模型的稳定性和可用性，用户能正常使用相关功能，开发者无需处理配置不匹配的问题。
             </div>
         </div>
         
@@ -196,9 +438,9 @@
             
             <div class="commit-analysis">
                 📝 <strong>AI 分析:</strong>
-                1. 这是一个功能增强和代码重构的提交，主要添加了混合块（mixed chunk）的单元测试，并对相关代码进行了小幅重构优化。  
-2. 技术亮点在于通过单元测试验证了混合块功能的正确性，同时通过代码重构提升了模块的清晰度和可维护性。  
-3. 对项目而言，这增强了核心功能的测试覆盖率和代码质量，有利于开发者后续维护和功能扩展，但不会直接影响最终用户。
+                1. 这是一个功能测试和代码重构提交，主要添加了混合数据块的单元测试并对相关代码进行了小幅重构优化。  
+2. 技术亮点在于通过单元测试验证了混合数据块功能的正确性，同时通过代码重构提升了模块的清晰度和可维护性。  
+3. 对项目而言，增强了相关功能的测试覆盖率和代码健壮性，有利于开发者后续维护和功能扩展。
             </div>
         </div>
         
@@ -218,7 +460,7 @@
             
             <div class="commit-analysis">
                 📝 <strong>AI 分析:</strong>
-                这是一个针对扩散模型推理的性能优化提交，主要减少了LayerwiseOffloadManager保留的GPU内存。技术亮点是通过调整内存管理策略，在保持功能不变的前提下降低了显存占用。这对使用该库进行图像生成的用户来说，意味着可以在相同硬件上处理更大尺寸的图像或批次，提升了资源利用效率。
+                这是一个针对扩散模型推理的性能优化提交，主要减少了LayerwiseOffloadManager在GPU上预留的显存空间。技术亮点是通过调整内存管理策略，在保持功能不变的前提下降低了GPU内存占用。这对使用该库进行图像生成的用户来说，能提升大模型或高分辨率图像的推理效率，同时为开发者提供了更高效的内存管理方案。
             </div>
         </div>
         
@@ -238,11 +480,7 @@
             
             <div class="commit-analysis">
                 📝 <strong>AI 分析:</strong>
-                这是一个**代码可读性优化**的 commit，主要添加了 `SessionSlot.is_holding_kv` 属性来替代原有的 `len(self.kv_cache) > 0` 判断逻辑。  
-
-**技术亮点**在于通过**封装布尔属性**提升了代码的语义清晰度，使“是否持有 KV 缓存”这一状态更直观，属于**内部重构**。  
-
-**对项目的影响**是**提升了代码可维护性**，方便开发者理解与后续修改，但不会改变外部功能或性能。
+                这是一个**代码重构**性质的提交，主要目的是**提升代码可读性**。它添加了一个 `SessionSlot.is_holding_kv` 属性，用于更清晰地判断会话槽是否持有键值缓存，从而替代了原先直接检查 `kv_cache` 是否为 `None` 的隐晦写法。这个改动对功能没有影响，但能让代码逻辑对开发者更直观易懂。
             </div>
         </div>
         
@@ -262,9 +500,9 @@
             
             <div class="commit-analysis">
                 📝 <strong>AI 分析:</strong>
-                1. 这是一个依赖版本更新提交，将 sgl-kernel 版本从之前的版本升级到 0.3.21.post1，属于常规维护性更新。  
-2. 技术亮点是版本号后缀 `.post1` 表明这是一个发布后的修复版本，通常包含对 0.3.21 版本的小幅问题修复或元数据调整。  
-3. 对项目影响是确保依赖保持最新修复状态，可能解决已知问题但不会引入显著功能变化，对用户和开发者透明。
+                1. 这是一个维护性更新，将 sgl-kernel 依赖版本升级到 0.3.21.post1，属于常规的依赖管理更新。  
+2. 技术亮点是确保项目使用最新的内核版本，可能包含底层性能优化或问题修复。  
+3. 对项目影响是保持依赖的时效性和稳定性，对用户透明，开发者需验证新版本的兼容性。
             </div>
         </div>
         
@@ -284,11 +522,9 @@
             
             <div class="commit-analysis">
                 📝 <strong>AI 分析:</strong>
-                1. 这是一个 bug 修复，主要解决了在使用分页 KV 缓存（如 SWA/MLA）时，流式会话（streaming session）无法正常工作的问题。
-
-2. 技术亮点在于修复了分页 KV 缓存与流式推理会话之间的兼容性，确保了在复杂缓存管理机制下数据流的正确传递。
-
-3. 对用户而言，修复后使用 SWA/MLA 等优化技术时流式输出将恢复正常；对开发者则提升了相关缓存机制与前端接口交互的可靠性。
+                1. 这是一个bug修复，主要解决了在使用分页KV缓存（SWA/MLA）时流式会话无法正常工作的问题。
+2. 技术亮点是修复了分页KV缓存与流式会话的兼容性，确保了滑动窗口注意力和多行注意力机制下的正确流式输出。
+3. 对用户而言，修复后使用相关注意力机制时能正常获得流式响应；对开发者则提升了缓存系统的稳定性。
             </div>
         </div>
         
@@ -308,9 +544,9 @@
             
             <div class="commit-analysis">
                 📝 <strong>AI 分析:</strong>
-                1. 这是一个性能优化提交，通过动态块卸载（dynamic block offload）机制，显著提升了长文本解码的处理效率。  
-2. 技术亮点是实现了**动态块卸载策略**，根据文本长度自适应调整计算负载，使长文本解码性能提升约100%。  
-3. 对项目影响：大幅改善了长文本场景下的推理速度，提升了用户体验，并为开发者提供了更高效的后端处理方案。
+                1. 这是一个性能优化提交，通过动态块卸载（dynamic block offload）技术，显著提升了长文本解码的性能。  
+2. 技术亮点是实现了**动态块卸载机制**，将解码计算任务智能分配到不同硬件单元，优化了长序列处理的资源利用率。  
+3. 对项目的影响是**长文本生成性能提升约100%**，用户体验显著改善，同时为开发者提供了更高效的大模型推理方案。
             </div>
         </div>
         
@@ -330,9 +566,9 @@
             
             <div class="commit-analysis">
                 📝 <strong>AI 分析:</strong>
-                1. 这是一个功能优化，将 GLM4V 视觉语言模型中的 3D 卷积投影层替换为线性层，属于模型架构的轻量化重构。  
-2. 技术亮点是简化了投影结构，可能提升了计算效率并减少了模型参数量，同时保持了模型功能。  
-3. 对项目的影响是优化了 VLM 模块的性能，使模型更轻便高效，有利于后续部署和推理速度的提升。
+                1. 这是一个功能优化提交，将GLM4V视觉语言模型中的conv3d投影层替换为线性层，属于模型架构的轻量级重构。  
+2. 技术亮点是简化了视觉特征提取的投影结构，可能提升了计算效率并降低了模型复杂度。  
+3. 对项目的影响是优化了VLM模块的实现，可能带来轻微的性能提升，并使代码更简洁易维护。
             </div>
         </div>
         
@@ -352,9 +588,11 @@
             
             <div class="commit-analysis">
                 📝 <strong>AI 分析:</strong>
-                1. 这是一个bug修复，修复了diffusion模块中`copy_if`函数的错误逻辑，确保条件复制功能正常工作。  
-2. 技术亮点是修正了条件判断逻辑，避免了数据复制时可能出现的错误或遗漏。  
-3. 对项目的影响是提升了diffusion相关功能的稳定性和正确性，确保用户在使用该模块时获得预期结果。
+                1. 这是一个bug修复，修复了diffusion模块中`copy_if`函数的错误，解决了条件复制逻辑的问题。
+
+2. 技术亮点是修正了条件判断逻辑，确保了在特定条件下数据复制的正确性。
+
+3. 对项目的影响是提升了diffusion模块的稳定性，避免了因数据复制错误导致的计算结果异常。
             </div>
         </div>
         
@@ -374,9 +612,9 @@
             
             <div class="commit-analysis">
                 📝 <strong>AI 分析:</strong>
-                1. 这是一个功能增强提交，使QwenImageLayered模型的分辨率变为可配置参数，增加了灵活性。  
-2. 技术亮点是通过参数化设计解耦了分辨率与模型硬编码，提升了模块的适应性。  
-3. 对开发者来说扩展性更好，用户可根据需求调整分辨率，但需注意配置不当可能影响生成效果。
+                1. 这是一个功能增强提交，使 QwenImageLayered 模型的分辨率变为可配置参数，增加了灵活性。  
+2. 技术亮点是通过参数化配置支持多种输入分辨率，提升了模型适配不同应用场景的能力。  
+3. 对用户而言可以更灵活地控制图像生成质量，对开发者则提供了更易扩展的接口设计。
             </div>
         </div>
         
@@ -396,7 +634,11 @@
             
             <div class="commit-analysis">
                 📝 <strong>AI 分析:</strong>
-                这是一个针对扩散模型的数值稳定性修复。它通过添加微小偏移量防止了CFG Zero Star条件下可能出现的除零错误，提升了Helios模型在特定参数下的计算鲁棒性。该修改对用户透明，主要增强了极端参数配置下的程序健壮性。
+                1. 这是一个针对Helios模型的bug修复，通过添加数值稳定性处理来确保CFG Zero Star（无分类器引导）条件下的计算可靠性。
+
+2. 技术亮点是引入了条件判断和数值保护机制，当CFG比例接近零时避免潜在的数值计算问题。
+
+3. 对项目的影响是提升了扩散模型在特定配置下的稳定性和鲁棒性，开发者无需再手动处理边缘情况。
             </div>
         </div>
         
@@ -416,11 +658,11 @@
             
             <div class="commit-analysis">
                 📝 <strong>AI 分析:</strong>
-                1. 这是一个功能增强和bug修复的commit，主要增加了对ModelScope缓存查找的支持，并优化了推测性解码路径的处理逻辑。
+                1. 这是一个功能增强和bug修复提交，主要增加了ModelScope缓存查找功能并支持推测解码路径，同时修复了相关兼容性问题。
 
-2. 技术亮点在于扩展了缓存机制以支持ModelScope平台，同时改进了推测解码的实现路径，这有助于提升推理效率。
+2. 技术亮点是扩展了缓存系统以支持ModelScope平台，并优化了推测解码的执行路径，提升了推理性能。
 
-3. 对项目的影响是：用户在使用ModelScope模型时将获得更好的缓存性能和更快的推理速度，开发者也能更灵活地集成不同的模型服务平台。
+3. 对用户来说能获得更快的推理速度，对开发者则提供了更灵活的缓存配置选项，整体提升了框架的跨平台兼容性。
             </div>
         </div>
         
@@ -440,17 +682,17 @@
             
             <div class="commit-analysis">
                 📝 <strong>AI 分析:</strong>
-                这是一个**架构改进**的提交，主要将调度器的日志打印功能与指标收集逻辑解耦。  
+                这是一个**重构性提交**，主要将调度器日志打印与指标收集功能解耦。  
 
-**技术亮点**在于通过引入独立的 `SchedulerLogger` 类，分离了日志输出与指标计算，提升了代码的模块化和可维护性。  
+技术亮点在于**分离了关注点**，使日志输出和性能监控逻辑独立，提升了代码的可维护性和模块清晰度。  
 
-**对项目的影响**是使开发者能更灵活地调整日志行为，同时保持性能监控的独立性，有利于后续功能扩展和调试。
+对项目的影响是**便于开发者单独调整日志或监控策略**，降低了后续修改的耦合度，但不会直接影响用户功能或性能。
             </div>
         </div>
         
         <div class="commit-item">
             <div class="commit-header">
-                <span class="category-badge" data-category="BugFix">🐛 BugFix</span>
+                <span class="category-badge" data-category="Test">✅ Test</span>
                 <div class="commit-title">
                     <a href="https://github.com/sgl-project/sglang/commit/69ec15ad74ee01a24331551c97850d6380b1db66" target="_blank">
                         [CI] Re-enable streaming session tests with correctness and stress coverage (#20084)
@@ -464,15 +706,15 @@
             
             <div class="commit-analysis">
                 📝 <strong>AI 分析:</strong>
-                1. 这是一个CI测试相关的功能修复，重新启用了流式会话测试，并增加了正确性和压力测试覆盖。  
-2. 技术亮点在于通过优化测试逻辑和超时设置，解决了之前因稳定性问题而禁用的流式测试，增强了测试的健壮性。  
-3. 对项目而言，这提升了流式功能的测试覆盖率，有助于开发者更早发现回归问题，提高代码可靠性。
+                1. 这是一个CI测试相关的提交，重新启用了流式会话测试，并增加了正确性和压力测试覆盖。  
+2. 技术亮点是完善了测试体系，通过压力测试验证流式会话的稳定性和正确性。  
+3. 对项目的影响是提升了流式功能的可靠性，为开发者提供了更健壮的测试保障。
             </div>
         </div>
         
         <div class="commit-item">
             <div class="commit-header">
-                <span class="category-badge" data-category="BugFix">🐛 BugFix</span>
+                <span class="category-badge" data-category="Performance">⚡ Performance</span>
                 <div class="commit-title">
                     <a href="https://github.com/sgl-project/sglang/commit/d28f35240a28de1e09967975e258b3dd7e74924f" target="_blank">
                         [V32/GLM5] Change default setting of V32 nvfp4 on TP4 (#20086)
@@ -486,11 +728,11 @@
             
             <div class="commit-analysis">
                 📝 <strong>AI 分析:</strong>
-                1. 这是一个功能调整的 commit，将 V32 模型在 TP4 配置下的默认量化设置从 nvfp4 改为其他格式（推测是关闭或调整），以优化性能或兼容性。
+                1. 这是一个功能调整，将V32模型的默认设置从nvfp4改为TP4，以适配特定硬件配置。
 
-2. 技术亮点是针对特定硬件（TP4）调整了模型量化策略，这通常能提升推理效率或解决特定精度下的运行问题。
+2. 技术亮点是针对不同计算设备（TP4）优化了量化格式的默认选择，提升了硬件兼容性。
 
-3. 对用户而言，使用默认配置时能获得更好的性能或稳定性；对开发者则明确了该硬件平台下的推荐配置。
+3. 对用户来说，在TP4设备上能获得更好的推理性能；对开发者则简化了配置，无需手动调整量化参数。
             </div>
         </div>
         
@@ -510,9 +752,9 @@
             
             <div class="commit-analysis">
                 📝 <strong>AI 分析:</strong>
-                1. 这是一个CI改进，在代码检出后显示测试分区分配信息，属于开发流程优化。  
-2. 技术亮点是增强了CI流水线的调试能力，通过可视化测试分区帮助开发者快速定位测试分布情况。  
-3. 对项目影响是提升了开发者的CI调试效率，便于观察和理解测试任务的分配逻辑。
+                1. 这是一个CI/CD改进，在测试分区分配后增加了显示功能，属于开发流程优化。  
+2. 技术亮点是增强了CI流程的可视化，让开发者能直观查看测试任务的分布情况。  
+3. 对项目的影响是提升了开发者的调试效率，便于追踪测试执行情况，但不影响最终用户功能。
             </div>
         </div>
         
@@ -532,17 +774,17 @@
             
             <div class="commit-analysis">
                 📝 <strong>AI 分析:</strong>
-                1. 这是一个文档修复类 commit，将 Jupyter Notebook 中的图片链接从 GitHub 页面地址改为 raw.githubusercontent.com 原始文件地址，解决了图片无法正常显示的问题。
+                1. 这是一个文档修复，将 Jupyter Notebook 中的图片链接从 GitHub 页面地址改为 raw.githubusercontent.com 原始文件地址，以解决图片无法正常显示的问题。
 
-2. 技术亮点是修复了文档渲染的常见问题，确保 Notebook 中的外部资源能稳定加载，提升了文档的可读性和用户体验。
+2. 技术亮点是修正了静态资源引用方式，确保 Notebook 文档中的图片能跨平台稳定加载。
 
-3. 对项目的影响是改善了文档质量，用户和开发者能正确查看教程中的示例图片，避免了因图片缺失造成的困惑。
+3. 对用户来说，修复后 Notebook 教程中的图片能正常显示，提升了文档体验；对开发者无技术影响。
             </div>
         </div>
         
         <div class="commit-item">
             <div class="commit-header">
-                <span class="category-badge" data-category="Refactor">♻️ Refactor</span>
+                <span class="category-badge" data-category="Performance">⚡ Performance</span>
                 <div class="commit-title">
                     <a href="https://github.com/sgl-project/sglang/commit/45bd30e29d1e2f642c4d5b60562fcb5531e8164e" target="_blank">
                         [NPU] make torch_native lora backend a little bit faster (#17228)
@@ -556,9 +798,9 @@
             
             <div class="commit-analysis">
                 📝 <strong>AI 分析:</strong>
-                1. 这是一个针对NPU设备的性能优化提交，通过优化torch_native的LoRA后端实现来提升推理速度。  
-2. 技术亮点是改进了LoRA（低秩适配）在NPU上的计算效率，减少了运算开销。  
-3. 对项目的影响是提升了NPU环境下LoRA微调的推理性能，使相关硬件用户获得更快的模型响应速度。
+                1. 这是一个针对NPU（神经网络处理器）的性能优化commit，主要优化了torch_native LoRA后端的速度。  
+2. 技术亮点是通过代码调整提升了LoRA（低秩适应）在NPU上的计算效率，属于硬件相关的性能优化。  
+3. 对项目影响是提升了NPU设备上LoRA微调的推理速度，有利于使用该硬件的开发者获得更好的性能体验。
             </div>
         </div>
         
@@ -578,11 +820,9 @@
             
             <div class="commit-analysis">
                 📝 <strong>AI 分析:</strong>
-                1. 这个 commit 为 MambaRadixCache 添加了 HiCache 支持，属于新功能实现，旨在提升缓存系统的性能。
-
-2. 技术亮点是引入了 HiCache 这一新的缓存机制，通过优化 KV 缓存的管理和访问模式，预期能带来显著的性能优化。
-
-3. 对项目的影响是提升了 Mamba 模型推理时的缓存效率，开发者需要适配新的缓存接口，最终用户将体验到更快的推理速度。
+                1. 该 commit 为 MambaRadixCache 添加了 HiCache 支持，属于新功能扩展，旨在提升缓存系统的性能与效率。  
+2. 技术亮点是通过引入 HiCache 机制优化缓存管理，可能减少了重复计算或加速了键值检索，属于针对特定场景的性能优化。  
+3. 对项目的影响是增强了缓存模块的能力，可能提升推理速度或降低内存开销，使开发者能更高效地处理序列生成任务。
             </div>
         </div>
         
@@ -602,17 +842,15 @@
             
             <div class="commit-analysis">
                 📝 <strong>AI 分析:</strong>
-                1. 这是一个针对 AMD 平台的 bug 修复，解决了张量内存别名（Tensor Memory Aliasing）问题，属于底层框架的稳定性修复。
-
-2. 技术亮点是修正了 HIP（AMD GPU）后端的内存管理逻辑，确保张量内存的正确分配与引用，避免了潜在的运行时错误或数据损坏。
-
-3. 对项目的影响是提升了在 AMD GPU 上运行的稳定性和正确性，使依赖该框架的开发者能更可靠地使用 AMD 硬件。
+                1. 这是一个针对AMD平台的bug修复，主要解决了Tensor内存别名问题，确保内存访问的正确性。  
+2. 技术亮点是修复了内存别名导致的潜在数据错误，提升了在AMD硬件上的运行稳定性。  
+3. 对项目影响是增强了AMD平台支持的可信性，避免了因内存问题导致的运行时错误。
             </div>
         </div>
         
         <div class="commit-item">
             <div class="commit-header">
-                <span class="category-badge" data-category="Feature">🚀 Feature</span>
+                <span class="category-badge" data-category="Performance">⚡ Performance</span>
                 <div class="commit-title">
                     <a href="https://github.com/sgl-project/sglang/commit/7da590d4d069273644e2eed5fd67c597ba97b220" target="_blank">
                         [Qwen3.5] Support Qwen3.5 Pipeline Parallelism (#19670)
@@ -626,9 +864,9 @@
             
             <div class="commit-analysis">
                 📝 <strong>AI 分析:</strong>
-                1. 该 commit 为 Qwen3.5 模型新增了流水线并行支持，属于功能扩展类提交。  
-2. 技术亮点在于实现了分布式推理的流水线并行架构，提升了大模型在多 GPU 上的推理效率。  
-3. 对项目影响是增强了 sglang 框架对大模型分布式推理的支持能力，用户可更高效地部署 Qwen3.5 模型。
+                1. 该 commit 为 Qwen3.5 模型新增了流水线并行（Pipeline Parallelism）支持，属于功能增强型改动。  
+2. 技术亮点是通过分布式计算优化大模型推理性能，扩展了框架对大规模模型部署的架构支持能力。  
+3. 对项目而言，这提升了开发者部署 Qwen3.5 大模型的效率和扩展性，用户能更高效地运行分布式推理任务。
             </div>
         </div>
         
@@ -648,9 +886,9 @@
             
             <div class="commit-analysis">
                 📝 <strong>AI 分析:</strong>
-                1. 该 commit 为 NPU 设备添加了对 AutoRound 量化模型运行时的支持，属于新功能扩展。  
-2. 技术亮点是扩展了 NPU 后端以适配新的量化格式，提升了模型在特定硬件上的部署灵活性。  
-3. 对项目而言，这使 NPU 用户能够使用更高效的量化模型，同时为开发者提供了更完整的硬件支持生态。
+                1. 该 commit 为 NPU 设备添加了对 AutoRound 量化模型运行时的支持，属于新功能实现。  
+2. 技术亮点是扩展了 NPU 后端以支持新型量化模型，提升了硬件兼容性和推理效率。  
+3. 对项目而言，这增强了 NPU 用户的使用体验，并为开发者提供了更灵活的模型部署选项。
             </div>
         </div>
         
@@ -670,9 +908,9 @@
             
             <div class="commit-analysis">
                 📝 <strong>AI 分析:</strong>
-                1. 这是一个技能模块的代码重构，主要优化了 `jit_kernel` 和 `sgl-kernel` 相关功能的实现逻辑和代码结构。  
-2. 技术亮点在于通过重构提升了内核代码的清晰度和可维护性，可能涉及性能相关的底层优化。  
-3. 对项目的影响是使相关技能模块更易于开发和调试，为后续功能扩展打下基础，但普通用户可能感知不到明显变化。
+                1. 这是一个技能模块重构，主要优化了 `jit_kernel` 和 `sgl-kernel` 相关功能的实现代码，属于代码重构和内部改进。  
+2. 技术亮点在于通过重构提升了内核代码的清晰度和可维护性，可能涉及性能优化或接口简化。  
+3. 对开发者而言，这改善了代码结构，便于后续扩展和维护，但不会直接影响最终用户的功能使用。
             </div>
         </div>
         
@@ -692,13 +930,13 @@
             
             <div class="commit-analysis">
                 📝 <strong>AI 分析:</strong>
-                这是一个为NPU设备添加Wan2.2-T2V-A14B扩散模型量化支持的提交。技术亮点是引入了模型量化功能以提升在特定硬件上的推理性能。这为项目增加了对新型扩散模型在NPU上的高效部署能力，主要影响是提升了相关模型的运行效率并扩展了硬件兼容性。
+                这是一个为NPU设备添加模型量化支持的功能性提交，主要实现了Wan2.2-T2V-A14B-Diffusers模型的量化功能。技术亮点在于通过模型压缩（modelslim）和量化技术来优化推理性能，减少内存占用。该改动将提升NPU平台上的推理效率，对开发者意味着更灵活的部署选项，但对普通用户无明显直接影响。
             </div>
         </div>
         
         <div class="commit-item">
             <div class="commit-header">
-                <span class="category-badge" data-category="Refactor">♻️ Refactor</span>
+                <span class="category-badge" data-category="Docs">📚 Docs</span>
                 <div class="commit-title">
                     <a href="https://github.com/sgl-project/sglang/commit/f8d4eb70229db5f4c4874e0fd24def1e8b6a97c3" target="_blank">
                         [Docs] Add docstrings to JIT kernel include headers (#19770)
@@ -712,15 +950,15 @@
             
             <div class="commit-analysis">
                 📝 <strong>AI 分析:</strong>
-                1. 这是一个文档更新，为 JIT 内核的头文件添加了详细的 docstring 注释，属于文档改进。  
-2. 技术亮点是提升了代码的可读性和可维护性，帮助开发者理解内核接口的使用方法和参数含义。  
-3. 对项目的影响是降低了开发者的使用门槛，便于后续的代码维护和功能扩展。
+                1. 这是一个**文档更新**，为JIT内核的头文件添加了详细的docstring注释，属于代码文档完善。  
+2. **技术亮点**是提升了内核代码的可读性和可维护性，方便开发者理解JIT内核的接口与功能。  
+3. **影响**：主要面向项目开发者，降低了后续开发与协作的理解成本，但对最终用户无直接影响。
             </div>
         </div>
         
         <div class="commit-item">
             <div class="commit-header">
-                <span class="category-badge" data-category="Feature">🚀 Feature</span>
+                <span class="category-badge" data-category="Performance">⚡ Performance</span>
                 <div class="commit-title">
                     <a href="https://github.com/sgl-project/sglang/commit/ef6540b4391ed47cd3472b6971992178c0323d9c" target="_blank">
                         [diffusion]: add width/height passthrough for OpenAI image API (#19970)
@@ -734,9 +972,11 @@
             
             <div class="commit-analysis">
                 📝 <strong>AI 分析:</strong>
-                1. 这是一个功能增强，为OpenAI图像API添加了宽度和高度参数的透传支持，使调用者能指定生成图像的尺寸。  
-2. 技术亮点是扩展了API的灵活性，允许用户自定义图像分辨率，提升了接口的兼容性和实用性。  
-3. 对用户而言，可以更精细地控制图像生成；对开发者来说，API功能更完善，便于集成到需要特定尺寸的应用中。
+                1. 这是一个功能增强的 commit，为 OpenAI 图像 API 添加了宽度和高度参数的透传支持，允许用户指定生成图像的尺寸。
+
+2. 主要技术亮点是扩展了 API 接口的灵活性，通过 `width` 和 `height` 参数实现了对底层图像生成模型尺寸控制的直接支持。
+
+3. 该改动提升了用户体验，使开发者能更精细地控制图像生成，同时保持了 API 的向后兼容性，对项目性能无负面影响。
             </div>
         </div>
         
@@ -756,7 +996,7 @@
             
             <div class="commit-analysis">
                 📝 <strong>AI 分析:</strong>
-                这是一个修复KV存储内核中旋转位置编码（RoPE）的bug修复提交。技术亮点是修复了fused rope内核中K向量写回缺失的问题，确保旋转位置编码正确应用到键向量上。对项目的影响是修复了长上下文生成中的潜在错误，提升了模型推理的准确性。
+                这是一个修复KV存储中旋转位置编码（RoPE）内核的bug修复提交。主要技术亮点是恢复了K向量的写回操作，确保RoPE计算后K值能正确更新到KV缓存中。这个修复对项目的影响是保证了注意力机制的正确性，避免因K值未更新导致的模型输出错误。
             </div>
         </div>
         
@@ -776,9 +1016,7 @@
             
             <div class="commit-analysis">
                 📝 <strong>AI 分析:</strong>
-                1. 这是一个 bug 修复，修正了 shell 脚本中的语法错误，将错误的 `&&` 操作符用法改为正确的格式，解决了 issue #20093。
-2. 技术亮点是修复了脚本解析错误，确保了脚本在 shell 环境中的正确执行，属于基础但关键的语法修正。
-3. 对项目的影响是消除了脚本执行失败的风险，提升了构建或部署流程的可靠性，对开发者体验有直接改善。
+                这是一个修复 Shell 脚本语法错误的 bug 修复提交。技术亮点是修正了 `test/` 目录下脚本中 `&&` 运算符的错误使用，使其符合 POSIX Shell 规范。该修复确保了自动化测试脚本能正确执行，提升了开发流程的可靠性。
             </div>
         </div>
         
@@ -798,7 +1036,7 @@
             
             <div class="commit-analysis">
                 📝 <strong>AI 分析:</strong>
-                这是一个针对 Triton GEMM 配置问题的临时修复（bug 修复）。它通过调整 `aiter` 的配置参数，绕过了特定硬件或场景下的内核编译失败问题。这个改动对开发者影响较大，能提升相关运算的稳定性和兼容性，但用户层面无感知。
+                这是一个针对 Triton GEMM 配置问题的临时修复（bug 修复）。技术亮点是绕过特定硬件（aiter）上的 Triton 内核配置错误，确保程序能正常运行。对项目的影响是避免了相关硬件上的运行时崩溃，提升了兼容性，但属于临时解决方案而非根本修复。
             </div>
         </div>
         
@@ -818,7 +1056,7 @@
             
             <div class="commit-analysis">
                 📝 <strong>AI 分析:</strong>
-                这是一个功能更新，将模型从 MiniMax-M2 升级到 MiniMax-M2.5。主要技术亮点是引入了性能更强的模型版本，提升了推理能力。对用户而言，这意味着更高质量的文本生成效果。
+                这是一个功能更新，将模型从 MiniMax-M2 升级到 MiniMax-M2.5，属于常规的模型版本迭代。技术亮点是引入了性能更强的新版模型，对用户而言能获得更好的生成效果。对项目来说，这保持了与最新 AI 服务的同步，提升了整体能力。
             </div>
         </div>
         
@@ -838,11 +1076,11 @@
             
             <div class="commit-analysis">
                 📝 <strong>AI 分析:</strong>
-                1. 这是一个内核更新，将FlashMLA内核代码rebase到0217版本，属于底层性能优化和功能同步。
+                1. 这是一个功能更新，将 FlashMLA 内核代码 rebase 到 0217 版本，属于底层内核的维护性升级。
 
-2. 主要技术亮点是更新了注意力计算内核，提升了长序列处理的性能和稳定性，并同步了上游改进。
+2. 技术亮点是更新了高性能注意力计算内核，可能包含了性能优化或对新硬件的适配改进。
 
-3. 对项目影响是提升了推理效率（特别是长文本场景），开发者需要适配新内核接口，但用户无感知。
+3. 对项目的影响是提升了底层计算效率，开发者需要关注内核接口变化，但普通用户无感知。
             </div>
         </div>
         
@@ -862,11 +1100,7 @@
             
             <div class="commit-analysis">
                 📝 <strong>AI 分析:</strong>
-                1. 这是一个针对AMD GPU CI测试的bug修复，主要解决了AMD CI流水线中特定测试分区（stage-b-small-1-gpu-amd partition 7）的失败问题。
-
-2. 技术亮点是修复了AMD平台下的CI测试稳定性，确保在特定硬件分区上的测试能正常运行。
-
-3. 对项目的影响是提升了AMD GPU CI测试的可靠性，为开发者提供了更稳定的跨平台测试环境。
+                这是一个针对 AMD GPU CI 测试的修复性提交，主要解决了特定测试分区（stage-b-small-1-gpu-amd partition 7）中的问题。技术亮点是修复了 AMD 平台上的持续集成流程，确保相关测试能在 AMD 硬件环境中稳定运行。对项目的影响是提升了 AMD 平台 CI 的可靠性，为使用 AMD GPU 的开发者提供了更好的测试保障。
             </div>
         </div>
         
@@ -886,9 +1120,9 @@
             
             <div class="commit-analysis">
                 📝 <strong>AI 分析:</strong>
-                1. 这是一个测试相关的提交，主要更新了Kimi模型的夜间测试配置，用Kimi K2.5（包含基础版和Eagle3 MTP版本）替换了原有的Kimi K2测试。  
-2. 技术亮点是引入了对Kimi K2.5新模型版本（包括其Eagle3 MTP变体）的自动化测试支持，确保新模型在集成后的稳定性。  
-3. 对项目的影响是增强了测试覆盖范围，为开发者提供了新模型版本的验证保障，但普通用户无直接影响。
+                1. 这是一个功能更新，主要添加了 Kimi K2.5 模型的夜间测试，并替换了原有的 Kimi K2 测试配置。
+2. 技术亮点是引入了对 Kimi K2.5（包含基础版和 Eagle3 MTP 版本）的自动化测试支持，属于测试框架的迭代更新。
+3. 对项目的影响是确保了新模型版本的兼容性与稳定性，为开发者提供了更准确的测试反馈，但普通用户无直接影响。
             </div>
         </div>
         
@@ -908,7 +1142,9 @@
             
             <div class="commit-analysis">
                 📝 <strong>AI 分析:</strong>
-                这是一个重构和新特性结合的提交。主要做了两件事：1）将 `NemotronHConfig` 中的 `layers_block_type` 参数名重构为更规范的 `canonical_layers_block_type`；2）新增了对 MTP 块类型的支持。这为开发者提供了更清晰的配置接口并扩展了模型架构的灵活性，但对最终用户无直接影响。
+                1. 这是一个重构和新特性提交：重构了NemotronHConfig的层块类型配置，并新增了对MTP块类型的支持。  
+2. 技术亮点是将配置结构标准化（canonical layers_block_type），同时扩展了模型架构的灵活性。  
+3. 对开发者而言，配置更统一且支持更多块类型，但对最终用户无直接影响，属于底层架构改进。
             </div>
         </div>
         
@@ -928,9 +1164,9 @@
             
             <div class="commit-analysis">
                 📝 <strong>AI 分析:</strong>
-                1. 这是一个bug修复，主要解决了多提示词生成的问题，并支持在命令行中使用多个提示词。  
-2. 技术亮点是修复了多提示词生成时的逻辑错误，并扩展了CLI功能以支持多提示词输入。  
-3. 对用户而言，现在可以正确使用多个提示词生成图像；对开发者来说，相关接口和命令行工具更加完善可靠。
+                1. 这是一个bug修复，主要解决了多提示词生成的问题，并支持在CLI中使用多个提示词。  
+2. 技术亮点是修复了多提示词生成时的逻辑错误，并扩展了CLI接口以支持多提示词输入。  
+3. 对用户来说，现在可以正确使用多提示词生成图像；对开发者而言，CLI工具的功能更加完善和灵活。
             </div>
         </div>
         
@@ -950,7 +1186,7 @@
             
             <div class="commit-analysis">
                 📝 <strong>AI 分析:</strong>
-                这是一个修复bug的commit，解决了启用TeaCache时静默失败的问题。技术亮点是修复了缓存初始化逻辑，确保参数正确传递。这提升了扩散模型推理的稳定性，用户使用`--enable-teacache`参数时不会再遇到无声的错误。
+                这是一个修复bug的提交，解决了启用TeaCache时静默失败的问题。技术亮点是修复了缓存初始化逻辑，确保参数正确传递。对项目的影响是提升了扩散模型推理的稳定性，避免用户在使用`--enable-teacache`时遇到不可预见的错误。
             </div>
         </div>
         
@@ -971,8 +1207,8 @@
             <div class="commit-analysis">
                 📝 <strong>AI 分析:</strong>
                 1. 这是一个 CI 相关的临时修复，禁用了 CUDA 平台上不稳定的 `test_priority_metrics` 测试用例，属于 bug 修复。  
-2. 技术亮点是快速解决 CI 流水线中的间歇性测试失败问题，确保自动化测试的可靠性。  
-3. 对项目的影响是暂时屏蔽了不稳定的测试，避免 CI 阻塞，但需后续跟进彻底修复该测试。
+2. 技术亮点是快速解决 CI 流水线中的偶发性测试失败问题，确保 CI 稳定运行。  
+3. 对开发者而言，避免了因测试不稳定导致的 CI 阻塞，但需后续跟进修复该测试的根本问题。
             </div>
         </div>
         
@@ -992,7 +1228,9 @@
             
             <div class="commit-analysis">
                 📝 <strong>AI 分析:</strong>
-                这是一个针对FlashInfer后端的bug修复。主要修复了在使用PCG（概率上下文生成）时FlashInfer后端可能出现的错误，确保了该后端在特定生成模式下的正确性。这个修复提升了FlashInfer后端的稳定性和兼容性，对使用该后端的开发者有直接影响。
+                1. 这是一个bug修复，主要解决了FlashInfer后端在使用PCG（可能指并行计算图）时的问题。
+2. 技术亮点是修复了特定后端与并行计算框架的兼容性问题，确保了推理功能的正确性。
+3. 对项目的影响是提升了FlashInfer后端在并行计算场景下的稳定性和可靠性，用户和开发者可以更稳定地使用该功能。
             </div>
         </div>
         
@@ -1012,253 +1250,11 @@
             
             <div class="commit-analysis">
                 📝 <strong>AI 分析:</strong>
-                1. 这是一个**重构**性质的提交，移除了 `mini_lb` 模块中已弃用的追踪代码，属于代码清理。
-2. 技术亮点是**简化了代码结构**，移除了不再使用的旧实现，减少了维护负担。
-3. 对项目的影响是**提升了代码的清晰度**，对开发者更友好，但不会影响最终用户的功能或性能。
-            </div>
-        </div>
-        
-        <div class="commit-item">
-            <div class="commit-header">
-                <span class="category-badge" data-category="Refactor">♻️ Refactor</span>
-                <div class="commit-title">
-                    <a href="https://github.com/sgl-project/sglang/commit/f88acf87805b1e27182c4927a47bc60818f768d8" target="_blank">
-                        [JIT Kernel] Reland NVFP4 kernels to JIT (#20012)
-                    </a>
-                </div>
-            </div>
-            
-            <div class="commit-meta">
-                👤 Mohammad Miadh Angkad | 🕒 2026-03-07 10:31:08 +0800
-            </div>
-            
-            <div class="commit-analysis">
-                📝 <strong>AI 分析:</strong>
-                1. 这是一个功能增强提交，将NVFP4（NVIDIA FP4量化）内核重新集成到JIT编译系统中，属于性能优化相关的功能改进。
+                1. 这是一个**重构**，移除了 mini_lb 模块中已弃用的追踪代码，属于代码清理。
 
-2. 技术亮点是通过JIT（即时编译）技术优化FP4量化计算内核，利用运行时编译实现硬件适配和性能提升。
+2. **技术亮点**是简化了代码结构，移除了不再使用的旧追踪实现，减少了维护负担。
 
-3. 对项目的影响是提升了FP4量化模型在NVIDIA硬件上的推理性能，为开发者提供了更高效的量化计算支持。
-            </div>
-        </div>
-        
-        <div class="commit-item">
-            <div class="commit-header">
-                <span class="category-badge" data-category="Refactor">♻️ Refactor</span>
-                <div class="commit-title">
-                    <a href="https://github.com/sgl-project/sglang/commit/6ffc74efd7d23627c0245efb61af7f62cde4a970" target="_blank">
-                        [Metrics] Add overlap bubble timing, full KV usage gauge, and prefill cuda graph tracking (#19982)
-                    </a>
-                </div>
-            </div>
-            
-            <div class="commit-meta">
-                👤 Yilong Zhao | 🕒 2026-03-06 17:41:27 -0800
-            </div>
-            
-            <div class="commit-analysis">
-                📝 <strong>AI 分析:</strong>
-                1. 该提交新增了三个性能监控功能：重叠气泡时间统计、完整KV使用量计量和预填充CUDA图追踪，属于功能增强型提交。
-
-2. 技术亮点在于通过细粒度性能指标（气泡时间/KV使用率）和CUDA图优化跟踪，实现了对推理过程性能瓶颈的深度可视化监控。
-
-3. 对开发者而言提供了更完善的性能分析工具，有助于优化推理效率，但普通用户无感知，属于底层基础设施改进。
-            </div>
-        </div>
-        
-        <div class="commit-item">
-            <div class="commit-header">
-                <span class="category-badge" data-category="BugFix">🐛 BugFix</span>
-                <div class="commit-title">
-                    <a href="https://github.com/sgl-project/sglang/commit/50bbdcf8e97d837b9a532723f47f4444ce71bba0" target="_blank">
-                        Relax flaky test thresholds for MLA DeepSeek V3 and AutoRound (#20068)
-                    </a>
-                </div>
-            </div>
-            
-            <div class="commit-meta">
-                👤 Alison Shao | 🕒 2026-03-06 17:26:28 -0800
-            </div>
-            
-            <div class="commit-analysis">
-                📝 <strong>AI 分析:</strong>
-                1. 这是一个测试相关的修复，通过放宽MLA DeepSeek V3和AutoRound测试的容错阈值来解决测试不稳定的问题（flaky test）。  
-2. 技术亮点是调整了测试的精度容忍度，确保在模型输出存在合理波动时测试仍能通过，避免因数值微小差异导致CI失败。  
-3. 对项目影响是提高了CI的稳定性，减少了因测试波动导致的误报，让开发流程更可靠。
-            </div>
-        </div>
-        
-        <div class="commit-item">
-            <div class="commit-header">
-                <span class="category-badge" data-category="BugFix">🐛 BugFix</span>
-                <div class="commit-title">
-                    <a href="https://github.com/sgl-project/sglang/commit/a0d085c16d5a267a3657c40d3b35b474ed548f81" target="_blank">
-                        Adding correct path for module not found error while collecting test (#19778)
-                    </a>
-                </div>
-            </div>
-            
-            <div class="commit-meta">
-                👤 shubham singhal | 🕒 2026-03-07 05:56:16 +0530
-            </div>
-            
-            <div class="commit-analysis">
-                📝 <strong>AI 分析:</strong>
-                这是一个修复测试模块导入路径的 bug 修复提交。技术亮点是修正了 `pytest` 收集测试时因模块路径错误导致的 `ModuleNotFoundError`，通过调整 `sys.path` 确保测试能正确导入项目模块。对开发者而言，这解决了本地运行测试时的常见配置问题，提升了开发体验和测试流程的可靠性。
-            </div>
-        </div>
-        
-        <div class="commit-item">
-            <div class="commit-header">
-                <span class="category-badge" data-category="BugFix">🐛 BugFix</span>
-                <div class="commit-title">
-                    <a href="https://github.com/sgl-project/sglang/commit/e818f8219a21273bbe3633a61e6a9cbef6a9b3f1" target="_blank">
-                        Fix none-comparison (E711) warnings (#19745)
-                    </a>
-                </div>
-            </div>
-            
-            <div class="commit-meta">
-                👤 R0CKSTAR | 🕒 2026-03-07 08:15:21 +0800
-            </div>
-            
-            <div class="commit-analysis">
-                📝 <strong>AI 分析:</strong>
-                这是一个代码质量修复 commit，主要修复了 Python 代码中的 `E711` 风格警告，将 `if x == None` 这类与 `None` 的比较改为更规范的 `if x is None` 写法。这属于代码风格优化，对功能没有影响，但能提升代码的可读性和符合 PEP 8 规范，有利于项目的长期维护。
-            </div>
-        </div>
-        
-        <div class="commit-item">
-            <div class="commit-header">
-                <span class="category-badge" data-category="Config">🔧 Config</span>
-                <div class="commit-title">
-                    <a href="https://github.com/sgl-project/sglang/commit/0c4f98ed4e325e4db4ca97bb5c012137a97db9e4" target="_blank">
-                        [diffusion] hardware: add set_musa_arch on MUSA (misc, 15/N) (#19381)
-                    </a>
-                </div>
-            </div>
-            
-            <div class="commit-meta">
-                👤 R0CKSTAR | 🕒 2026-03-07 08:14:41 +0800
-            </div>
-            
-            <div class="commit-analysis">
-                📝 <strong>AI 分析:</strong>
-                1. 这是一个硬件相关的杂项修改，在MUSA（国产计算架构）环境中添加了`set_musa_arch`调用，属于对特定硬件平台支持的完善。
-
-2. 主要技术亮点是增强了项目在国产MUSA计算架构上的兼容性，确保在该硬件环境下能正确设置计算架构参数。
-
-3. 对项目影响是扩展了硬件支持范围，使sglang能在更多国产计算平台上正常运行，但对大多数用户和开发者无直接影响。
-            </div>
-        </div>
-        
-        <div class="commit-item">
-            <div class="commit-header">
-                <span class="category-badge" data-category="BugFix">🐛 BugFix</span>
-                <div class="commit-title">
-                    <a href="https://github.com/sgl-project/sglang/commit/069d4c577b39cc6fcd56f0ff138df7c8c793ea82" target="_blank">
-                        Fix Kimi K2.5 PP layer range exposure for PD disaggregation (#19959)
-                    </a>
-                </div>
-            </div>
-            
-            <div class="commit-meta">
-                👤 MARATRIX | 🕒 2026-03-07 08:14:02 +0800
-            </div>
-            
-            <div class="commit-analysis">
-                📝 <strong>AI 分析:</strong>
-                1. 这是一个bug修复，修正了Kimi K2.5模型中PP（流水线并行）层范围暴露的问题，以支持PD（管道并行）解聚功能。
-2. 技术亮点是修复了模型并行配置中的关键逻辑，确保了在特定并行策略下模型层划分的正确性。
-3. 对项目的影响是修复了分布式训练中的一个潜在错误，使开发者能正确使用PD解聚功能，提升了多GPU训练的稳定性。
-            </div>
-        </div>
-        
-        <div class="commit-item">
-            <div class="commit-header">
-                <span class="category-badge" data-category="Refactor">♻️ Refactor</span>
-                <div class="commit-title">
-                    <a href="https://github.com/sgl-project/sglang/commit/ddcecdea49829480f8a96d5c6c5ae0b099346e15" target="_blank">
-                        [Core] Unify `max_num_reqs` `dp_size` division for pool sizing (#20063)
-                    </a>
-                </div>
-            </div>
-            
-            <div class="commit-meta">
-                👤 Liangsheng Yin | 🕒 2026-03-06 16:12:59 -0800
-            </div>
-            
-            <div class="commit-analysis">
-                📝 <strong>AI 分析:</strong>
-                这是一个**重构性修改**，主要统一了内存池大小计算中 `max_num_reqs` 和 `dp_size` 的除法逻辑。技术亮点是**消除了代码重复**，将分散在不同位置的计算逻辑集中到 `_get_pool_size_by_num_reqs` 函数中，提高了代码的可维护性。对项目的影响是**使内存池的容量管理更加一致和清晰**，降低了后续开发的理解和维护成本。
-            </div>
-        </div>
-        
-        <div class="commit-item">
-            <div class="commit-header">
-                <span class="category-badge" data-category="BugFix">🐛 BugFix</span>
-                <div class="commit-title">
-                    <a href="https://github.com/sgl-project/sglang/commit/7a12255b6e7c1f1af75356fc31322a9436295a2b" target="_blank">
-                        fix: set first_token_time before computing decode_throughput for single-batch completions (#19984)
-                    </a>
-                </div>
-            </div>
-            
-            <div class="commit-meta">
-                👤 Kangyan-Zhou | 🕒 2026-03-06 16:11:41 -0800
-            </div>
-            
-            <div class="commit-analysis">
-                📝 <strong>AI 分析:</strong>
-                1. 这是一个 bug 修复，修正了单批次推理时解码吞吐量计算不准确的问题，确保 `first_token_time` 在计算前被正确设置。  
-2. 技术亮点是修复了性能监控的时序逻辑，避免了因时间戳记录顺序错误导致的吞吐量统计偏差。  
-3. 对项目的影响是提升了性能指标（如 `decode_throughput`）的准确性，使开发者能更可靠地评估系统性能。
-            </div>
-        </div>
-        
-        <div class="commit-item">
-            <div class="commit-header">
-                <span class="category-badge" data-category="BugFix">🐛 BugFix</span>
-                <div class="commit-title">
-                    <a href="https://github.com/sgl-project/sglang/commit/5c8e28698c1764e285401312cd5683930227da05" target="_blank">
-                        Add cleanup for _ATTN_TP in parallel_state.py (#19978)
-                    </a>
-                </div>
-            </div>
-            
-            <div class="commit-meta">
-                👤 Aurick Qiao | 🕒 2026-03-06 15:43:31 -0800
-            </div>
-            
-            <div class="commit-analysis">
-                📝 <strong>AI 分析:</strong>
-                1. 这是一个bug修复，清理了并行状态管理中的 `_ATTN_TP` 残留变量，防止内存泄漏或状态污染。  
-2. 技术亮点是完善了分布式训练的资源管理，确保张量并行注意力模块退出时能正确释放资源。  
-3. 对开发者而言提升了系统稳定性，避免因未清理的全局状态引发后续训练或推理的异常。
-            </div>
-        </div>
-        
-        <div class="commit-item">
-            <div class="commit-header">
-                <span class="category-badge" data-category="BugFix">🐛 BugFix</span>
-                <div class="commit-title">
-                    <a href="https://github.com/sgl-project/sglang/commit/61de303f0a14d2aa7941431ce53ed02367d8227b" target="_blank">
-                        Fix fallback to default tactic (flashinfer autotuner) with trtllm_fp4_block_scale_moe (#19189)
-                    </a>
-                </div>
-            </div>
-            
-            <div class="commit-meta">
-                👤 Shu Wang | 🕒 2026-03-06 17:15:04 -0600
-            </div>
-            
-            <div class="commit-analysis">
-                📝 <strong>AI 分析:</strong>
-                1. 这是一个 bug 修复，主要解决了在特定配置（`trtllm_fp4_block_scale_moe`）下，FlashInfer 自动调优器未能正确回退到默认策略的问题。
-
-2. 技术亮点是修复了自动调优器的回退逻辑，确保在特定量化格式和 MOE 场景下，系统能稳定地选择可用的计算策略，避免潜在的性能下降或运行时错误。
-
-3. 对项目的影响是提升了 FlashInfer 后端在复杂量化模型（如 FP4 分块缩放 MOE）下的鲁棒性和可靠性，确保自动优化流程更加稳定。
+3. **对项目的影响**：对用户无直接影响，但使代码库更清晰，便于开发者后续维护和扩展。
             </div>
         </div>
         
