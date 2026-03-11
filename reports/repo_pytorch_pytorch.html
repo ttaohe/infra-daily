@@ -147,10 +147,10 @@
         <div class="header">
             <a href="index.html" class="back-btn">← 返回主页</a>
             <h1>📦 pytorch/pytorch</h1>
-            <p>生成时间: 2026-03-09 02:24:34</p>
+            <p>生成时间: 2026-03-11 02:13:06</p>
             
             <div class="category-stats">
-                <span class="category-stat">🐛 BugFix: 31</span><span class="category-stat">♻️ Refactor: 7</span><span class="category-stat">⚡ Performance: 7</span><span class="category-stat">🚀 Feature: 3</span><span class="category-stat">✅ Test: 2</span>
+                <span class="category-stat">🐛 BugFix: 28</span><span class="category-stat">⚡ Performance: 11</span><span class="category-stat">♻️ Refactor: 6</span><span class="category-stat">🚀 Feature: 4</span><span class="category-stat">🔧 Config: 1</span>
             </div>
         </div>
         
@@ -158,23 +158,23 @@
             
         <div class="commit-item">
             <div class="commit-header">
-                <span class="category-badge" data-category="Refactor">♻️ Refactor</span>
+                <span class="category-badge" data-category="BugFix">🐛 BugFix</span>
                 <div class="commit-title">
-                    <a href="https://github.com/pytorch/pytorch/commit/e7c05590485eec8b2adef9f37719e76c1bf10107" target="_blank">
-                        Support non-tensor attrs in __tensor_flatten__ (#176457)
+                    <a href="https://github.com/pytorch/pytorch/commit/a3ca67c68bd98ff74792b105dc8583dc33eef39b" target="_blank">
+                        [export] Handle unused List[Tensor] outputs in serialization (#176677)
                     </a>
                 </div>
             </div>
             
             <div class="commit-meta">
-                👤 Aaron Orenstein | 🕒 2026-03-08 14:46:57 -0700
+                👤 Georgia Phillips | 🕒 2026-03-11 02:04:27 +0000
             </div>
             
             <div class="commit-analysis">
                 📝 <strong>AI 分析:</strong>
-                1. 这是一个功能增强型提交，扩展了 `__tensor_flatten__` 协议以支持序列化非张量属性，使自定义张量子类能携带并重构更多元数据。  
-2. 主要技术亮点是引入了 `TensorWithNonTensorAttrs` 包装类来统一处理混合类型的属性，并改进了 `unflatten_tensor` 的逻辑以正确恢复这些属性。  
-3. 该改动提升了框架的灵活性，方便开发者创建更复杂的自定义张量类型，同时保持了向后兼容性，对现有用户无影响。
+                1. 这是一个bug修复，解决了导出ONNX时未使用的`List[Tensor]`类型输出在序列化过程中可能引发错误的问题。  
+2. 技术亮点是改进了序列化逻辑，通过检查输出是否被实际使用来避免生成无效的ONNX节点。  
+3. 对用户而言，修复后能正确导出包含未使用列表输出的模型，提升了PyTorch模型导出的稳定性和兼容性。
             </div>
         </div>
         
@@ -182,23 +182,21 @@
             <div class="commit-header">
                 <span class="category-badge" data-category="BugFix">🐛 BugFix</span>
                 <div class="commit-title">
-                    <a href="https://github.com/pytorch/pytorch/commit/a69ac731b85953a820a41d6a9885ed36342af93e" target="_blank">
-                        [Inductor] Fallback to super().get_read_writes when epilogue_fusion_user_defined_triton_kernel is disabled (#176832)
+                    <a href="https://github.com/pytorch/pytorch/commit/68bcdcb1e16e6fef4c432d48795734b14a51182d" target="_blank">
+                        Revert "[fx] Move the rest of torch.fx.Node to C++ (#170946)" (#177047)
                     </a>
                 </div>
             </div>
             
             <div class="commit-meta">
-                👤 Zhou Fang | 🕒 2026-03-09 01:54:30 +0000
+                👤 Wouter Devriendt | 🕒 2026-03-11 01:57:47 +0000
             </div>
             
             <div class="commit-analysis">
                 📝 <strong>AI 分析:</strong>
-                1. 这是一个bug修复，当epilogue_fusion_user_defined_triton_kernel功能被禁用时，修复了Inductor在获取读写依赖时的回退逻辑，确保能正确调用父类的get_read_writes方法。
-
-2. 技术亮点是修复了条件分支下的方法调用逻辑，避免了因功能开关状态导致的潜在错误，增强了代码的健壮性。
-
-3. 对项目的影响是确保了Inductor编译器的稳定性，防止在特定配置下出现异常，提升了开发者使用相关功能的可靠性。
+                1. 这是一个回滚提交，撤销了之前将 torch.fx.Node 完全迁移到 C++ 的改动，属于功能回退性质的修复。  
+2. 技术亮点是解决了因 C++ 迁移可能引入的兼容性或稳定性问题，暂时恢复原有 Python 实现以保证可靠性。  
+3. 对项目的影响是避免了潜在风险，确保开发者使用的 torch.fx 模块保持稳定，但延缓了性能优化和架构改进的进程。
             </div>
         </div>
         
@@ -206,87 +204,21 @@
             <div class="commit-header">
                 <span class="category-badge" data-category="BugFix">🐛 BugFix</span>
                 <div class="commit-title">
-                    <a href="https://github.com/pytorch/pytorch/commit/58a7ff51d83fe0bf2ba1b232b71f24096813e9ae" target="_blank">
-                        Fix grammar in README.md (#176633)
+                    <a href="https://github.com/pytorch/pytorch/commit/fec0bf53461aaac315aaed7812ba21b58352f29e" target="_blank">
+                        [Inductor][NVGEMM] Restore fp4 kernel docstrings (#176549)
                     </a>
                 </div>
             </div>
             
             <div class="commit-meta">
-                👤 DOakes334 | 🕒 2026-03-09 01:27:26 +0000
+                👤 Nikhil Patel | 🕒 2026-03-10 11:30:51 -0700
             </div>
             
             <div class="commit-analysis">
                 📝 <strong>AI 分析:</strong>
-                这是一个文档修复 commit，只修改了 README.md 中的语法错误（将 "a" 改为 "an"），属于纯粹的文档改进。它没有技术亮点，也不影响代码功能或性能，仅提升了文档的准确性和可读性。
-            </div>
-        </div>
-        
-        <div class="commit-item">
-            <div class="commit-header">
-                <span class="category-badge" data-category="Refactor">♻️ Refactor</span>
-                <div class="commit-title">
-                    <a href="https://github.com/pytorch/pytorch/commit/26dddb96e5544150924f83c0b7a38f04f26c173b" target="_blank">
-                        [varlen_attn for inference] remove unnecessary tensor creation (#176723)
-                    </a>
-                </div>
-            </div>
-            
-            <div class="commit-meta">
-                👤 Angel Li | 🕒 2026-03-07 16:55:11 -0800
-            </div>
-            
-            <div class="commit-analysis">
-                📝 <strong>AI 分析:</strong>
-                1. 这是一个性能优化提交，移除了推理过程中变长注意力机制（varlen_attn）中不必要的张量创建操作，属于代码重构。
-
-2. 技术亮点是通过消除冗余的张量分配和计算，减少了内存开销和计算量，从而提升了推理性能。
-
-3. 对项目的影响是提高了推理效率，降低了内存占用，使变长注意力机制在部署时更轻量、更快速。
-            </div>
-        </div>
-        
-        <div class="commit-item">
-            <div class="commit-header">
-                <span class="category-badge" data-category="Refactor">♻️ Refactor</span>
-                <div class="commit-title">
-                    <a href="https://github.com/pytorch/pytorch/commit/492c7421eb30d8218aa25b4fb5aeabdffcc651f7" target="_blank">
-                        [varlen_attn for inference] add out variant (#176015)
-                    </a>
-                </div>
-            </div>
-            
-            <div class="commit-meta">
-                👤 Angel Li | 🕒 2026-03-07 16:55:10 -0800
-            </div>
-            
-            <div class="commit-analysis">
-                📝 <strong>AI 分析:</strong>
-                1. 这是一个功能增强提交，为推理场景下的变长注意力机制添加了输出变体（out variant），属于性能优化类改进。  
-2. 技术亮点是通过支持输出参数复用内存，减少推理时的内存分配开销，提升计算效率。  
-3. 对项目的影响是优化了推理性能，为开发者提供了更高效的内存管理选项，但不会改变现有接口行为。
-            </div>
-        </div>
-        
-        <div class="commit-item">
-            <div class="commit-header">
-                <span class="category-badge" data-category="Test">✅ Test</span>
-                <div class="commit-title">
-                    <a href="https://github.com/pytorch/pytorch/commit/388d61eb520ed5490ad335225a8d1d0c9de09572" target="_blank">
-                        [varlen_attn for inference] add test to aot_inductor (#175936)
-                    </a>
-                </div>
-            </div>
-            
-            <div class="commit-meta">
-                👤 Angel Li | 🕒 2026-03-07 16:55:09 -0800
-            </div>
-            
-            <div class="commit-analysis">
-                📝 <strong>AI 分析:</strong>
-                1. 这是一个测试相关的提交，为AOT Inductor增加了针对变长注意力推理的测试用例，属于功能测试完善。  
-2. 技术亮点是扩展了AOT编译器的测试覆盖范围，确保变长注意力推理场景的正确性和稳定性。  
-3. 对项目而言，这增强了推理功能的可靠性，有助于开发者验证相关优化效果，但不会直接影响最终用户。
+                1. 这是一个文档修复提交，恢复了NVGEMM中fp4内核的文档字符串，属于代码文档维护。  
+2. 技术亮点是完善了低精度计算（FP4）内核的代码注释，提升了代码可读性和维护性。  
+3. 对开发者更友好，便于理解和使用相关内核，但对功能和性能无直接影响。
             </div>
         </div>
         
@@ -294,21 +226,21 @@
             <div class="commit-header">
                 <span class="category-badge" data-category="Performance">⚡ Performance</span>
                 <div class="commit-title">
-                    <a href="https://github.com/pytorch/pytorch/commit/9b53dac20f99b3518664440cb1e9d755ceef409c" target="_blank">
-                        [varlen_attn for inference] add page_table (#175924)
+                    <a href="https://github.com/pytorch/pytorch/commit/dbd4c70adb1f58bd604fa2d1ca26274381ad3f31" target="_blank">
+                        [Inductor][NVGEMM] Enable nvMatmulHeuristics for FP4 blockscaled GEMM (#176548)
                     </a>
                 </div>
             </div>
             
             <div class="commit-meta">
-                👤 Angel Li | 🕒 2026-03-05 19:11:17 -0800
+                👤 Nikhil Patel | 🕒 2026-03-09 20:12:37 -0700
             </div>
             
             <div class="commit-analysis">
                 📝 <strong>AI 分析:</strong>
-                1. 该 commit 为推理场景下的变长注意力机制添加了页表支持，属于性能优化类的新功能。  
-2. 技术亮点是通过页表管理内存，优化 GPU 显存访问模式，提升长序列推理的效率。  
-3. 对项目影响是提升了 Transformer 模型在推理时的内存利用率和计算速度，尤其有利于处理长上下文任务。
+                1. 该提交为FP4块缩放GEMM启用了nvMatmulHeuristics，属于功能扩展，使Inductor能针对特定数据类型优化矩阵乘法。  
+2. 技术亮点是扩展了NVIDIA GPU的GEMM启发式策略，支持FP4量化计算，提升了低精度矩阵运算的性能优化能力。  
+3. 对项目影响是增强了PyTorch在GPU上低精度计算的性能，为使用FP4量化的模型提供了更高效的推理支持。
             </div>
         </div>
         
@@ -316,65 +248,21 @@
             <div class="commit-header">
                 <span class="category-badge" data-category="Refactor">♻️ Refactor</span>
                 <div class="commit-title">
-                    <a href="https://github.com/pytorch/pytorch/commit/8e5af6d7eff8b1129f1a44bdff5b3d6d55b07003" target="_blank">
-                        [varlen_attn for inference] add seqused_k (#175897)
+                    <a href="https://github.com/pytorch/pytorch/commit/dab952c370c7a970726d0ee03d8d9cafda572b45" target="_blank">
+                        [Inductor][NVGEMM] Register CuTeDSL Blockscaled GEMM with NVGEMM Backend (#176547)
                     </a>
                 </div>
             </div>
             
             <div class="commit-meta">
-                👤 Angel Li | 🕒 2026-03-05 19:11:16 -0800
+                👤 Nikhil Patel | 🕒 2026-03-09 20:12:35 -0700
             </div>
             
             <div class="commit-analysis">
                 📝 <strong>AI 分析:</strong>
-                1. 这是一个功能增强提交，为推理时的变长注意力机制添加了`seqused_k`参数，用于优化键序列长度的处理。  
-2. 技术亮点是改进了推理效率，通过显式跟踪有效键序列长度来减少冗余计算。  
-3. 对项目的影响是提升了注意力模块在变长序列推理场景下的性能，同时保持了向后兼容性。
-            </div>
-        </div>
-        
-        <div class="commit-item">
-            <div class="commit-header">
-                <span class="category-badge" data-category="BugFix">🐛 BugFix</span>
-                <div class="commit-title">
-                    <a href="https://github.com/pytorch/pytorch/commit/48011be5b3a440077fa100b0bccbe0a56cd4f0e4" target="_blank">
-                        [Inductor] Prevent circular imports in triton_kernel_wrap (#176836)
-                    </a>
-                </div>
-            </div>
-            
-            <div class="commit-meta">
-                👤 Dunfan Lu | 🕒 2026-03-08 18:13:54 +0000
-            </div>
-            
-            <div class="commit-analysis">
-                📝 <strong>AI 分析:</strong>
-                1. 这是一个bug修复，解决了Inductor中triton_kernel_wrap模块的循环导入问题，通过延迟导入相关模块来打破依赖循环。  
-2. 技术亮点是采用延迟导入（lazy import）机制，在运行时动态加载依赖模块，避免了静态导入时的循环依赖。  
-3. 对开发者而言，修复了潜在的导入错误，提升了代码稳定性，但不会影响最终用户的功能或性能。
-            </div>
-        </div>
-        
-        <div class="commit-item">
-            <div class="commit-header">
-                <span class="category-badge" data-category="BugFix">🐛 BugFix</span>
-                <div class="commit-title">
-                    <a href="https://github.com/pytorch/pytorch/commit/fb4f0be386978f1db4e5388337507c0363dd0695" target="_blank">
-                        Alaways checkout submodules on MacOS
-                    </a>
-                </div>
-            </div>
-            
-            <div class="commit-meta">
-                👤 Nikita Shulga | 🕒 2026-03-08 13:02:33 -0700
-            </div>
-            
-            <div class="commit-analysis">
-                📝 <strong>AI 分析:</strong>
-                1. 这是一个针对 macOS 系统的构建脚本修复，强制在 macOS 上始终检出 Git 子模块，解决了之前可能因缓存导致子模块未正确更新的问题。  
-2. 技术亮点是修改了 `.github/scripts/checkout_submodules.py` 脚本，移除了 macOS 平台下跳过子模块更新的条件判断，确保构建环境的一致性。  
-3. 对项目的影响是提高了 macOS 平台下 PyTorch 构建的可靠性，避免了因未更新子模块导致的潜在编译错误，提升了开发者和 CI 系统的稳定性。
+                1. 该 commit 为 PyTorch Inductor 的 NVGEMM 后端注册了 CuTeDSL Blockscaled GEMM 实现，属于新功能扩展。  
+2. 技术亮点是引入了基于 CuTeDSL 的块缩放矩阵乘法内核，可提升特定 GPU 运算场景下的性能优化能力。  
+3. 对开发者而言扩展了 NVGEMM 后端的功能覆盖，可能为相关模型推理或训练带来潜在的性能改进。
             </div>
         </div>
         
@@ -382,21 +270,21 @@
             <div class="commit-header">
                 <span class="category-badge" data-category="Performance">⚡ Performance</span>
                 <div class="commit-title">
-                    <a href="https://github.com/pytorch/pytorch/commit/d86e46a2505128195fc9383a48cc3a4edece8177" target="_blank">
-                        [ROCm] No-fence in normalization kernel (#175286)
+                    <a href="https://github.com/pytorch/pytorch/commit/ae622b433f956fb8a68163205a13e5d8a6fbf1f3" target="_blank">
+                        [Inductor][NVGEMM] Add CuTeDSL Blockscaled GEMM Kernel (#176546)
                     </a>
                 </div>
             </div>
             
             <div class="commit-meta">
-                👤 Anatoliy Litvinenko | 🕒 2026-03-08 19:59:35 +0000
+                👤 Nikhil Patel | 🕒 2026-03-09 14:31:17 -0700
             </div>
             
             <div class="commit-analysis">
                 📝 <strong>AI 分析:</strong>
-                1. 这是一个针对ROCm平台的功能优化，移除了归一化内核中的内存栅栏操作，属于性能优化类提交。  
-2. 技术亮点是通过消除不必要的内存同步来提升GPU内核执行效率，针对AMD GPU架构进行针对性优化。  
-3. 该改动提升了PyTorch在AMD GPU上的计算性能，对使用ROCm平台的用户有正向影响，但不会改变API或功能行为。
+                1. 该 commit 在 PyTorch Inductor 中添加了基于 CuTe DSL 的块缩放 GEMM 内核，属于新功能扩展。  
+2. 技术亮点是引入 CuTe 领域特定语言实现高效矩阵乘法内核，支持块级缩放以优化 GPU 计算性能。  
+3. 对项目影响是提升 NVGPU 上 GEMM 运算效率，为开发者提供更灵活的核函数编写方式，但主要面向内部优化，普通用户无感知。
             </div>
         </div>
         
@@ -404,91 +292,23 @@
             <div class="commit-header">
                 <span class="category-badge" data-category="BugFix">🐛 BugFix</span>
                 <div class="commit-title">
-                    <a href="https://github.com/pytorch/pytorch/commit/09146d4700ed768b1767b8dc69a05a4ff8566cf9" target="_blank">
-                        Revert "[vllm hash update] update the pinned vllm hash (#176668)"
+                    <a href="https://github.com/pytorch/pytorch/commit/b406620cd844a7bd719f221e36ba5448e8201b18" target="_blank">
+                        [Inductor][NVGEMM] Patch cutlass_api FP4 dtype mapping (#176545)
                     </a>
                 </div>
             </div>
             
             <div class="commit-meta">
-                👤 PyTorch MergeBot | 🕒 2026-03-08 19:46:58 +0000
+                👤 Nikhil Patel | 🕒 2026-03-09 13:29:28 -0700
             </div>
             
             <div class="commit-analysis">
                 📝 <strong>AI 分析:</strong>
-                1. 这是一个回滚操作，撤销了之前对vLLM库哈希值的更新提交，恢复了之前的版本。  
-2. 技术亮点在于通过回滚避免了因依赖版本更新可能引入的不稳定性或兼容性问题。  
-3. 对项目的影响是暂时保持依赖的稳定性，防止下游用户或开发者因版本变动遇到意外错误。
-            </div>
-        </div>
-        
-        <div class="commit-item">
-            <div class="commit-header">
-                <span class="category-badge" data-category="BugFix">🐛 BugFix</span>
-                <div class="commit-title">
-                    <a href="https://github.com/pytorch/pytorch/commit/7e0863f7938e17bc330c2d6f1e2f6dc8999768c7" target="_blank">
-                        [inductor] Fix torch._check divisibility propagation to Triton tt.divisibility (#175755)
-                    </a>
-                </div>
-            </div>
-            
-            <div class="commit-meta">
-                👤 Masato Shinokawa | 🕒 2026-03-08 19:45:44 +0000
-            </div>
-            
-            <div class="commit-analysis">
-                📝 <strong>AI 分析:</strong>
-                1. 这是一个bug修复，修复了Inductor编译器中将PyTorch的`torch._check`约束条件传播到Triton的`tt.divisibility`时出现的错误，确保整除性约束能正确传递给后端代码生成。
+                1. 这是一个bug修复，修复了Inductor中NVGEMM对FP4数据类型的映射错误，确保Cutlass API能正确识别FP4精度。
 
-2. 技术亮点是修复了约束条件传播的逻辑漏洞，确保编译时形状约束能准确传递到Triton内核，避免因约束丢失导致潜在的计算错误或性能下降。
+2. 技术亮点是修正了数据类型映射逻辑，使FP4能正确映射到Cutlass的浮点类型，解决了底层计算库的兼容性问题。
 
-3. 该修复提升了Inductor编译器的可靠性，确保依赖形状约束的模型能正确编译和执行，对使用动态形状的开发者尤为重要。
-            </div>
-        </div>
-        
-        <div class="commit-item">
-            <div class="commit-header">
-                <span class="category-badge" data-category="BugFix">🐛 BugFix</span>
-                <div class="commit-title">
-                    <a href="https://github.com/pytorch/pytorch/commit/4399dbf48b13a8a83271a94fd0c5b890fe847ae4" target="_blank">
-                        Fix Pallas sign to match PyTorch NaN semantics (#176814)
-                    </a>
-                </div>
-            </div>
-            
-            <div class="commit-meta">
-                👤 Jongsok Choi | 🕒 2026-03-07 18:01:54 -0800
-            </div>
-            
-            <div class="commit-analysis">
-                📝 <strong>AI 分析:</strong>
-                1. 这是一个bug修复，修正了Pallas（PyTorch的一个组件）中符号函数的NaN处理逻辑，使其与PyTorch核心的NaN语义保持一致。  
-2. 技术亮点是统一了跨组件的NaN处理行为，确保sign函数在输入为NaN时返回NaN（而非其他值），消除了语义不一致性。  
-3. 对项目的影响是提升了框架内部行为的一致性，避免开发者因不同组件处理NaN的差异而产生预期外的结果。
-            </div>
-        </div>
-        
-        <div class="commit-item">
-            <div class="commit-header">
-                <span class="category-badge" data-category="BugFix">🐛 BugFix</span>
-                <div class="commit-title">
-                    <a href="https://github.com/pytorch/pytorch/commit/746c0de5d83a962eca4581415157d9c23d612f7f" target="_blank">
-                        Handle 0-sized dimensions in Pallas codegen (#176813)
-                    </a>
-                </div>
-            </div>
-            
-            <div class="commit-meta">
-                👤 Jongsok Choi | 🕒 2026-03-08 10:37:54 -0700
-            </div>
-            
-            <div class="commit-analysis">
-                📝 <strong>AI 分析:</strong>
-                1. 这是一个bug修复，主要处理Pallas代码生成中遇到维度大小为0的张量时的问题，确保代码生成能正确处理空维度情况。
-
-2. 技术亮点是完善了代码生成器的边界条件处理，通过添加对零尺寸维度的特殊判断来避免生成无效的GPU内核代码。
-
-3. 对项目的影响是提高了Pallas后端在边缘情况下的稳定性，防止用户在使用零尺寸张量时出现编译错误或运行时异常。
+3. 对项目影响是修复了使用FP4精度时的潜在计算错误，确保了混合精度训练中低精度计算的正确性。
             </div>
         </div>
         
@@ -496,67 +316,43 @@
             <div class="commit-header">
                 <span class="category-badge" data-category="Performance">⚡ Performance</span>
                 <div class="commit-title">
-                    <a href="https://github.com/pytorch/pytorch/commit/8e40ee663fc8eb1e10e6080790008d13b25336f2" target="_blank">
-                        [inductor] Cache SDPA constraint results to avoid duplicate buffer copies (#175599)
+                    <a href="https://github.com/pytorch/pytorch/commit/a0d624d86bf5a056651f84a70ea01128754dfed4" target="_blank">
+                        [Inductor] Add FP4 tensor creation support for autotuning (#176544)
                     </a>
                 </div>
             </div>
             
             <div class="commit-meta">
-                👤 Kevin Fu | 🕒 2026-03-08 18:33:56 +0000
+                👤 Nikhil Patel | 🕒 2026-03-09 13:29:27 -0700
             </div>
             
             <div class="commit-analysis">
                 📝 <strong>AI 分析:</strong>
-                1. 这是一个性能优化提交，通过缓存 SDPA（Scaled Dot Product Attention）约束检查结果，避免了重复的缓冲区拷贝操作。  
-2. 技术亮点是引入了缓存机制，减少了在编译过程中对相同约束条件的重复计算，提升了 Inductor 编译器的效率。  
-3. 该优化降低了编译开销，对开发者透明，能加速模型训练和推理的编译过程。
+                1. 该 commit 为 Inductor 的自动调优功能添加了 FP4 张量创建支持，属于新特性扩展。  
+2. 技术亮点是扩展了低精度数据类型（FP4）在自动调优中的兼容性，提升了量化场景下的优化覆盖范围。  
+3. 对开发者而言，这增强了 Inductor 对新型低精度格式的支持能力，有助于后续量化模型的性能优化。
             </div>
         </div>
         
         <div class="commit-item">
             <div class="commit-header">
-                <span class="category-badge" data-category="Refactor">♻️ Refactor</span>
+                <span class="category-badge" data-category="Performance">⚡ Performance</span>
                 <div class="commit-title">
-                    <a href="https://github.com/pytorch/pytorch/commit/1cb98cf65fe54ebd3738c3b70beb37fbfa7938b1" target="_blank">
-                        [torchTLX] unify knobs into one tlx_mode config (#176456)
+                    <a href="https://github.com/pytorch/pytorch/commit/ed103e9a2167d863d9058a025ba2da7b46077b2b" target="_blank">
+                        [Inductor][NVGEMM] Add infrastructure for registering custom kernels with NVGEMM Cutlass API (#176543)
                     </a>
                 </div>
             </div>
             
             <div class="commit-meta">
-                👤 Daohang Shi | 🕒 2026-03-08 18:33:24 +0000
+                👤 Nikhil Patel | 🕒 2026-03-09 13:29:26 -0700
             </div>
             
             <div class="commit-analysis">
                 📝 <strong>AI 分析:</strong>
-                1. 这是一个重构性提交，将多个独立的配置开关统一为单一的 `tlx_mode` 配置，简化了代码结构。  
-2. 技术亮点是架构改进，通过集中管理配置逻辑，提升了代码的可维护性和一致性。  
-3. 对开发者而言，配置管理更清晰，但用户层面无直接影响，属于内部优化。
-            </div>
-        </div>
-        
-        <div class="commit-item">
-            <div class="commit-header">
-                <span class="category-badge" data-category="BugFix">🐛 BugFix</span>
-                <div class="commit-title">
-                    <a href="https://github.com/pytorch/pytorch/commit/6c14d9aace7436df70efa00d40903d4dfad2787d" target="_blank">
-                        Fix FxConverter mutation tracking and scatter_reduce kwargs for FXIR backend (#175860)
-                    </a>
-                </div>
-            </div>
-            
-            <div class="commit-meta">
-                👤 nanzha | 🕒 2026-03-08 18:10:26 +0000
-            </div>
-            
-            <div class="commit-analysis">
-                📝 <strong>AI 分析:</strong>
-                1. 这是一个bug修复提交，主要修复了FXConverter中变量追踪逻辑和scatter_reduce操作的关键字参数处理问题，确保FXIR后端能正确运行。
-
-2. 技术亮点是改进了FX图转换时的变量突变追踪机制，并修正了scatter_reduce等操作的参数传递方式，提升了转换的准确性。
-
-3. 该修复增强了PyTorch FX工具链的稳定性，使依赖FXIR后端的模型转换和导出更加可靠，对开发者使用相关功能有直接帮助。
+                1. 该 commit 为 NVGEMM Cutlass API 添加了自定义内核注册的基础设施，属于新功能开发。  
+2. 技术亮点是引入了灵活的扩展机制，允许开发者注册定制化的 CUDA 内核以适配特定硬件或算子需求。  
+3. 对项目而言，这增强了 PyTorch Inductor 在 NVIDIA GPU 上的性能优化能力，为后续高效内核集成提供了框架支持。
             </div>
         </div>
         
@@ -564,21 +360,21 @@
             <div class="commit-header">
                 <span class="category-badge" data-category="BugFix">🐛 BugFix</span>
                 <div class="commit-title">
-                    <a href="https://github.com/pytorch/pytorch/commit/82374f266412dde03bed5ae5099529c93271599c" target="_blank">
-                        Revert "[BE] Use compiler wrapper when building C++ extensions (#175696)"
+                    <a href="https://github.com/pytorch/pytorch/commit/7e16dbc53c4c3487a4c623ab86775a28ad7cbc56" target="_blank">
+                        Convert fake tensors to detected fake mode in pattern matcher replace_by_example (#176938)
                     </a>
                 </div>
             </div>
             
             <div class="commit-meta">
-                👤 PyTorch MergeBot | 🕒 2026-03-08 17:09:45 +0000
+                👤 Frederik Gossen | 🕒 2026-03-10 14:55:51 -0700
             </div>
             
             <div class="commit-analysis">
                 📝 <strong>AI 分析:</strong>
-                1. 这是一个功能回退的 commit，撤销了之前引入的编译器包装器（compiler wrapper）在构建 C++ 扩展时的使用，属于功能调整。  
-2. 技术亮点是回退了可能导致构建环境兼容性问题的编译器封装方案，回归到更稳定的直接编译器调用方式。  
-3. 对项目的影响是避免了因编译器包装器可能引发的构建失败或环境配置问题，提升了 PyTorch C++ 扩展构建的可靠性和兼容性。
+                1. 这是一个 bug 修复，解决了在模式匹配器 `replace_by_example` 中将 Fake Tensor 转换为检测到的 Fake Mode 时的问题。  
+2. 技术亮点是确保 Fake Tensor 与正确的 Fake Mode 上下文对齐，防止在图形优化期间出现模式匹配错误。  
+3. 对项目的影响是提升了图形模式编译的稳定性，避免因 Fake Tensor 上下文不匹配导致的错误，使开发者能更可靠地使用相关功能。
             </div>
         </div>
         
@@ -586,21 +382,87 @@
             <div class="commit-header">
                 <span class="category-badge" data-category="BugFix">🐛 BugFix</span>
                 <div class="commit-title">
-                    <a href="https://github.com/pytorch/pytorch/commit/266f86021f113e3defe6effb3398d29e4652b7e2" target="_blank">
-                        [device_mesh] Fix inverted condition in `_unflatten` string dim validation (#176563)
+                    <a href="https://github.com/pytorch/pytorch/commit/682df8a512a81157073905fc1752235e28a23470" target="_blank">
+                        Revert "[DTensor] Add sharding strategies for reduction and scan ops (#176820)"
                     </a>
                 </div>
             </div>
             
             <div class="commit-meta">
-                👤 Rohit Singh Rathaur | 🕒 2026-03-08 16:25:05 +0000
+                👤 PyTorch MergeBot | 🕒 2026-03-11 01:34:38 +0000
             </div>
             
             <div class="commit-analysis">
                 📝 <strong>AI 分析:</strong>
-                1. 这是一个bug修复，修复了`_unflatten`方法中字符串维度验证条件的逻辑错误（原本的条件被错误地反转了）。  
-2. 技术亮点是修正了张量设备网格（device mesh）展开/折叠操作中的验证逻辑，确保字符串维度的正确处理。  
-3. 对项目的影响是避免了分布式训练中可能因设备网格维度错误而导致的运行时异常，提升了框架的稳定性。
+                1. 这是一个回滚提交，撤销了之前为DTensor添加的归约和扫描算子分片策略功能，属于功能回退。  
+2. 技术层面主要涉及分布式张量计算策略的调整，可能因原实现存在稳定性或兼容性问题而回退。  
+3. 对项目影响：暂时移除了相关分布式计算优化，可能影响使用这些算子的用户性能，但避免了潜在错误。
+            </div>
+        </div>
+        
+        <div class="commit-item">
+            <div class="commit-header">
+                <span class="category-badge" data-category="Performance">⚡ Performance</span>
+                <div class="commit-title">
+                    <a href="https://github.com/pytorch/pytorch/commit/dac16595f763309375b9e50a58a0d183917d85a4" target="_blank">
+                        Add dilation support for max_pool2d_with_indices_backward lowering (#176888)
+                    </a>
+                </div>
+            </div>
+            
+            <div class="commit-meta">
+                👤 Nan Zhang | 🕒 2026-03-11 01:32:23 +0000
+            </div>
+            
+            <div class="commit-analysis">
+                📝 <strong>AI 分析:</strong>
+                1. 该 commit 为 `max_pool2d_with_indices_backward` 的反向传播操作添加了对 dilation（空洞卷积）参数的支持，属于功能增强。  
+2. 技术亮点是扩展了 Inductor 编译器对带空洞池化操作的代码生成能力，完善了算子覆盖范围。  
+3. 对项目影响是提升了 PyTorch 在特定池化场景下的计算兼容性和性能，使开发者能更灵活地使用空洞池化层。
+            </div>
+        </div>
+        
+        <div class="commit-item">
+            <div class="commit-header">
+                <span class="category-badge" data-category="BugFix">🐛 BugFix</span>
+                <div class="commit-title">
+                    <a href="https://github.com/pytorch/pytorch/commit/c722f2a0b33ced20554e48e9e9667db3aceaff21" target="_blank">
+                        [torch][inductor] Emit int64_t type declaration for kernel numel variables (#176922)
+                    </a>
+                </div>
+            </div>
+            
+            <div class="commit-meta">
+                👤 Apostolos Kokolis | 🕒 2026-03-11 01:27:54 +0000
+            </div>
+            
+            <div class="commit-analysis">
+                📝 <strong>AI 分析:</strong>
+                1. 这是一个功能修复，确保在生成内核代码时，将 `numel` 变量（表示元素总数）的声明类型从 `int32_t` 改为 `int64_t`，以支持更大张量的计算。  
+2. 技术亮点是修复了潜在的数据溢出问题，当张量元素数量超过 `int32_t` 范围时，原先的代码可能导致错误行为。  
+3. 对项目影响是增强了 PyTorch Inductor 编译器的健壮性，使其能正确处理超大张量，避免因类型限制引发的运行时错误。
+            </div>
+        </div>
+        
+        <div class="commit-item">
+            <div class="commit-header">
+                <span class="category-badge" data-category="BugFix">🐛 BugFix</span>
+                <div class="commit-title">
+                    <a href="https://github.com/pytorch/pytorch/commit/4924764e65484ed1e9f41c75660e3c7a6de6fb71" target="_blank">
+                        [inductor] Fix fallback_random dropout stride mismatch (#177077)
+                    </a>
+                </div>
+            </div>
+            
+            <div class="commit-meta">
+                👤 Michael Lazos | 🕒 2026-03-10 14:47:42 -0700
+            </div>
+            
+            <div class="commit-analysis">
+                📝 <strong>AI 分析:</strong>
+                1. 这是一个bug修复，解决了在特定情况下使用`fallback_random`进行dropout操作时出现的张量步幅不匹配问题。  
+2. 技术亮点是修正了随机数生成回退机制中的张量内存布局处理，确保步幅一致性以避免运行时错误。  
+3. 对项目的影响是提升了Inductor编译器的稳定性，防止了因张量格式错误导致的模型训练或推理中断。
             </div>
         </div>
         
@@ -608,113 +470,21 @@
             <div class="commit-header">
                 <span class="category-badge" data-category="Feature">🚀 Feature</span>
                 <div class="commit-title">
-                    <a href="https://github.com/pytorch/pytorch/commit/9a8ed4e71ac3ec6232507b589df4d8d282677443" target="_blank">
-                        Implement narrow_copy derivative (#175609)
+                    <a href="https://github.com/pytorch/pytorch/commit/5502613ddfeb66316a3066db7a7037ae7729deeb" target="_blank">
+                        Codegen AOTDispatchSubclassWrapper (#176741)
                     </a>
                 </div>
             </div>
             
             <div class="commit-meta">
-                👤 Ivan Sobolev | 🕒 2026-03-08 15:44:33 +0000
+                👤 Aaron Orenstein | 🕒 2026-03-10 13:56:26 -0700
             </div>
             
             <div class="commit-analysis">
                 📝 <strong>AI 分析:</strong>
-                1. 这个 commit 为 `narrow_copy` 操作实现了反向传播导数，属于功能增强，使该操作能在自动微分（autograd）中正常工作。  
-2. 技术亮点是新增了 `narrow_copy_backward` 函数和对应的自动微分规则，确保梯度能正确传播到输入张量。  
-3. 对项目的影响是完善了 PyTorch 的微分覆盖范围，使依赖 `narrow_copy` 的模型训练更加稳定，提升了开发者体验。
-            </div>
-        </div>
-        
-        <div class="commit-item">
-            <div class="commit-header">
-                <span class="category-badge" data-category="BugFix">🐛 BugFix</span>
-                <div class="commit-title">
-                    <a href="https://github.com/pytorch/pytorch/commit/e25f5d3222341d99a42037abee87d5c5784e3579" target="_blank">
-                        dynamo torch factory functions apply default device mirroring __torch… (#169081)
-                    </a>
-                </div>
-            </div>
-            
-            <div class="commit-meta">
-                👤 Turner Richmond | 🕒 2026-03-08 14:59:43 +0000
-            </div>
-            
-            <div class="commit-analysis">
-                📝 <strong>AI 分析:</strong>
-                1. 这是一个功能修复，修复了Dynamo中torch工厂函数（如`torch.zeros`、`torch.ones`）在特定情况下未正确应用默认设备镜像的问题。  
-2. 技术亮点是确保Dynamo编译时能正确继承PyTorch的默认设备设置，保持与eager模式的行为一致性。  
-3. 对用户而言，修复了使用Dynamo编译时可能出现的设备不匹配错误，提升了模型编译的可靠性。
-            </div>
-        </div>
-        
-        <div class="commit-item">
-            <div class="commit-header">
-                <span class="category-badge" data-category="BugFix">🐛 BugFix</span>
-                <div class="commit-title">
-                    <a href="https://github.com/pytorch/pytorch/commit/537c0fd2ef63692db6d2bc9e36c34b776e250969" target="_blank">
-                        [MPS] Add error checking for bmm (#176771)
-                    </a>
-                </div>
-            </div>
-            
-            <div class="commit-meta">
-                👤 Nikita Shulga | 🕒 2026-03-08 07:52:34 -0700
-            </div>
-            
-            <div class="commit-analysis">
-                📝 <strong>AI 分析:</strong>
-                1. 这是一个针对 MPS（Metal Performance Shaders）后端的 bug 修复，为 `bmm`（批量矩阵乘法）操作添加了缺失的错误检查，防止在张量形状不匹配时产生未定义行为。
-
-2. 技术亮点是增强了 MPS 后端的安全性和健壮性，通过验证输入张量的维度与大小，确保运算符合数学定义，避免了潜在的运行时崩溃或错误结果。
-
-3. 对项目的影响是提升了 PyTorch 在 macOS 上的稳定性，使开发者在使用 MPS 设备进行批量矩阵乘法时能获得更可靠的错误提示，改善了开发体验。
-            </div>
-        </div>
-        
-        <div class="commit-item">
-            <div class="commit-header">
-                <span class="category-badge" data-category="BugFix">🐛 BugFix</span>
-                <div class="commit-title">
-                    <a href="https://github.com/pytorch/pytorch/commit/764350935dcc573221dd3fa8e29fd16abc641a62" target="_blank">
-                        [Inductor] fix performance regression caused by #173662 (#176772)
-                    </a>
-                </div>
-            </div>
-            
-            <div class="commit-meta">
-                👤 Dunfan Lu | 🕒 2026-03-08 08:48:09 +0000
-            </div>
-            
-            <div class="commit-analysis">
-                📝 <strong>AI 分析:</strong>
-                1. 这是一个bug修复提交，修复了由PR #173662引起的Inductor编译器性能回归问题，属于对已有功能的维护性修复。
-
-2. 技术亮点是通过优化代码逻辑解决了编译过程中的性能下降问题，属于针对特定性能回归的精准修复。
-
-3. 该修复恢复了Inductor编译器的正常性能表现，对使用PyTorch进行模型编译的开发者有直接影响，避免了因性能下降导致的生产效率损失。
-            </div>
-        </div>
-        
-        <div class="commit-item">
-            <div class="commit-header">
-                <span class="category-badge" data-category="BugFix">🐛 BugFix</span>
-                <div class="commit-title">
-                    <a href="https://github.com/pytorch/pytorch/commit/c884c15bcef857229f213580b73247ac8908cd8c" target="_blank">
-                        Revert "[Inductor][xpu] Following #175725, Register benchmark func for XPU. (#176572)"
-                    </a>
-                </div>
-            </div>
-            
-            <div class="commit-meta">
-                👤 PyTorch MergeBot | 🕒 2026-03-08 10:55:06 +0000
-            </div>
-            
-            <div class="commit-analysis">
-                📝 <strong>AI 分析:</strong>
-                1. 这是一个**回滚操作**，撤销了之前为XPU设备注册基准测试功能的代码提交，属于功能回退。  
-2. 技术亮点是**移除对XPU的基准测试支持**，可能因兼容性或稳定性问题暂时撤回该功能。  
-3. 对项目影响是**XPU相关的性能测试暂时不可用**，开发者需等待后续修复或调整。
+                1. 这是一个功能增强提交，为PyTorch的AOTDispatch系统增加了对子类包装器的代码生成支持，属于核心框架的功能扩展。  
+2. 技术亮点在于通过代码生成自动创建子类包装器，简化了动态子类与AOT编译器的集成，提升了框架的可扩展性。  
+3. 对项目的影响是使开发者能够更便捷地实现自定义张量子类并享受AOT编译优化，同时保持了PyTorch前向兼容性。
             </div>
         </div>
         
@@ -722,21 +492,21 @@
             <div class="commit-header">
                 <span class="category-badge" data-category="Refactor">♻️ Refactor</span>
                 <div class="commit-title">
-                    <a href="https://github.com/pytorch/pytorch/commit/1964520cd7003e08190926deea4384460266e808" target="_blank">
-                        [inductor] Improve fusion scoring for split/cat patterns (#175376) (#176685)
+                    <a href="https://github.com/pytorch/pytorch/commit/584311965a97491724ea4d082109285c959c5ad8" target="_blank">
+                        [xpu][ut] Generalize device factory functions UT (#174755)
                     </a>
                 </div>
             </div>
             
             <div class="commit-meta">
-                👤 Zhijing Li | 🕒 2026-03-08 08:29:13 +0000
+                👤 Yu, Guangye | 🕒 2026-03-10 15:42:46 +0000
             </div>
             
             <div class="commit-analysis">
                 📝 <strong>AI 分析:</strong>
-                1. 这是一个针对 PyTorch Inductor 编译器的性能优化提交，改进了 split/cat 模式融合的评分机制，以提升算子融合效果。  
-2. 技术亮点是优化了融合评分算法，使编译器能更智能地识别和融合 split 与 cat 操作，减少内存访问开销。  
-3. 对项目的影响是提升了模型训练/推理时的计算效率，特别是对包含张量拆分与拼接操作的模型有性能增益。
+                1. 这是一个重构性提交，将XPU设备工厂函数的单元测试从硬编码的测试逻辑改为通用的参数化测试，提高了测试代码的复用性和可维护性。  
+2. 技术亮点是通过参数化测试框架统一了不同设备类型（CPU、CUDA、XPU）的工厂函数测试逻辑，减少了代码重复。  
+3. 对项目的影响是简化了未来添加新设备类型的测试工作，提升了开发效率，但不会直接影响最终用户的功能或性能。
             </div>
         </div>
         
@@ -744,21 +514,175 @@
             <div class="commit-header">
                 <span class="category-badge" data-category="BugFix">🐛 BugFix</span>
                 <div class="commit-title">
-                    <a href="https://github.com/pytorch/pytorch/commit/97741020350b7641c0fb9b4d686577a2abc060f6" target="_blank">
-                        [DTensor] skip zero-numel outputs for strategy validator (#176020)
+                    <a href="https://github.com/pytorch/pytorch/commit/62cb1d2f4c37d9cc127fce8112dd67722754f422" target="_blank">
+                        Revert "Handle unabcked better in pad_mm pass (#175824)"
                     </a>
                 </div>
             </div>
             
             <div class="commit-meta">
-                👤 Pian Pawakapan | 🕒 2026-03-06 14:33:03 -0800
+                👤 PyTorch MergeBot | 🕒 2026-03-10 23:34:20 +0000
             </div>
             
             <div class="commit-analysis">
                 📝 <strong>AI 分析:</strong>
-                1. 这是一个针对 DTensor 策略验证器的 bug 修复，主要解决了当输出张量元素数量为零时，策略验证器会错误地抛出异常的问题。  
-2. 技术亮点在于通过跳过零元素张量的策略验证，避免了不必要的计算和错误，提升了框架的鲁棒性。  
-3. 对项目而言，它修复了特定场景下的运行时错误，使 DTensor 在边缘情况下能正常工作，提升了开发体验和代码可靠性。
+                1. 这是一个回滚提交，撤销了之前对 `pad_mm` 优化通道中未对齐张量处理的修改，属于功能回退性质的 bug 修复。  
+2. 技术亮点是移除了可能导致编译或执行错误的实验性优化，恢复到了更稳定的实现。  
+3. 对项目的影响是避免了潜在的计算错误或性能下降，确保了张量运算的可靠性，但暂时放弃了原优化可能带来的性能提升。
+            </div>
+        </div>
+        
+        <div class="commit-item">
+            <div class="commit-header">
+                <span class="category-badge" data-category="BugFix">🐛 BugFix</span>
+                <div class="commit-title">
+                    <a href="https://github.com/pytorch/pytorch/commit/84ac2161642f6944a5bab03b3e4ee9e40e2c2f54" target="_blank">
+                        Revert "[DTensor] Enable Dijkstra search in sharding propagation (#175999)"
+                    </a>
+                </div>
+            </div>
+            
+            <div class="commit-meta">
+                👤 PyTorch MergeBot | 🕒 2026-03-10 22:27:26 +0000
+            </div>
+            
+            <div class="commit-analysis">
+                📝 <strong>AI 分析:</strong>
+                1. 这个 commit 回滚了之前引入的 Dijkstra 算法在 DTensor 分片传播中的优化实现，属于功能回退。  
+2. 技术亮点是移除了基于图搜索的复杂分片策略，可能因为该实现存在稳定性或性能问题。  
+3. 对项目影响是暂时恢复到更保守的分片传播逻辑，可能降低计算效率但提高了可靠性。
+            </div>
+        </div>
+        
+        <div class="commit-item">
+            <div class="commit-header">
+                <span class="category-badge" data-category="Performance">⚡ Performance</span>
+                <div class="commit-title">
+                    <a href="https://github.com/pytorch/pytorch/commit/fa8028ada56dd49831539ac0612e47167030087f" target="_blank">
+                        Move PyTorch .ci/ onto C++20 (#176899)
+                    </a>
+                </div>
+            </div>
+            
+            <div class="commit-meta">
+                👤 Richard Barnes | 🕒 2026-03-10 22:14:04 +0000
+            </div>
+            
+            <div class="commit-analysis">
+                📝 <strong>AI 分析:</strong>
+                1. 这是一个配置更新，将 PyTorch 的 CI 构建环境从 C++17 升级到 C++20 标准。  
+2. 技术亮点是启用了 C++20 的新语言特性，为后续代码现代化和性能优化铺平道路。  
+3. 对开发者而言，后续代码可逐步引入 C++20 特性，但对用户无直接影响，属于基础设施升级。
+            </div>
+        </div>
+        
+        <div class="commit-item">
+            <div class="commit-header">
+                <span class="category-badge" data-category="Performance">⚡ Performance</span>
+                <div class="commit-title">
+                    <a href="https://github.com/pytorch/pytorch/commit/c2319bf9e2959e2665e00d6c2785df058f2d1c29" target="_blank">
+                        Revert "[ROCm] Enable expandable segments (#173330)"
+                    </a>
+                </div>
+            </div>
+            
+            <div class="commit-meta">
+                👤 PyTorch MergeBot | 🕒 2026-03-10 22:04:03 +0000
+            </div>
+            
+            <div class="commit-analysis">
+                📝 <strong>AI 分析:</strong>
+                1. 这是一个回滚提交，撤销了之前为ROCm平台启用的可扩展段（expandable segments）功能，属于功能回退。
+2. 技术亮点是回退了可能不稳定的内存管理特性，暂时恢复系统到更稳定的状态。
+3. 对项目的影响是暂时移除了ROCm平台的内存优化特性，可能影响相关用户的性能，但提升了系统稳定性。
+            </div>
+        </div>
+        
+        <div class="commit-item">
+            <div class="commit-header">
+                <span class="category-badge" data-category="BugFix">🐛 BugFix</span>
+                <div class="commit-title">
+                    <a href="https://github.com/pytorch/pytorch/commit/e407d750574506c0bcd94871886753d18665d762" target="_blank">
+                        [CI] Forward fix lint after reverting #172246 (#177075)
+                    </a>
+                </div>
+            </div>
+            
+            <div class="commit-meta">
+                👤 Huy Do | 🕒 2026-03-10 21:54:48 +0000
+            </div>
+            
+            <div class="commit-analysis">
+                📝 <strong>AI 分析:</strong>
+                1. 这是一个 CI 修复提交，主要功能是修正了在回退另一个 PR（#172246）后出现的代码规范检查（lint）问题，属于持续集成流程的维护性修复。  
+2. 技术亮点在于快速响应了代码合并后的 CI 状态异常，通过调整 lint 配置或规则确保了代码库的规范性检查能继续正常运行。  
+3. 对项目的影响是维持了开发流程的稳定性，避免了因 lint 错误阻塞后续代码提交，对开发者体验有积极意义，但普通用户无感知。
+            </div>
+        </div>
+        
+        <div class="commit-item">
+            <div class="commit-header">
+                <span class="category-badge" data-category="BugFix">🐛 BugFix</span>
+                <div class="commit-title">
+                    <a href="https://github.com/pytorch/pytorch/commit/49fa0d9f37d9ab31816995b167ab2a01fa154327" target="_blank">
+                        Fix torch.compiler.is_exporting() returning True during torch.compile (#176499)
+                    </a>
+                </div>
+            </div>
+            
+            <div class="commit-meta">
+                👤 Eddie Chen | 🕒 2026-03-10 21:53:38 +0000
+            </div>
+            
+            <div class="commit-analysis">
+                📝 <strong>AI 分析:</strong>
+                1. 修复了 `torch.compiler.is_exporting()` 在 `torch.compile` 执行期间错误返回 `True` 的问题，属于 bug 修复。  
+2. 技术亮点是准确区分了导出（export）与编译（compile）的执行上下文，避免了状态误判。  
+3. 对项目影响：确保了 `torch.compile` 与导出相关逻辑的隔离，提升了编译过程的正确性和用户体验。
+            </div>
+        </div>
+        
+        <div class="commit-item">
+            <div class="commit-header">
+                <span class="category-badge" data-category="BugFix">🐛 BugFix</span>
+                <div class="commit-title">
+                    <a href="https://github.com/pytorch/pytorch/commit/67e982d5cb5e65208168ddc6dd6ad24df3e5db9e" target="_blank">
+                        Fix weak dep check if not all indices are used (#175568)
+                    </a>
+                </div>
+            </div>
+            
+            <div class="commit-meta">
+                👤 Markus Hoehnerbach | 🕒 2026-03-10 21:52:40 +0000
+            </div>
+            
+            <div class="commit-analysis">
+                📝 <strong>AI 分析:</strong>
+                1. 这是一个bug修复，解决了在稀疏张量依赖检查中未使用全部索引时出现的错误。  
+2. 技术亮点是修正了稀疏张量依赖关系检查的逻辑，确保索引使用不完整时仍能正确处理。  
+3. 对项目的影响是提升了稀疏张量操作的稳定性，避免因依赖检查错误导致的计算问题。
+            </div>
+        </div>
+        
+        <div class="commit-item">
+            <div class="commit-header">
+                <span class="category-badge" data-category="BugFix">🐛 BugFix</span>
+                <div class="commit-title">
+                    <a href="https://github.com/pytorch/pytorch/commit/6d2767f66ef405a0d96914d3ae19b7efe23082a2" target="_blank">
+                        [FSDP2] Fix tied weights with uneven sharding across separate FSDP groups (#176225)
+                    </a>
+                </div>
+            </div>
+            
+            <div class="commit-meta">
+                👤 Will Constable | 🕒 2026-03-10 09:11:44 -0700
+            </div>
+            
+            <div class="commit-analysis">
+                📝 <strong>AI 分析:</strong>
+                1. 这是一个bug修复，解决了在多个FSDP组中共享权重参数时，由于不同组间分片不均匀导致的张量视图错误问题。  
+2. 技术亮点是通过在分片前检查并统一共享权重的分片策略，确保跨组间分片一致性，避免张量视图失效。  
+3. 对项目的影响是提升了FSDP2在复杂权重共享场景下的稳定性，防止训练过程中因张量视图错误而崩溃。
             </div>
         </div>
         
@@ -766,89 +690,21 @@
             <div class="commit-header">
                 <span class="category-badge" data-category="Refactor">♻️ Refactor</span>
                 <div class="commit-title">
-                    <a href="https://github.com/pytorch/pytorch/commit/8f50512649ab0c8bc9223ab4e0d3d9b432cb9ffb" target="_blank">
-                        Cleanup C++17.h (#175700)
+                    <a href="https://github.com/pytorch/pytorch/commit/c09499045ebda976ebf59bb435f603626e615975" target="_blank">
+                        [SymmMem] Improve tensor-to-allocation lookup in NCCL Symmetric Memory (#176744)
                     </a>
                 </div>
             </div>
             
             <div class="commit-meta">
-                👤 Yuanyuan Chen | 🕒 2026-03-08 07:07:21 +0000
+                👤 codingwithsurya | 🕒 2026-03-10 21:13:23 +0000
             </div>
             
             <div class="commit-analysis">
                 📝 <strong>AI 分析:</strong>
-                1. 这是一个**重构**性质的提交，主要清理了 `C++17.h` 头文件，移除了项目中已不再需要的 C++17 特性检测代码，因为 PyTorch 现在已全面要求 C++17 标准。
-
-2. 技术亮点是**代码简化与维护性提升**，通过删除过时的条件编译和特性检测宏，减少了代码复杂性和维护负担。
-
-3. 对项目的影响是**使代码库更简洁**，对开发者更友好，但不会影响最终用户或运行时性能，因为这只是构建系统的内部清理。
-            </div>
-        </div>
-        
-        <div class="commit-item">
-            <div class="commit-header">
-                <span class="category-badge" data-category="BugFix">🐛 BugFix</span>
-                <div class="commit-title">
-                    <a href="https://github.com/pytorch/pytorch/commit/a5128c17f94f73b79424a20143ee14558f1899a2" target="_blank">
-                        [vllm hash update] update the pinned vllm hash (#176668)
-                    </a>
-                </div>
-            </div>
-            
-            <div class="commit-meta">
-                👤 PyTorch UpdateBot | 🕒 2026-03-08 05:14:18 +0000
-            </div>
-            
-            <div class="commit-analysis">
-                📝 <strong>AI 分析:</strong>
-                1. 这是一个版本更新提交，将项目中依赖的 vllm 库的 pinned hash 更新到最新版本，属于常规的依赖维护。  
-2. 技术亮点是确保项目与 vllm 的最新修复或功能保持同步，避免潜在的兼容性问题。  
-3. 对项目的影响是提升了依赖的稳定性和安全性，对开发者来说减少了后续集成新特性时的冲突风险。
-            </div>
-        </div>
-        
-        <div class="commit-item">
-            <div class="commit-header">
-                <span class="category-badge" data-category="Test">✅ Test</span>
-                <div class="commit-title">
-                    <a href="https://github.com/pytorch/pytorch/commit/155f4480717354841ce3e3b230c2f5f58b47731f" target="_blank">
-                        [torchtitan hash update] update the pinned torchtitan hash (#176768)
-                    </a>
-                </div>
-            </div>
-            
-            <div class="commit-meta">
-                👤 PyTorch UpdateBot | 🕒 2026-03-08 05:12:12 +0000
-            </div>
-            
-            <div class="commit-analysis">
-                📝 <strong>AI 分析:</strong>
-                1. 这是一个简单的依赖更新提交，仅更新了 pinned torchtitan 的 git 哈希值，属于常规的第三方依赖版本同步。  
-2. 技术层面没有亮点，仅修改了 `.github/ci_commit_pins/torchtitan.txt` 文件中的哈希值，属于维护性操作。  
-3. 对项目影响有限，主要确保 CI/CD 系统使用正确版本的 torchtitan 进行测试，避免因依赖过期导致构建失败。
-            </div>
-        </div>
-        
-        <div class="commit-item">
-            <div class="commit-header">
-                <span class="category-badge" data-category="BugFix">🐛 BugFix</span>
-                <div class="commit-title">
-                    <a href="https://github.com/pytorch/pytorch/commit/eee389aa08993474a232edc20983f63ffc98ba21" target="_blank">
-                        [DTensor] Track per-output placements for multi-output ops in strategy validation (#175893)
-                    </a>
-                </div>
-            </div>
-            
-            <div class="commit-meta">
-                👤 Pian Pawakapan | 🕒 2026-03-06 14:33:02 -0800
-            </div>
-            
-            <div class="commit-analysis">
-                📝 <strong>AI 分析:</strong>
-                1. 这是一个功能增强，改进了DTensor对多输出操作（如`split`）的策略验证，通过跟踪每个输出的placement信息来确保正确性。  
-2. 技术亮点是扩展了策略验证逻辑，从仅检查整体操作变为精确追踪每个输出张量的独立placement，提升了分布式张量计算的准确性。  
-3. 对开发者而言，这增强了DTensor在多输出场景下的可靠性，避免了潜在的placement错误，但不会直接影响最终用户的使用体验。
+                1. 这是一个性能优化提交，改进了NCCL对称内存中张量到内存分配的查找机制，属于底层通信优化。  
+2. 技术亮点是通过优化哈希映射减少了查找开销，提升了分布式训练中多GPU间内存通信的效率。  
+3. 对开发者透明，但能提升使用NCCL对称内存功能的大规模分布式训练任务的性能。
             </div>
         </div>
         
@@ -856,21 +712,21 @@
             <div class="commit-header">
                 <span class="category-badge" data-category="Performance">⚡ Performance</span>
                 <div class="commit-title">
-                    <a href="https://github.com/pytorch/pytorch/commit/37d4ba530a180780259da2e79ae8beefef965cbc" target="_blank">
-                        [Inductor][xpu] Following #175725, Register benchmark func for XPU. (#176572)
+                    <a href="https://github.com/pytorch/pytorch/commit/f13ba068fec65a25227431e707dbc1793b71af5f" target="_blank">
+                        [DTensor] Enable Dijkstra search in sharding propagation (#175999)
                     </a>
                 </div>
             </div>
             
             <div class="commit-meta">
-                👤 xinan.lin | 🕒 2026-03-06 04:50:35 +0000
+                👤 Will Constable | 🕒 2026-03-08 21:32:03 -0700
             </div>
             
             <div class="commit-analysis">
                 📝 <strong>AI 分析:</strong>
-                1. 这个 commit 为 XPU 设备注册了基准测试函数，属于功能扩展，使 Inductor 框架支持对 XPU 的性能基准测试。  
-2. 技术亮点是扩展了 PyTorch Inductor 对 Intel XPU 的基准测试支持，属于硬件适配的新特性。  
-3. 对项目的影响是增强了 PyTorch 在 XPU 硬件上的性能评估能力，为开发者提供了该设备的性能基准工具。
+                1. 这个 commit 在 DTensor 的切分传播中启用了 Dijkstra 算法搜索，属于性能优化和新功能增强。  
+2. 技术亮点是使用 Dijkstra 算法优化切分策略的搜索过程，提升了策略选择的效率和准确性。  
+3. 对项目的影响是改善了分布式训练中张量切分的性能，使开发者能更高效地处理复杂计算图。
             </div>
         </div>
         
@@ -878,21 +734,239 @@
             <div class="commit-header">
                 <span class="category-badge" data-category="BugFix">🐛 BugFix</span>
                 <div class="commit-title">
-                    <a href="https://github.com/pytorch/pytorch/commit/2b8b4ff5ba5ca5064a81c03ddabff95feb7bd3b1" target="_blank">
-                        Fix MPS memory leak in getStridedMPSNDArray: autorelease NSArray copies (#176648)
+                    <a href="https://github.com/pytorch/pytorch/commit/e8f55517a3380d605d50f41faa7824b0f381b00b" target="_blank">
+                        fix: copy and then convert dtype for privateuseone backends cout (#176216)
                     </a>
                 </div>
             </div>
             
             <div class="commit-meta">
-                👤 Federico Tecleme | 🕒 2026-03-08 01:39:44 +0000
+                👤 Mehant Kammakomati | 🕒 2026-03-10 20:49:50 +0000
             </div>
             
             <div class="commit-analysis">
                 📝 <strong>AI 分析:</strong>
-                1. 这是一个针对 MPS（Metal Performance Shaders）后端的 bug 修复，解决了 `getStridedMPSNDArray` 函数中的内存泄漏问题，通过为 NSArray 副本添加自动释放池来管理内存。  
-2. 技术亮点是使用 Objective-C 的 `@autoreleasepool` 机制正确管理临时 NSArray 对象的内存生命周期，防止在循环中累积未释放的内存。  
-3. 该修复提升了 PyTorch 在 macOS 上使用 MPS 后端时的内存稳定性，避免长时间运行或大规模计算时因内存泄漏导致性能下降或崩溃。
+                1. 这是一个针对私有后端（PrivateUseOne）的bug修复，解决了在特定情况下输出张量数据类型转换时可能引发的错误。  
+2. 技术亮点是通过先复制数据再转换数据类型的方式，避免了私有后端设备在直接转换时可能出现的内部处理异常。  
+3. 该修复增强了PyTorch对自定义硬件后端的兼容性，提升了使用私有后端时的稳定性和可靠性。
+            </div>
+        </div>
+        
+        <div class="commit-item">
+            <div class="commit-header">
+                <span class="category-badge" data-category="BugFix">🐛 BugFix</span>
+                <div class="commit-title">
+                    <a href="https://github.com/pytorch/pytorch/commit/4e614828c18ec183a500cec6fb4ad883da8ac457" target="_blank">
+                        Revert "[ROCm] Sdpa dropout fix (#174708)"
+                    </a>
+                </div>
+            </div>
+            
+            <div class="commit-meta">
+                👤 PyTorch MergeBot | 🕒 2026-03-10 20:26:34 +0000
+            </div>
+            
+            <div class="commit-analysis">
+                📝 <strong>AI 分析:</strong>
+                1. 这是一个回滚操作，撤销了之前针对ROCm平台下SDPA（缩放点积注意力）中dropout功能的修复。  
+2. 技术亮点是回滚了可能引入问题的代码变更，暂时恢复原有逻辑以保持稳定性。  
+3. 对项目的影响是避免了潜在的不兼容或错误，确保ROCm平台的稳定性，但相关修复需后续重新处理。
+            </div>
+        </div>
+        
+        <div class="commit-item">
+            <div class="commit-header">
+                <span class="category-badge" data-category="Performance">⚡ Performance</span>
+                <div class="commit-title">
+                    <a href="https://github.com/pytorch/pytorch/commit/a4a2d3bac1a2ecebfbf0abe759ad173d37c95c3b" target="_blank">
+                        [DTensor] Add sharding strategies for reduction and scan ops (#176820)
+                    </a>
+                </div>
+            </div>
+            
+            <div class="commit-meta">
+                👤 Pian Pawakapan | 🕒 2026-03-10 09:16:36 -0700
+            </div>
+            
+            <div class="commit-analysis">
+                📝 <strong>AI 分析:</strong>
+                1. 该 commit 为 DTensor 添加了归约（reduction）和扫描（scan）操作的分布式分片策略支持，属于新功能开发。  
+2. 技术亮点是扩展了 DTensor 对复杂操作（如 `sum`、`cumsum`）的分布式计算能力，增强了张量并行化的覆盖范围。  
+3. 对项目的影响是提升了 PyTorch 分布式训练中张量操作的灵活性和性能，为开发者提供了更丰富的分布式编程支持。
+            </div>
+        </div>
+        
+        <div class="commit-item">
+            <div class="commit-header">
+                <span class="category-badge" data-category="BugFix">🐛 BugFix</span>
+                <div class="commit-title">
+                    <a href="https://github.com/pytorch/pytorch/commit/61fae89be8357e04d4dc38a5424d6b307025d2e6" target="_blank">
+                        Windows override AMI pre-installed cudnn (#177027)
+                    </a>
+                </div>
+            </div>
+            
+            <div class="commit-meta">
+                👤 atalman | 🕒 2026-03-10 20:23:37 +0000
+            </div>
+            
+            <div class="commit-analysis">
+                📝 <strong>AI 分析:</strong>
+                1. 这是一个针对Windows CI环境的配置修复，修改了Docker镜像构建脚本，强制覆盖AMI预装的cuDNN版本以确保版本一致性。  
+2. 技术亮点是通过环境变量和脚本逻辑控制cuDNN安装流程，解决了Windows构建环境中cuDNN版本冲突的潜在问题。  
+3. 对项目的影响是提升了Windows平台CI/CD的可靠性和可重复性，避免了因cuDNN版本不匹配导致的构建失败。
+            </div>
+        </div>
+        
+        <div class="commit-item">
+            <div class="commit-header">
+                <span class="category-badge" data-category="BugFix">🐛 BugFix</span>
+                <div class="commit-title">
+                    <a href="https://github.com/pytorch/pytorch/commit/59b048f0bb04c3841f7a1d142a7415403bf06d4c" target="_blank">
+                        [dynamo] Replace raw None with ConstantVariable on stack (#169325)
+                    </a>
+                </div>
+            </div>
+            
+            <div class="commit-meta">
+                👤 Dev Sashidhar | 🕒 2026-03-10 20:08:57 +0000
+            </div>
+            
+            <div class="commit-analysis">
+                📝 <strong>AI 分析:</strong>
+                1. 这是一个针对 PyTorch Dynamo 编译器的 bug 修复，解决了在处理函数调用时可能将原始 `None` 值错误传播到栈上，导致后续编译阶段出现类型推断错误的问题。  
+2. 技术亮点是将栈上的原始 `None` 替换为 `ConstantVariable` 包装的常量，确保类型系统能正确识别其为 `NoneType`，提升了编译器的鲁棒性。  
+3. 该修复增强了 Dynamo 编译器在处理复杂控制流时的稳定性，避免了因类型错误导致的编译失败，提升了开发者的使用体验。
+            </div>
+        </div>
+        
+        <div class="commit-item">
+            <div class="commit-header">
+                <span class="category-badge" data-category="Refactor">♻️ Refactor</span>
+                <div class="commit-title">
+                    <a href="https://github.com/pytorch/pytorch/commit/b244229e2826c7139a15fc524fb8956dfa3d63a9" target="_blank">
+                        [BE] Remove `Optional` and `Union` usage repo wide (#176918)
+                    </a>
+                </div>
+            </div>
+            
+            <div class="commit-meta">
+                👤 Lucas Kabela | 🕒 2026-03-10 20:06:42 +0000
+            </div>
+            
+            <div class="commit-analysis">
+                📝 <strong>AI 分析:</strong>
+                1. 这是一个大规模代码重构，移除了整个代码库中不必要的 `Optional` 和 `Union` 类型注解，以简化类型提示并提升代码一致性。  
+2. 技术亮点是统一了类型系统，减少了冗余的类型包装，使代码更简洁且更符合 Python 最新类型检查规范。  
+3. 对开发者而言，代码可读性和维护性得到改善，但对最终用户没有直接影响，属于内部代码质量优化。
+            </div>
+        </div>
+        
+        <div class="commit-item">
+            <div class="commit-header">
+                <span class="category-badge" data-category="BugFix">🐛 BugFix</span>
+                <div class="commit-title">
+                    <a href="https://github.com/pytorch/pytorch/commit/5710dd2b840903fa3c8eb02f96aac88b06c41384" target="_blank">
+                        [inductor] Fix CUTLASS illegal memory access via subprocess isolation (#171094) (#172123)
+                    </a>
+                </div>
+            </div>
+            
+            <div class="commit-meta">
+                👤 Donald Tolley | 🕒 2026-03-10 19:14:01 +0000
+            </div>
+            
+            <div class="commit-analysis">
+                📝 <strong>AI 分析:</strong>
+                1. 这是一个bug修复，通过子进程隔离解决了CUTLASS后端在特定情况下可能出现的非法内存访问问题。  
+2. 技术亮点是采用进程隔离机制，确保有问题的内核编译不会污染主进程内存，提升了Inductor编译器的稳定性。  
+3. 对项目的影响是避免了潜在的内存错误导致的崩溃，增强了PyTorch动态编译的可靠性，对用户透明但提升了使用体验。
+            </div>
+        </div>
+        
+        <div class="commit-item">
+            <div class="commit-header">
+                <span class="category-badge" data-category="BugFix">🐛 BugFix</span>
+                <div class="commit-title">
+                    <a href="https://github.com/pytorch/pytorch/commit/939efd00d811a5ce0a474bec4a9afe941272680e" target="_blank">
+                        Revert "[ROCm][CK] Enable variable-length attention support for CK SDPA backend (#172246)"
+                    </a>
+                </div>
+            </div>
+            
+            <div class="commit-meta">
+                👤 PyTorch MergeBot | 🕒 2026-03-10 19:13:24 +0000
+            </div>
+            
+            <div class="commit-analysis">
+                📝 <strong>AI 分析:</strong>
+                1. 该 commit 撤销了先前为 ROCm/CK 后端添加可变长度注意力支持的功能，属于功能回退。  
+2. 技术亮点是移除了对可变序列长度的适配代码，可能因稳定性或兼容性问题暂时回退。  
+3. 对项目影响是 ROCm 用户暂时无法使用该优化，需等待更稳定的实现。
+            </div>
+        </div>
+        
+        <div class="commit-item">
+            <div class="commit-header">
+                <span class="category-badge" data-category="Performance">⚡ Performance</span>
+                <div class="commit-title">
+                    <a href="https://github.com/pytorch/pytorch/commit/f1bea24d7802169cb8a89942da8969e3e7994bfc" target="_blank">
+                        Optimize _jit_pass_onnx_deduplicate_initializers from O(N^2) to O(N) (#175888)
+                    </a>
+                </div>
+            </div>
+            
+            <div class="commit-meta">
+                👤 Kyunggeun Lee | 🕒 2026-03-10 18:17:10 +0000
+            </div>
+            
+            <div class="commit-analysis">
+                📝 <strong>AI 分析:</strong>
+                这是一个性能优化提交，将ONNX导出中的初始化器去重算法从O(N²)优化到O(N)。技术亮点是使用哈希映射替代嵌套循环来快速识别重复张量，显著提升了大模型导出效率。这使PyTorch用户在处理包含大量重复初始值的模型时能获得更快的ONNX转换速度。
+            </div>
+        </div>
+        
+        <div class="commit-item">
+            <div class="commit-header">
+                <span class="category-badge" data-category="BugFix">🐛 BugFix</span>
+                <div class="commit-title">
+                    <a href="https://github.com/pytorch/pytorch/commit/3f60bc45ace4e0853c5cf2953901fce7662a029f" target="_blank">
+                        [ROCm] Sdpa dropout fix (#174708)
+                    </a>
+                </div>
+            </div>
+            
+            <div class="commit-meta">
+                👤 Andy Lugo | 🕒 2026-03-10 18:06:26 +0000
+            </div>
+            
+            <div class="commit-analysis">
+                📝 <strong>AI 分析:</strong>
+                1. 这是一个针对ROCm平台的bug修复，主要解决了scaled dot-product attention（SDPA）中dropout功能在特定条件下可能失效的问题。  
+2. 技术亮点是修复了HIP（ROCm的GPU计算平台）后端中dropout掩码生成逻辑的缺陷，确保其与CUDA后端行为一致。  
+3. 该修复提升了PyTorch在AMD GPU上训练的稳定性，防止因dropout异常导致模型性能下降，对使用ROCm平台的开发者尤为重要。
+            </div>
+        </div>
+        
+        <div class="commit-item">
+            <div class="commit-header">
+                <span class="category-badge" data-category="BugFix">🐛 BugFix</span>
+                <div class="commit-title">
+                    <a href="https://github.com/pytorch/pytorch/commit/52dd8fe8c7c5fc7a411b2f1d41f81d7a7d257f86" target="_blank">
+                        Pallas: fix non-stride-1 reductions and prevent incompatible reduction fusion (#176489)
+                    </a>
+                </div>
+            </div>
+            
+            <div class="commit-meta">
+                👤 Markus Hoehnerbach | 🕒 2026-03-10 17:35:04 +0000
+            </div>
+            
+            <div class="commit-analysis">
+                📝 <strong>AI 分析:</strong>
+                1. 这是一个bug修复，主要解决了Pallas中非步长为1的归约操作错误，并防止了不兼容的归约融合问题。  
+2. 技术亮点是修复了张量归约在非连续内存布局下的计算错误，并优化了融合策略以避免产生无效代码。  
+3. 该修复提升了计算结果的正确性，对使用归约操作的用户透明，同时增强了框架的稳定性。
             </div>
         </div>
         
@@ -900,307 +974,21 @@
             <div class="commit-header">
                 <span class="category-badge" data-category="Feature">🚀 Feature</span>
                 <div class="commit-title">
-                    <a href="https://github.com/pytorch/pytorch/commit/bfae0c904a0d6594905219123c2512d57f0cba09" target="_blank">
-                        Revert "[distributed] Add `sort_ranks` parameter to `new_group` to allow preserving user-provided rank order (#176580)"
+                    <a href="https://github.com/pytorch/pytorch/commit/220ecc24733874a0c7de2b717a93d36bb06923c2" target="_blank">
+                        [DTensor] Register single-dim strategies for categorized pointwise ops (#175795)
                     </a>
                 </div>
             </div>
             
             <div class="commit-meta">
-                👤 PyTorch MergeBot | 🕒 2026-03-08 00:02:32 +0000
+                👤 Anshul Sinha | 🕒 2026-03-09 18:47:05 -0700
             </div>
             
             <div class="commit-analysis">
                 📝 <strong>AI 分析:</strong>
-                1. 这个 commit 回滚了之前为 `new_group` 添加 `sort_ranks` 参数的改动，撤销了允许用户自定义进程组内排序顺序的功能。  
-2. 技术亮点是移除了可能导致分布式通信行为不一致的复杂逻辑，回归到原有确定性的排序方式。  
-3. 对项目的影响是消除了潜在兼容性风险，确保分布式训练中进程组行为的稳定性和可预测性。
-            </div>
-        </div>
-        
-        <div class="commit-item">
-            <div class="commit-header">
-                <span class="category-badge" data-category="BugFix">🐛 BugFix</span>
-                <div class="commit-title">
-                    <a href="https://github.com/pytorch/pytorch/commit/fcc98686308c147a0472806e56cc8dbee42ba297" target="_blank">
-                        Revert "Fix FxConverter mutation tracking and scatter_reduce kwargs for FXIR backend (#175860)"
-                    </a>
-                </div>
-            </div>
-            
-            <div class="commit-meta">
-                👤 PyTorch MergeBot | 🕒 2026-03-07 23:27:30 +0000
-            </div>
-            
-            <div class="commit-analysis">
-                📝 <strong>AI 分析:</strong>
-                1. 这是一个回退提交，撤销了之前对FX转换器中突变跟踪和scatter_reduce参数处理的修复，因为该修复可能引入了新的问题或不稳定因素。  
-2. 技术亮点在于回退操作本身，通过撤销有风险的代码变更来维持FXIR后端的稳定性，避免潜在的功能异常。  
-3. 对项目的影响是暂时恢复到更稳定的状态，确保FX转换相关功能正常运行，但推迟了原修复计划的功能改进。
-            </div>
-        </div>
-        
-        <div class="commit-item">
-            <div class="commit-header">
-                <span class="category-badge" data-category="BugFix">🐛 BugFix</span>
-                <div class="commit-title">
-                    <a href="https://github.com/pytorch/pytorch/commit/c5ee49f00542064a7241d630616dd12aabca1c4e" target="_blank">
-                        Revert "Handle unabcked better in pad_mm (#175824)"
-                    </a>
-                </div>
-            </div>
-            
-            <div class="commit-meta">
-                👤 PyTorch MergeBot | 🕒 2026-03-07 22:04:12 +0000
-            </div>
-            
-            <div class="commit-analysis">
-                📝 <strong>AI 分析:</strong>
-                1. 这是一个回滚提交，撤销了之前对 `pad_mm` 函数中 `unbacked` 张量处理的修改，属于问题修复。  
-2. 技术亮点是回退到更稳定的实现，避免因之前的改动可能引入的运行时错误或兼容性问题。  
-3. 对项目的影响是恢复了相关功能的原有行为，确保依赖该逻辑的模块能正常运行，维护了代码的可靠性。
-            </div>
-        </div>
-        
-        <div class="commit-item">
-            <div class="commit-header">
-                <span class="category-badge" data-category="Performance">⚡ Performance</span>
-                <div class="commit-title">
-                    <a href="https://github.com/pytorch/pytorch/commit/d87ebeef89047a83246bebcc2cc899cf1392834c" target="_blank">
-                        [BE]: Add missing reserve() calls (#175503)
-                    </a>
-                </div>
-            </div>
-            
-            <div class="commit-meta">
-                👤 Aaron Gokaslan | 🕒 2026-03-07 20:22:58 +0000
-            </div>
-            
-            <div class="commit-analysis">
-                📝 <strong>AI 分析:</strong>
-                1. 这是一个性能优化提交，在多个容器使用前添加了 `reserve()` 调用，预先分配内存以减少动态扩容开销。  
-2. 技术亮点是通过预分配内存避免多次重分配，提升代码运行效率，属于常见的性能优化手段。  
-3. 对项目影响是提升了相关代码段的执行性能，对开发者而言增加了少量代码但无功能变化，用户无感知。
-            </div>
-        </div>
-        
-        <div class="commit-item">
-            <div class="commit-header">
-                <span class="category-badge" data-category="BugFix">🐛 BugFix</span>
-                <div class="commit-title">
-                    <a href="https://github.com/pytorch/pytorch/commit/89b1dfee14d87128c7b41776607430dbc63daa08" target="_blank">
-                        [distributed] Add `sort_ranks` parameter to `new_group` to allow preserving user-provided rank order (#176580)
-                    </a>
-                </div>
-            </div>
-            
-            <div class="commit-meta">
-                👤 Wei Feng | 🕒 2026-03-06 22:16:15 -0800
-            </div>
-            
-            <div class="commit-analysis">
-                📝 <strong>AI 分析:</strong>
-                1. 这是一个功能增强，为分布式通信的 `new_group` 方法新增了 `sort_ranks` 参数，允许用户保留自定义的进程排序顺序，而非强制按数字排序。  
-2. 技术亮点在于扩展了 `ProcessGroup` 的灵活性，通过可选参数维护用户指定的拓扑结构，避免了因内部重排导致与预期逻辑不一致的问题。  
-3. 对开发者而言，这提升了分布式组创建的直观性和控制力，尤其利于复杂自定义通信场景，但不会影响默认行为或性能。
-            </div>
-        </div>
-        
-        <div class="commit-item">
-            <div class="commit-header">
-                <span class="category-badge" data-category="Performance">⚡ Performance</span>
-                <div class="commit-title">
-                    <a href="https://github.com/pytorch/pytorch/commit/6d25e09122fa3e6ea53454e998047191155d5f08" target="_blank">
-                        [dynamo] Prevent recompile on hoistable opaque objects (#176643)
-                    </a>
-                </div>
-            </div>
-            
-            <div class="commit-meta">
-                👤 Animesh Jain | 🕒 2026-03-06 15:33:51 -0800
-            </div>
-            
-            <div class="commit-analysis">
-                📝 <strong>AI 分析:</strong>
-                1. 这是一个功能优化，通过防止对可提升的不透明对象（hoistable opaque objects）进行重新编译，减少了不必要的重新编译次数。  
-2. 技术亮点是优化了Dynamo编译器的缓存机制，提升了编译效率，减少了重复编译开销。  
-3. 对项目的影响是提升了PyTorch动态图编译的性能，减少了用户模型训练时的编译延迟，改善了开发者体验。
-            </div>
-        </div>
-        
-        <div class="commit-item">
-            <div class="commit-header">
-                <span class="category-badge" data-category="BugFix">🐛 BugFix</span>
-                <div class="commit-title">
-                    <a href="https://github.com/pytorch/pytorch/commit/48fa13c2aa2b58b30051c956ef39101a0375343a" target="_blank">
-                        [BE][pytree] improve consistency between variable name and typing annotation (typing change only) (#176291)
-                    </a>
-                </div>
-            </div>
-            
-            <div class="commit-meta">
-                👤 Xuehai Pan | 🕒 2026-03-07 13:28:26 +0800
-            </div>
-            
-            <div class="commit-analysis">
-                📝 <strong>AI 分析:</strong>
-                1. 这是一个纯类型注解重构，统一了变量名与类型注解的一致性，不涉及功能或行为变更。  
-2. 技术亮点是提升了代码静态类型检查的准确性，增强了代码可读性和维护性。  
-3. 对项目无运行时影响，但有助于开发者更清晰地理解代码结构，减少类型相关的潜在错误。
-            </div>
-        </div>
-        
-        <div class="commit-item">
-            <div class="commit-header">
-                <span class="category-badge" data-category="BugFix">🐛 BugFix</span>
-                <div class="commit-title">
-                    <a href="https://github.com/pytorch/pytorch/commit/64f9cb671a037b23daef4a83f22a33c5dfa5c12a" target="_blank">
-                        Handle unabcked better in pad_mm (#175824)
-                    </a>
-                </div>
-            </div>
-            
-            <div class="commit-meta">
-                👤 Laith Sakka | 🕒 2026-03-06 10:35:17 -0800
-            </div>
-            
-            <div class="commit-analysis">
-                📝 <strong>AI 分析:</strong>
-                1. 这是一个bug修复，主要解决了在`pad_mm`函数中处理未对齐内存时可能出现的错误，确保内存对齐问题得到正确处理。  
-2. 技术亮点是优化了内存对齐检查逻辑，避免了因未对齐内存访问导致的潜在崩溃或性能下降。  
-3. 对项目的影响是提升了底层运算的稳定性和兼容性，对使用相关张量运算的开发者更加友好。
-            </div>
-        </div>
-        
-        <div class="commit-item">
-            <div class="commit-header">
-                <span class="category-badge" data-category="BugFix">🐛 BugFix</span>
-                <div class="commit-title">
-                    <a href="https://github.com/pytorch/pytorch/commit/27a64983695ddfb05ebcdcc76b24b2fab406139e" target="_blank">
-                        Fix FxConverter mutation tracking and scatter_reduce kwargs for FXIR backend (#175860)
-                    </a>
-                </div>
-            </div>
-            
-            <div class="commit-meta">
-                👤 nanzha | 🕒 2026-03-07 16:44:56 +0000
-            </div>
-            
-            <div class="commit-analysis">
-                📝 <strong>AI 分析:</strong>
-                1. 修复了FX转换器中变量追踪和scatter_reduce参数处理的bug，确保FXIR后端能正确识别张量变化并处理关键字参数。  
-2. 技术亮点是改进了FX图转换时的副作用追踪机制，并规范了算子参数传递方式，提升了转换的准确性。  
-3. 该修复增强了PyTorch FX后端的稳定性，使依赖动态图转换的模型能更可靠地运行，对开发者使用FX工具链有积极影响。
-            </div>
-        </div>
-        
-        <div class="commit-item">
-            <div class="commit-header">
-                <span class="category-badge" data-category="BugFix">🐛 BugFix</span>
-                <div class="commit-title">
-                    <a href="https://github.com/pytorch/pytorch/commit/1f9e1e5ede6d67c8c7e834908c418791099adefe" target="_blank">
-                        Revert "[varlen_attn for inference] add seqused_k (#175897)"
-                    </a>
-                </div>
-            </div>
-            
-            <div class="commit-meta">
-                👤 PyTorch MergeBot | 🕒 2026-03-07 16:30:19 +0000
-            </div>
-            
-            <div class="commit-analysis">
-                📝 <strong>AI 分析:</strong>
-                1. 这是一个回滚提交，撤销了之前添加的 `seqused_k` 功能，属于功能回退操作。  
-2. 技术亮点是移除了为变长注意力推理引入的特定优化，可能因为该实现存在问题或冲突。  
-3. 对项目的影响是恢复了相关代码到之前的状态，可能影响依赖该功能的推理性能或兼容性。
-            </div>
-        </div>
-        
-        <div class="commit-item">
-            <div class="commit-header">
-                <span class="category-badge" data-category="BugFix">🐛 BugFix</span>
-                <div class="commit-title">
-                    <a href="https://github.com/pytorch/pytorch/commit/8ea0de369a013721880f868ad290678174017a4d" target="_blank">
-                        Revert "[varlen_attn for inference] add page_table (#175924)"
-                    </a>
-                </div>
-            </div>
-            
-            <div class="commit-meta">
-                👤 PyTorch MergeBot | 🕒 2026-03-07 16:30:18 +0000
-            </div>
-            
-            <div class="commit-analysis">
-                📝 <strong>AI 分析:</strong>
-                1. 这是一个回滚提交，撤销了之前添加的用于变长注意力推理的页表功能，属于功能移除。  
-2. 技术亮点是移除了实验性的页表机制，可能因其在推理场景中存在稳定性或性能问题。  
-3. 对项目的影响是暂时回退该特性，避免潜在问题，确保推理功能的可靠性。
-            </div>
-        </div>
-        
-        <div class="commit-item">
-            <div class="commit-header">
-                <span class="category-badge" data-category="Performance">⚡ Performance</span>
-                <div class="commit-title">
-                    <a href="https://github.com/pytorch/pytorch/commit/48960de173e7afe7bda47a54c0be8d663b61f6bb" target="_blank">
-                        Revert "[varlen_attn for inference] add test to aot_inductor (#175936)"
-                    </a>
-                </div>
-            </div>
-            
-            <div class="commit-meta">
-                👤 PyTorch MergeBot | 🕒 2026-03-07 16:30:18 +0000
-            </div>
-            
-            <div class="commit-analysis">
-                📝 <strong>AI 分析:</strong>
-                1. 这是一个回滚提交，撤销了之前添加的针对变长注意力推理的AOT Inductor测试。
-2. 主要技术操作是移除测试代码，属于测试维护调整，没有引入新功能或优化。
-3. 对项目影响有限，仅影响内部测试覆盖，不会影响用户功能或性能。
-            </div>
-        </div>
-        
-        <div class="commit-item">
-            <div class="commit-header">
-                <span class="category-badge" data-category="BugFix">🐛 BugFix</span>
-                <div class="commit-title">
-                    <a href="https://github.com/pytorch/pytorch/commit/63745dcb5831ffec799d54397098683f7239835f" target="_blank">
-                        Revert "[varlen_attn for inference] add out variant (#176015)"
-                    </a>
-                </div>
-            </div>
-            
-            <div class="commit-meta">
-                👤 PyTorch MergeBot | 🕒 2026-03-07 16:30:18 +0000
-            </div>
-            
-            <div class="commit-analysis">
-                📝 <strong>AI 分析:</strong>
-                1. 这是一个回滚提交，撤销了之前为推理场景添加的变长注意力机制的输出变体功能，属于功能撤销。  
-2. 技术亮点是移除了可能不稳定的新特性实现，避免潜在错误或性能问题影响推理稳定性。  
-3. 对项目的影响是暂时回退到更可靠的代码状态，确保推理功能的稳定性，但延迟了该优化特性的上线。
-            </div>
-        </div>
-        
-        <div class="commit-item">
-            <div class="commit-header">
-                <span class="category-badge" data-category="BugFix">🐛 BugFix</span>
-                <div class="commit-title">
-                    <a href="https://github.com/pytorch/pytorch/commit/db828dd0d315c38c6269bb242e990e7dc4a1c04b" target="_blank">
-                        Revert "[varlen_attn for inference] remove unnecessary tensor creation (#176723)"
-                    </a>
-                </div>
-            </div>
-            
-            <div class="commit-meta">
-                👤 PyTorch MergeBot | 🕒 2026-03-07 16:30:18 +0000
-            </div>
-            
-            <div class="commit-analysis">
-                📝 <strong>AI 分析:</strong>
-                1. 这是一个回滚提交，撤销了之前优化变长注意力推理时移除不必要张量创建的改动，属于功能回退。  
-2. 技术亮点是恢复原有逻辑，可能因为之前的优化引入了未预料的问题（如兼容性或正确性风险）。  
-3. 对项目的影响是暂时放弃性能优化，确保推理稳定性，避免潜在错误影响用户。
+                1. 这是一个功能增强，为分类的点对点操作注册了单维度策略，扩展了 DTensor 对单维张量运算的支持。  
+2. 技术亮点在于完善了 DTensor 的算子策略覆盖，确保单维情况下的分布式计算能正确选择分片策略。  
+3. 对项目影响是提升了 DTensor 在边缘场景下的兼容性和稳定性，使开发者能更可靠地使用相关点对点操作。
             </div>
         </div>
         
@@ -1208,21 +996,21 @@
             <div class="commit-header">
                 <span class="category-badge" data-category="Feature">🚀 Feature</span>
                 <div class="commit-title">
-                    <a href="https://github.com/pytorch/pytorch/commit/c64e3e841293d14f8819ba75caaa91ec780cc2c2" target="_blank">
-                        Update torch-xpu-ops commit pin (#176605)
+                    <a href="https://github.com/pytorch/pytorch/commit/1e05c42ff6bdf830aff8beb0de20ed990f73057c" target="_blank">
+                        export: add float8_e8m0fnu serde support (#176270)
                     </a>
                 </div>
             </div>
             
             <div class="commit-meta">
-                👤 Cui, Yifeng | 🕒 2026-03-07 16:04:54 +0000
+                👤 Chizkiyahu Raful | 🕒 2026-03-10 17:01:13 +0000
             </div>
             
             <div class="commit-analysis">
                 📝 <strong>AI 分析:</strong>
-                1. 这是一个维护性更新，仅修改了 `torch-xpu-ops` 子模块的提交哈希值，用于同步依赖版本。  
-2. 技术亮点是确保 PyTorch 与底层 XPU 算子库保持兼容，属于常规依赖管理。  
-3. 对用户无直接影响，但为开发者保证了 Intel XPU 硬件支持的稳定性和功能一致性。
+                1. 这个 commit 为 PyTorch 的导出系统添加了对 float8_e8m0fnu 数据类型的序列化与反序列化支持，属于新功能扩展。  
+2. 技术亮点是实现了对新型浮点数格式 float8（8 位浮点数）的完整导出支持，包括类型映射和序列化逻辑。  
+3. 对项目的影响是增强了 PyTorch 导出功能对新兴硬件数据类型（如 NVIDIA Hopper 架构的 FP8）的兼容性，方便开发者使用该格式进行模型部署。
             </div>
         </div>
         
@@ -1230,21 +1018,21 @@
             <div class="commit-header">
                 <span class="category-badge" data-category="BugFix">🐛 BugFix</span>
                 <div class="commit-title">
-                    <a href="https://github.com/pytorch/pytorch/commit/ca2c3e0d2af294920a4685074e8b891fb8be5011" target="_blank">
-                        [inductor] Add forward/backward mode to cudagraph tree log messages (#176556)
+                    <a href="https://github.com/pytorch/pytorch/commit/dd829630bafa0d6746bfefcd8d54e0fd5c608d41" target="_blank">
+                        Revert "[ROCm]Handle capture-time HIP event query errors in NCCL watchdog (#175377)"
                     </a>
                 </div>
             </div>
             
             <div class="commit-meta">
-                👤 Bin Bao | 🕒 2026-03-06 13:30:33 -0800
+                👤 PyTorch MergeBot | 🕒 2026-03-10 16:57:38 +0000
             </div>
             
             <div class="commit-analysis">
                 📝 <strong>AI 分析:</strong>
-                1. 这是一个功能增强，在CUDA图树日志消息中添加了前向/反向传播模式的标识，方便调试和性能分析。  
-2. 技术亮点是改进了Inductor编译器的日志输出，通过区分前向和反向传播阶段，提升了CUDA图优化过程的调试可读性。  
-3. 对开发者更友好，能更清晰地追踪CUDA图在不同计算阶段的行为，有助于性能调优和问题定位。
+                1. 这是一个回滚操作，撤销了之前处理NCCL看门狗中捕获时HIP事件查询错误的修改，属于bug修复的回退。  
+2. 技术亮点是谨慎处理了HIP事件查询的异常机制，避免因错误处理引入不稳定因素。  
+3. 对项目的影响是暂时恢复到更稳定的状态，防止ROCm环境下NCCL看门狗可能出现的意外错误。
             </div>
         </div>
         
@@ -1252,21 +1040,219 @@
             <div class="commit-header">
                 <span class="category-badge" data-category="BugFix">🐛 BugFix</span>
                 <div class="commit-title">
-                    <a href="https://github.com/pytorch/pytorch/commit/bc65f648c9c8ca7c6da252e00a867128c780e6b6" target="_blank">
-                        Revert "Fix FxConverter mutation tracking and scatter_reduce kwargs for FXIR backend (#175860)"
+                    <a href="https://github.com/pytorch/pytorch/commit/6c047fef0ea767a6646c016f17030bf5f6020fe4" target="_blank">
+                        Revert "[ROCm] Avoid watchdog hipEventQuery during active graph capture (#176251)"
                     </a>
                 </div>
             </div>
             
             <div class="commit-meta">
-                👤 PyTorch MergeBot | 🕒 2026-03-07 07:27:46 +0000
+                👤 PyTorch MergeBot | 🕒 2026-03-10 16:53:42 +0000
             </div>
             
             <div class="commit-analysis">
                 📝 <strong>AI 分析:</strong>
-                1. 这是一个回滚提交，撤销了之前对FX转换器中突变跟踪和scatter_reduce参数处理的修复，因为该修复可能引入了新的问题或不稳定因素。  
-2. 技术层面是恢复原有代码逻辑，避免因前次修改导致的潜在错误或兼容性问题，属于稳定性维护操作。  
-3. 对项目的影响是暂时回退相关功能变更，可能影响依赖该修复的用户，但确保了FX后端的整体稳定性。
+                1. 这是一个回滚操作，撤销了之前为避免在图形捕获期间执行hipEventQuery而做的修改，属于bug修复。  
+2. 技术亮点是恢复了原有逻辑，确保ROCm平台在图形捕获期间的稳定性和正确性。  
+3. 对项目的影响是避免了因事件查询导致的潜在运行时错误，维护了ROCm用户的使用体验。
+            </div>
+        </div>
+        
+        <div class="commit-item">
+            <div class="commit-header">
+                <span class="category-badge" data-category="BugFix">🐛 BugFix</span>
+                <div class="commit-title">
+                    <a href="https://github.com/pytorch/pytorch/commit/b9d551df92f014cb50b8037e598adf6695402c52" target="_blank">
+                        bot tweaks from mislabeld-data (#176946)
+                    </a>
+                </div>
+            </div>
+            
+            <div class="commit-meta">
+                👤 drisspg | 🕒 2026-03-09 17:03:34 -0700
+            </div>
+            
+            <div class="commit-analysis">
+                📝 <strong>AI 分析:</strong>
+                1. 这是一个针对机器人配置的微调提交，主要修复了标签数据错误的问题，属于bug修复类型。  
+2. 技术亮点是优化了数据标签处理逻辑，提升了机器人对数据分类的准确性。  
+3. 对项目的影响是改善了自动化流程的可靠性，减少了因数据误标导致的任务错误。
+            </div>
+        </div>
+        
+        <div class="commit-item">
+            <div class="commit-header">
+                <span class="category-badge" data-category="Config">🔧 Config</span>
+                <div class="commit-title">
+                    <a href="https://github.com/pytorch/pytorch/commit/8b1065cd9cd2c73db6955a8ef6159c22afea1cc6" target="_blank">
+                        [DTensor] Add nansum sharding strategy and test (#176819)
+                    </a>
+                </div>
+            </div>
+            
+            <div class="commit-meta">
+                👤 Pian Pawakapan | 🕒 2026-03-09 22:21:19 -0700
+            </div>
+            
+            <div class="commit-analysis">
+                📝 <strong>AI 分析:</strong>
+                1. 该 commit 为 DTensor 添加了 `nansum` 操作的分布式张量分片策略（sharding strategy）及相应测试，属于新功能扩展。  
+2. 技术亮点是扩展了 DTensor 对含 NaN 值张量的规约操作支持，通过实现分片策略确保在分布式环境下能正确处理 NaN 值。  
+3. 对项目影响是增强了 PyTorch 分布式计算的功能完整性，使开发者能在分布式训练中更安全地处理含缺失值的数据。
+            </div>
+        </div>
+        
+        <div class="commit-item">
+            <div class="commit-header">
+                <span class="category-badge" data-category="BugFix">🐛 BugFix</span>
+                <div class="commit-title">
+                    <a href="https://github.com/pytorch/pytorch/commit/68e8536a4f3d5661e2e8b026906083914aab24d0" target="_blank">
+                        [nn] Support meta device and 0-element tensors in all init methods (#176614)
+                    </a>
+                </div>
+            </div>
+            
+            <div class="commit-meta">
+                👤 albanD | 🕒 2026-03-10 16:10:40 +0000
+            </div>
+            
+            <div class="commit-analysis">
+                📝 <strong>AI 分析:</strong>
+                1. 该 commit 为 PyTorch 的 nn 模块所有初始化方法添加了对 meta 设备和 0 元素张量的支持，属于功能增强和兼容性修复。  
+2. 技术亮点是统一了初始化逻辑，使 `torch.nn.init` 方法能正确处理无实际存储的 meta 张量以及空形状的张量。  
+3. 对项目影响是提升了框架的健壮性和用户体验，开发者在使用元设备（如形状推导）或边缘情况张量时不再需要额外处理。
+            </div>
+        </div>
+        
+        <div class="commit-item">
+            <div class="commit-header">
+                <span class="category-badge" data-category="BugFix">🐛 BugFix</span>
+                <div class="commit-title">
+                    <a href="https://github.com/pytorch/pytorch/commit/08b6f48d871affbc7abe9277020aed882fdf110a" target="_blank">
+                        [BE][Ez][Codemod]: Add missing std::move to tuple with std::vector elements (#176835)
+                    </a>
+                </div>
+            </div>
+            
+            <div class="commit-meta">
+                👤 Aaron Gokaslan | 🕒 2026-03-10 15:58:17 +0000
+            </div>
+            
+            <div class="commit-analysis">
+                📝 <strong>AI 分析:</strong>
+                1. 这是一个简单的代码修复，在包含 `std::vector` 元素的 `std::tuple` 上添加了缺失的 `std::move` 调用，以避免不必要的拷贝。  
+2. 技术亮点是性能优化，通过移动语义（move semantics）提升了代码效率，减少了容器复制开销。  
+3. 对项目影响较小，主要优化了内部代码性能，对用户无感知，但有助于提升相关操作的执行效率。
+            </div>
+        </div>
+        
+        <div class="commit-item">
+            <div class="commit-header">
+                <span class="category-badge" data-category="Refactor">♻️ Refactor</span>
+                <div class="commit-title">
+                    <a href="https://github.com/pytorch/pytorch/commit/b180c2f31bc04e0a699368cffede8aed2b0e5cd5" target="_blank">
+                        Enable reduction splitting for explicitly hinted unbacked symbols (#175835)
+                    </a>
+                </div>
+            </div>
+            
+            <div class="commit-meta">
+                👤 Laith Sakka | 🕒 2026-03-09 15:15:22 -0700
+            </div>
+            
+            <div class="commit-analysis">
+                📝 <strong>AI 分析:</strong>
+                1. 这是一个功能增强，允许对显式提示的未绑定符号进行归约拆分，扩展了PyTorch符号形状系统的能力。  
+2. 技术亮点是改进了符号形状推理，通过识别用户提示的未绑定符号来优化归约操作的编译时处理。  
+3. 对开发者而言，这提升了动态形状场景下编译器的优化灵活性，但普通用户通常无感知。
+            </div>
+        </div>
+        
+        <div class="commit-item">
+            <div class="commit-header">
+                <span class="category-badge" data-category="Refactor">♻️ Refactor</span>
+                <div class="commit-title">
+                    <a href="https://github.com/pytorch/pytorch/commit/c58c2f2c523a8f1938b0d08e1a48c1fc06445b0e" target="_blank">
+                        Reland "Make DeviceMesh Opaque" (#176661)
+                    </a>
+                </div>
+            </div>
+            
+            <div class="commit-meta">
+                👤 angelayi | 🕒 2026-03-10 15:30:30 +0000
+            </div>
+            
+            <div class="commit-analysis">
+                📝 <strong>AI 分析:</strong>
+                1. 这是一个重构提交，将 DeviceMesh 类改为不透明类型（Opaque），隐藏内部实现细节以提升封装性。  
+2. 技术亮点是架构改进，通过减少用户对内部结构的依赖，为后续分布式计算组件的优化和扩展提供灵活性。  
+3. 对开发者影响较大，需适配新的接口，但长期看能提高代码可维护性并降低未来变更的兼容性风险。
+            </div>
+        </div>
+        
+        <div class="commit-item">
+            <div class="commit-header">
+                <span class="category-badge" data-category="Feature">🚀 Feature</span>
+                <div class="commit-title">
+                    <a href="https://github.com/pytorch/pytorch/commit/8de9067a05b00eba5d08d8c6880dd9961153fc69" target="_blank">
+                        [EZ][MPS] Extend histogram to float/bfloat (#176913)
+                    </a>
+                </div>
+            </div>
+            
+            <div class="commit-meta">
+                👤 Nikita Shulga | 🕒 2026-03-09 20:17:07 -0700
+            </div>
+            
+            <div class="commit-analysis">
+                📝 <strong>AI 分析:</strong>
+                1. 这个 commit 扩展了 MPS 后端对 histogram 算子的支持，使其能够处理 float 和 bfloat16 数据类型。  
+2. 技术亮点是增加了对浮点类型输入的直方图计算支持，填补了 MPS 后端在该功能上的缺失。  
+3. 对项目的影响是提升了 PyTorch 在 macOS GPU 上的功能完整性，使开发者能在 MPS 设备上直接处理浮点数据的直方图统计。
+            </div>
+        </div>
+        
+        <div class="commit-item">
+            <div class="commit-header">
+                <span class="category-badge" data-category="Performance">⚡ Performance</span>
+                <div class="commit-title">
+                    <a href="https://github.com/pytorch/pytorch/commit/ace6a795e26514b86e7d44e4106f336035a12091" target="_blank">
+                        Update torchbenchmark pin to latest (#176933)
+                    </a>
+                </div>
+            </div>
+            
+            <div class="commit-meta">
+                👤 Andrey Talman | 🕒 2026-03-10 14:14:37 +0000
+            </div>
+            
+            <div class="commit-analysis">
+                📝 <strong>AI 分析:</strong>
+                1. 这是一个功能更新，将 torchbenchmark 的版本依赖更新到最新版本，属于依赖管理维护。  
+2. 技术亮点是确保项目使用最新的基准测试工具，可能包含性能优化或新模型支持。  
+3. 对开发者来说，能获得更准确的性能测试结果，但对最终用户无直接影响。
+            </div>
+        </div>
+        
+        <div class="commit-item">
+            <div class="commit-header">
+                <span class="category-badge" data-category="BugFix">🐛 BugFix</span>
+                <div class="commit-title">
+                    <a href="https://github.com/pytorch/pytorch/commit/e47de660122005e47906d7066d1511cb11b31b37" target="_blank">
+                        Fix running decompositions on ep with ops that have nested tensor list args (#176355)
+                    </a>
+                </div>
+            </div>
+            
+            <div class="commit-meta">
+                👤 Georgia Phillips | 🕒 2026-03-10 12:09:51 +0000
+            </div>
+            
+            <div class="commit-analysis">
+                📝 <strong>AI 分析:</strong>
+                1. 这是一个bug修复，解决了在导出程序中使用具有嵌套张量列表参数的算子时，运行算子分解失败的问题。  
+2. 技术亮点是改进了算子分解处理逻辑，使其能正确识别和处理嵌套张量列表参数的结构。  
+3. 对项目的影响是修复了导出过程中的潜在错误，提升了PyTorch导出功能的稳定性和可靠性。
             </div>
         </div>
         
