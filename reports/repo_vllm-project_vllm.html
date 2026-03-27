@@ -147,10 +147,10 @@
         <div class="header">
             <a href="index.html" class="back-btn">← 返回主页</a>
             <h1>📦 vllm-project/vllm</h1>
-            <p>生成时间: 2026-03-25 02:27:09</p>
+            <p>生成时间: 2026-03-27 02:41:02</p>
             
             <div class="category-stats">
-                <span class="category-stat">🐛 BugFix: 24</span><span class="category-stat">⚡ Performance: 11</span><span class="category-stat">♻️ Refactor: 9</span><span class="category-stat">🔧 Config: 2</span><span class="category-stat">📚 Docs: 2</span><span class="category-stat">🚀 Feature: 1</span><span class="category-stat">✅ Test: 1</span>
+                <span class="category-stat">🐛 BugFix: 32</span><span class="category-stat">♻️ Refactor: 10</span><span class="category-stat">⚡ Performance: 3</span><span class="category-stat">🔧 Config: 2</span><span class="category-stat">✅ Test: 2</span><span class="category-stat">🚀 Feature: 1</span>
             </div>
         </div>
         
@@ -158,91 +158,67 @@
             
         <div class="commit-item">
             <div class="commit-header">
-                <span class="category-badge" data-category="Performance">⚡ Performance</span>
-                <div class="commit-title">
-                    <a href="https://github.com/vllm-project/vllm/commit/a93a53f8a1302c992ad185e70c6ab4affe43c4d7" target="_blank">
-                        [Performance] Auto-enable prefetch on NFS with RAM guard (#37673)
-                    </a>
-                </div>
-            </div>
-            
-            <div class="commit-meta">
-                👤 Artem Perevedentsev | 🕒 2026-03-25 02:31:14 +0200
-            </div>
-            
-            <div class="commit-analysis">
-                📝 <strong>AI 分析:</strong>
-                1. 这是一个性能优化提交，在NFS（网络文件系统）环境下自动启用预取功能，并添加了内存保护机制以防止内存溢出。
-
-2. 主要技术亮点是智能检测NFS存储并自动优化预取策略，通过内存监控机制平衡性能与资源使用。
-
-3. 对用户来说能提升NFS存储的模型加载速度，对开发者简化了配置，但需注意内存监控可能增加少量运行时开销。
-            </div>
-        </div>
-        
-        <div class="commit-item">
-            <div class="commit-header">
-                <span class="category-badge" data-category="BugFix">🐛 BugFix</span>
-                <div class="commit-title">
-                    <a href="https://github.com/vllm-project/vllm/commit/679c6a3eccfadb5f80957801f1b6a0c9e8cc9b41" target="_blank">
-                        [Bugfix][ROCm][MoE] Fix mxfp4 oracle regressions from #37128 (#37787)
-                    </a>
-                </div>
-            </div>
-            
-            <div class="commit-meta">
-                👤 Andreas Karatzas | 🕒 2026-03-24 19:17:33 -0500
-            </div>
-            
-            <div class="commit-analysis">
-                📝 <strong>AI 分析:</strong>
-                1. 这是一个针对 ROCm 平台和 MoE（专家混合）模型的 bug 修复，主要解决了由 PR #37128 引入的 mxfp4 精度格式相关的回归问题。  
-2. 技术亮点是修复了 ROCm 后端在特定量化格式（mxfp4）下的正确性问题，确保了混合精度推理的数值准确性。  
-3. 该修复直接影响使用 ROCm GPU 和 MoE 模型的用户，恢复了 mxfp4 量化的正常功能，避免了因精度错误导致的结果异常。
-            </div>
-        </div>
-        
-        <div class="commit-item">
-            <div class="commit-header">
-                <span class="category-badge" data-category="BugFix">🐛 BugFix</span>
-                <div class="commit-title">
-                    <a href="https://github.com/vllm-project/vllm/commit/8bbb7c7f200ea791eb4ccd15e77433e29e13ec95" target="_blank">
-                        [ROCm][CI][PD] Add Hybrid SSM integration tests to CI (#37924)
-                    </a>
-                </div>
-            </div>
-            
-            <div class="commit-meta">
-                👤 Andreas Karatzas | 🕒 2026-03-24 18:58:39 -0500
-            </div>
-            
-            <div class="commit-analysis">
-                📝 <strong>AI 分析:</strong>
-                1. 该 commit 在 ROCm CI 中添加了 Hybrid SSM（选择性状态空间模型）的集成测试，属于功能测试增强和持续集成流程改进。  
-2. 技术亮点是扩展了 AMD GPU 平台的测试覆盖范围，确保 Hybrid SSM 功能在 ROCm 环境下稳定运行。  
-3. 对项目而言，这提升了 ROCm 支持的可靠性，有助于开发者及早发现兼容性问题，但普通用户无直接影响。
-            </div>
-        </div>
-        
-        <div class="commit-item">
-            <div class="commit-header">
                 <span class="category-badge" data-category="Config">🔧 Config</span>
                 <div class="commit-title">
-                    <a href="https://github.com/vllm-project/vllm/commit/af945615b599ec17a9a5b4a9533b9bb2dd29d584" target="_blank">
-                        [release] Move the rest of release jobs to release queue (#38044)
+                    <a href="https://github.com/vllm-project/vllm/commit/d86060122aaf68eb2387c8999f1ac94bf469c2a8" target="_blank">
+                        [CI/Build] enable Intel XPU test flow with prebuilt image (#37447)
                     </a>
                 </div>
             </div>
             
             <div class="commit-meta">
-                👤 Kevin H. Luu | 🕒 2026-03-24 16:40:58 -0700
+                👤 wenjun liu | 🕒 2026-03-27 09:16:04 +0800
             </div>
             
             <div class="commit-analysis">
                 📝 <strong>AI 分析:</strong>
-                1. 这是一个CI/CD配置更新，将剩余的发布任务迁移到专用的release队列，属于基础设施优化。  
-2. 技术亮点是优化了GitHub Actions的作业调度策略，通过队列隔离提升发布流程的可靠性和资源管理效率。  
-3. 对开发者而言，这能减少日常构建队列的拥堵，确保发布任务更稳定地执行，但普通用户无感知。
+                1. 这是一个CI/CD构建配置更新，启用了Intel XPU的测试流程，使用预构建镜像来支持新的硬件平台测试。  
+2. 技术亮点是扩展了CI系统对Intel XPU硬件的支持，通过预构建镜像提升测试环境的部署效率和一致性。  
+3. 对项目的影响是增强了硬件兼容性测试能力，为开发者提供了更全面的跨平台验证，但普通用户无直接影响。
+            </div>
+        </div>
+        
+        <div class="commit-item">
+            <div class="commit-header">
+                <span class="category-badge" data-category="BugFix">🐛 BugFix</span>
+                <div class="commit-title">
+                    <a href="https://github.com/vllm-project/vllm/commit/f73bcb1c51cfc764f534fcd109f8437e196be2ec" target="_blank">
+                        Various Transformers v5 config fixes (#38247)
+                    </a>
+                </div>
+            </div>
+            
+            <div class="commit-meta">
+                👤 Harry Mellor | 🕒 2026-03-26 23:06:59 +0000
+            </div>
+            
+            <div class="commit-analysis">
+                📝 <strong>AI 分析:</strong>
+                1. 这是一个针对 Transformers v5 配置的 bug 修复，主要修正了多个模型配置文件中的参数错误和兼容性问题。
+2. 技术亮点是确保了 vLLM 与新版 Transformers 库的兼容性，通过精确调整模型配置参数来避免运行时错误。
+3. 对项目的影响是提升了框架的稳定性和对新版上游库的支持，使开发者和用户能无缝使用最新的模型架构。
+            </div>
+        </div>
+        
+        <div class="commit-item">
+            <div class="commit-header">
+                <span class="category-badge" data-category="BugFix">🐛 BugFix</span>
+                <div class="commit-title">
+                    <a href="https://github.com/vllm-project/vllm/commit/28048bd6b09cb164a934a8c134b7d7a7f4733b4f" target="_blank">
+                        [Bugfix] Add missing f-string prefix in xgrammar choices error message (#38162)
+                    </a>
+                </div>
+            </div>
+            
+            <div class="commit-meta">
+                👤 yzong-rh | 🕒 2026-03-26 17:43:03 -0400
+            </div>
+            
+            <div class="commit-analysis">
+                📝 <strong>AI 分析:</strong>
+                1. 这是一个 bug 修复，修复了 xgrammar 模块中错误消息字符串缺少 f-string 前缀的问题，导致变量值无法正确显示。  
+2. 技术亮点是修正了字符串格式化的小错误，确保错误信息能正确输出相关变量值，提升了调试体验。  
+3. 对开发者来说，修复后错误提示更清晰，有助于快速定位问题，但不会影响最终用户的功能或性能。
             </div>
         </div>
         
@@ -250,21 +226,23 @@
             <div class="commit-header">
                 <span class="category-badge" data-category="Performance">⚡ Performance</span>
                 <div class="commit-title">
-                    <a href="https://github.com/vllm-project/vllm/commit/82580b10acaac3b129d84f17d3defbfbb2eeb161" target="_blank">
-                        [Perf] Disable inductor runtime asserts by default for serving perfor… (#37485)
+                    <a href="https://github.com/vllm-project/vllm/commit/c32e97602d54f34fb60ff956dae09f9a557ec50a" target="_blank">
+                        [Model Runner V2] Enable forcing a specific acceptance rate during rejection sampling (#38045)
                     </a>
                 </div>
             </div>
             
             <div class="commit-meta">
-                👤 Terry Gao | 🕒 2026-03-24 16:37:51 -0700
+                👤 Giancarlo Delfin | 🕒 2026-03-26 13:38:12 -0700
             </div>
             
             <div class="commit-analysis">
                 📝 <strong>AI 分析:</strong>
-                1. 这是一个性能优化提交，默认关闭了PyTorch Inductor的运行时断言，以减少推理服务中的性能开销。  
-2. 技术亮点是通过禁用调试断言来提升推理速度，同时保留了通过环境变量重新启用的灵活性。  
-3. 对项目的影响是显著提升vLLM推理服务的性能，对用户透明且不影响开发者调试需求。
+                1. 这是一个功能增强提交，为拒绝采样（rejection sampling）添加了强制指定接受率（acceptance rate）的能力，属于新特性开发。
+
+2. 技术亮点在于扩展了模型运行器V2的采样控制能力，允许用户通过配置参数精确控制采样过程中的接受率，增强了采样策略的灵活性。
+
+3. 对项目影响是：为开发者提供了更细粒度的采样控制选项，有助于在特定场景下优化生成质量或性能，但普通用户通常无需直接使用此高级功能。
             </div>
         </div>
         
@@ -272,23 +250,21 @@
             <div class="commit-header">
                 <span class="category-badge" data-category="BugFix">🐛 BugFix</span>
                 <div class="commit-title">
-                    <a href="https://github.com/vllm-project/vllm/commit/a0d487b2e1d56a3e5e0fcdf7026d24282f20f13f" target="_blank">
-                        nano_nemotron_vl: suppress readonly torch.from_numpy() warning in image and video resize paths (#37903)
+                    <a href="https://github.com/vllm-project/vllm/commit/0904b6550d8e2d11295762fabf3f0d7972bd0300" target="_blank">
+                        Fix multi-node allreduce fusion (#38136)
                     </a>
                 </div>
             </div>
             
             <div class="commit-meta">
-                👤 Netanel Haber | 🕒 2026-03-25 01:25:56 +0200
+                👤 Wei Zhao | 🕒 2026-03-26 16:24:36 -0400
             </div>
             
             <div class="commit-analysis">
                 📝 <strong>AI 分析:</strong>
-                1. 这是一个bug修复，通过抑制PyTorch的只读数组警告，解决了在图像和视频尺寸调整路径中`torch.from_numpy()`产生的警告问题。
-
-2. 技术亮点是使用`warnings.filterwarnings()`精准过滤特定警告，避免了不必要的控制台输出干扰，同时保持了代码的向后兼容性。
-
-3. 对开发者而言提升了调试体验，消除了无关警告的干扰；对用户无直接影响，但保持了日志的整洁性。
+                1. 这是一个bug修复，解决了多节点环境下allreduce操作融合失效的问题，确保分布式训练中梯度同步的正确性。  
+2. 技术亮点是修复了跨节点通信时的条件判断逻辑，避免了因节点数判断错误导致融合功能被禁用。  
+3. 该修复提升了多节点训练的稳定性和通信效率，对使用大规模分布式训练的用户至关重要。
             </div>
         </div>
         
@@ -296,45 +272,21 @@
             <div class="commit-header">
                 <span class="category-badge" data-category="BugFix">🐛 BugFix</span>
                 <div class="commit-title">
-                    <a href="https://github.com/vllm-project/vllm/commit/b73b5b06290c0d1439b09db71eef15fe59bc1fbb" target="_blank">
-                        Make microbatch optimization (DBO) work with general models (#37926)
+                    <a href="https://github.com/vllm-project/vllm/commit/f26fcdfb9e50fef30381ed27fa956f7a43b0b1aa" target="_blank">
+                        [Bugfix][ROCm] Fix lru_cache on paged_mqa_logits_module (#37547)
                     </a>
                 </div>
             </div>
             
             <div class="commit-meta">
-                👤 Junhao | 🕒 2026-03-24 17:40:08 -0400
+                👤 Stig-Arne Grönroos | 🕒 2026-03-26 21:01:05 +0200
             </div>
             
             <div class="commit-analysis">
                 📝 <strong>AI 分析:</strong>
-                1. 这是一个功能增强，使微批次优化（DBO）能够支持通用模型，修复了之前仅适用于特定模型架构的限制。
-
-2. 技术亮点是扩展了DBO的兼容性，通过调整调度逻辑使其能适配更多模型类型，属于架构改进。
-
-3. 对项目而言，这意味着更多模型可以受益于DBO的内存优化，提升了框架的通用性和用户体验。
-            </div>
-        </div>
-        
-        <div class="commit-item">
-            <div class="commit-header">
-                <span class="category-badge" data-category="Performance">⚡ Performance</span>
-                <div class="commit-title">
-                    <a href="https://github.com/vllm-project/vllm/commit/0f0e03890ed7edd41eb0b5e2de21447b3f70586c" target="_blank">
-                        [UX] Add flashinfer-cubin as CUDA default dep (#37233)
-                    </a>
-                </div>
-            </div>
-            
-            <div class="commit-meta">
-                👤 Michael Goin | 🕒 2026-03-24 22:13:08 +0100
-            </div>
-            
-            <div class="commit-analysis">
-                📝 <strong>AI 分析:</strong>
-                1. 这是一个功能增强提交，将 flashinfer-cubin 添加为 CUDA 的默认依赖项，属于用户体验优化。  
-2. 技术亮点是引入了 flashinfer-cubin 作为默认依赖，可能提升了 GPU 推理性能或扩展了算子支持。  
-3. 对项目的影响是用户无需手动配置即可获得更好的推理性能，开发者可以更便捷地使用相关优化功能。
+                1. 这是一个针对ROCm平台的bug修复，主要解决了paged_mqa_logits_module中lru_cache功能异常的问题。  
+2. 技术亮点是修复了特定硬件平台下的缓存机制错误，确保多查询注意力（MQA）模块在分页内存管理下能正确复用计算结果。  
+3. 该修复提升了ROCm设备上推理的稳定性和性能，避免因缓存失效导致重复计算，对使用AMD GPU的用户有直接影响。
             </div>
         </div>
         
@@ -342,23 +294,43 @@
             <div class="commit-header">
                 <span class="category-badge" data-category="BugFix">🐛 BugFix</span>
                 <div class="commit-title">
-                    <a href="https://github.com/vllm-project/vllm/commit/4b53740d7f3c2216be7a737d585bff37f4975d2e" target="_blank">
-                        [MRV2] Fix for DS v3.2 (#38030)
+                    <a href="https://github.com/vllm-project/vllm/commit/bc9c6fbbe655072a0ff924a44b1069bd11ba0772" target="_blank">
+                        [ROCm] [Bugfix] [Release] Fix nightly rocm release pipeline (#38263)
                     </a>
                 </div>
             </div>
             
             <div class="commit-meta">
-                👤 Woosuk Kwon | 🕒 2026-03-24 14:03:24 -0700
+                👤 TJian | 🕒 2026-03-27 02:47:10 +0800
             </div>
             
             <div class="commit-analysis">
                 📝 <strong>AI 分析:</strong>
-                1. 这是一个针对 DeepSpeed v3.2 的兼容性修复，属于 bug 修复类型，解决了 vLLM 与新版 DeepSpeed 框架的集成问题。
-
-2. 技术亮点是确保了 vLLM 的多轮推理优化（MRV2）功能能在 DeepSpeed v3.2 环境下正常工作，属于关键的第三方依赖兼容性维护。
-
-3. 对项目的影响是保障了使用 DeepSpeed 后端的用户和开发者能顺利升级到 v3.2 版本，避免了潜在的运行时错误，维持了框架的稳定性和可用性。
+                1. 这是一个针对 ROCm 平台的 bug 修复，主要解决了夜间 ROCm 发布流水线的构建失败问题，属于 CI/CD 流程的维护性修复。  
+2. 技术亮点在于修复了特定环境下的依赖安装或配置错误，确保了 ROCm 版本能够正常自动化构建和发布。  
+3. 对项目的影响是稳定了 ROCm 后端的持续集成流程，避免影响依赖该版本的用户和开发者获取最新构建。
+            </div>
+        </div>
+        
+        <div class="commit-item">
+            <div class="commit-header">
+                <span class="category-badge" data-category="BugFix">🐛 BugFix</span>
+                <div class="commit-title">
+                    <a href="https://github.com/vllm-project/vllm/commit/bff9a1c2666de363d5b34f629e9fa61455a338ca" target="_blank">
+                        [ROCm][CI] Override PYTORCH_ROCM_ARCH with detected GPU arch in test containers (#38165)
+                    </a>
+                </div>
+            </div>
+            
+            <div class="commit-meta">
+                👤 Andreas Karatzas | 🕒 2026-03-26 13:33:45 -0500
+            </div>
+            
+            <div class="commit-analysis">
+                📝 <strong>AI 分析:</strong>
+                1. 这是一个针对 ROCm 平台的 CI 配置修复，在测试容器中自动检测 GPU 架构并覆盖 `PYTORCH_ROCM_ARCH` 环境变量，确保测试使用正确的硬件架构。  
+2. 技术亮点是实现了容器内 GPU 架构的自动检测与动态配置，避免了因环境变量设置不当导致的测试失败或性能问题。  
+3. 该提交提升了 ROCm 平台 CI 测试的健壮性和可移植性，对开发者而言减少了手动配置负担，确保了测试环境与运行硬件的一致性。
             </div>
         </div>
         
@@ -366,63 +338,21 @@
             <div class="commit-header">
                 <span class="category-badge" data-category="Refactor">♻️ Refactor</span>
                 <div class="commit-title">
-                    <a href="https://github.com/vllm-project/vllm/commit/4e824d1c835d9b57db621297e8d9119bfc32fb2e" target="_blank">
-                        [Model Runner V2][Minor] Simplify PP logic (#38031)
+                    <a href="https://github.com/vllm-project/vllm/commit/db01535e2bd5641e8cd7f88e5febf1d2a26bfbce" target="_blank">
+                        [ROCm][CI] Add uv pip compile workflow for rocm-test.txt lockfile (#37930)
                     </a>
                 </div>
             </div>
             
             <div class="commit-meta">
-                👤 Nick Hill | 🕒 2026-03-24 13:57:17 -0700
+                👤 Andreas Karatzas | 🕒 2026-03-26 12:44:01 -0500
             </div>
             
             <div class="commit-analysis">
                 📝 <strong>AI 分析:</strong>
-                1. 这是一个重构性质的提交，主要简化了模型运行器V2中的流水线并行（PP）逻辑，属于架构改进。  
-2. 技术亮点是通过移除冗余代码和优化逻辑结构，提升了代码可读性和可维护性。  
-3. 对开发者而言，这降低了后续开发的理解和维护成本，但不会直接影响终端用户的功能或性能。
-            </div>
-        </div>
-        
-        <div class="commit-item">
-            <div class="commit-header">
-                <span class="category-badge" data-category="Docs">📚 Docs</span>
-                <div class="commit-title">
-                    <a href="https://github.com/vllm-project/vllm/commit/0c1809c8065f51646c9ca6ce7911831a763a5d18" target="_blank">
-                        Add Ubuntu 24.04 support for Docker builds (#35386)
-                    </a>
-                </div>
-            </div>
-            
-            <div class="commit-meta">
-                👤 amey asgaonkar | 🕒 2026-03-24 13:34:44 -0700
-            </div>
-            
-            <div class="commit-analysis">
-                📝 <strong>AI 分析:</strong>
-                1. 这是一个功能增强型提交，为 Docker 构建添加了 Ubuntu 24.04 的官方支持，属于基础设施更新。
-2. 技术亮点是扩展了项目的 CI/CD 兼容性，确保构建系统能适配新的操作系统版本。
-3. 对项目的影响是提升了开发环境的灵活性和未来兼容性，使开发者能在更新的 Ubuntu 版本上顺利构建和测试。
-            </div>
-        </div>
-        
-        <div class="commit-item">
-            <div class="commit-header">
-                <span class="category-badge" data-category="Performance">⚡ Performance</span>
-                <div class="commit-title">
-                    <a href="https://github.com/vllm-project/vllm/commit/8c47fdfdb17c7bab93c70722b7adf71d87deddb9" target="_blank">
-                        [FlexAttention] allow custom mask mod (#37692)
-                    </a>
-                </div>
-            </div>
-            
-            <div class="commit-meta">
-                👤 liangel-02 | 🕒 2026-03-24 16:03:24 -0400
-            </div>
-            
-            <div class="commit-analysis">
-                📝 <strong>AI 分析:</strong>
-                这是一个功能增强型提交，主要允许FlexAttention支持自定义的mask模块。技术亮点是扩展了注意力机制的灵活性，使开发者能注入自定义的掩码逻辑。这对项目的影响是提升了框架的扩展性，方便研究者实现更复杂的注意力模式，而不影响核心性能。
+                1. 这是一个针对 ROCm 平台的 CI/CD 改进，新增了一个使用 `uv` 工具来生成 `rocm-test.txt` 依赖锁文件的工作流程，属于开发流程优化。  
+2. 技术亮点是引入了更快的 `uv` 包管理工具来管理 ROCm 测试环境的依赖，提升了依赖解析和锁文件生成的效率。  
+3. 对项目的影响是改善了 ROCm 平台开发者的体验，使测试环境依赖管理更快速可靠，但普通用户无感知。
             </div>
         </div>
         
@@ -430,595 +360,21 @@
             <div class="commit-header">
                 <span class="category-badge" data-category="BugFix">🐛 BugFix</span>
                 <div class="commit-title">
-                    <a href="https://github.com/vllm-project/vllm/commit/54b0578adacd0413b18c0f59948dabc7533a6524" target="_blank">
-                        [Bugfix] Pass hf_token through config loading paths for gated model support (#37920)
+                    <a href="https://github.com/vllm-project/vllm/commit/a4cf9b22ba8f08df8d7977c2b0753fe20231cffc" target="_blank">
+                        [ROCM][Bugfix] Use correct stride in cp_mha_gather_cache_kernel for hybrid model (#37228) (#37228)
                     </a>
                 </div>
             </div>
             
             <div class="commit-meta">
-                👤 Javier De Jesus | 🕒 2026-03-24 20:22:05 +0100
+                👤 jennyyyyzhen | 🕒 2026-03-26 10:33:39 -0700
             </div>
             
             <div class="commit-analysis">
                 📝 <strong>AI 分析:</strong>
-                这是一个 bug 修复提交，主要功能是**在加载配置文件的路径中传递 `hf_token` 参数，以支持需要身份验证的私有模型**。技术亮点是**统一了 Hugging Face 模型加载时的认证流程**，确保在多个配置加载场景下都能正确传递令牌。这对项目的影响是**修复了用户无法正常加载 gated/private 模型的问题，提升了相关功能的可靠性**。
-            </div>
-        </div>
-        
-        <div class="commit-item">
-            <div class="commit-header">
-                <span class="category-badge" data-category="BugFix">🐛 BugFix</span>
-                <div class="commit-title">
-                    <a href="https://github.com/vllm-project/vllm/commit/89f572dbc0bf18efaaec52b95119bf4c01330dfe" target="_blank">
-                        [BugFix] fix VLLM_USE_STANDALONE_COMPILE=0 (#38015)
-                    </a>
-                </div>
-            </div>
-            
-            <div class="commit-meta">
-                👤 Richard Zou | 🕒 2026-03-24 15:08:26 -0400
-            </div>
-            
-            <div class="commit-analysis">
-                📝 <strong>AI 分析:</strong>
-                1. 这是一个 Bug 修复，解决了当环境变量 `VLLM_USE_STANDALONE_COMPILE` 设置为 0 时，编译过程可能无法正常工作的配置问题。  
-2. 技术亮点在于修正了编译系统的条件判断逻辑，确保了在禁用独立编译模式时，系统能正确回退到标准编译流程。  
-3. 对项目的影响是提升了编译配置的可靠性，使开发者在自定义编译选项时能获得预期行为，避免潜在的构建失败。
-            </div>
-        </div>
-        
-        <div class="commit-item">
-            <div class="commit-header">
-                <span class="category-badge" data-category="BugFix">🐛 BugFix</span>
-                <div class="commit-title">
-                    <a href="https://github.com/vllm-project/vllm/commit/71a4a2fbd043260a0e693e909fc7d00ec23c9a5f" target="_blank">
-                        [BugFix] Fix order of compile logging (#38012)
-                    </a>
-                </div>
-            </div>
-            
-            <div class="commit-meta">
-                👤 Richard Zou | 🕒 2026-03-24 14:58:18 -0400
-            </div>
-            
-            <div class="commit-analysis">
-                📝 <strong>AI 分析:</strong>
-                1. 这是一个 bug 修复，修正了编译日志的输出顺序，确保日志信息按正确时序显示。  
-2. 技术亮点是调整了日志记录与编译操作的执行顺序，解决了日志错乱问题。  
-3. 对开发者调试更友好，能准确追踪编译过程，不影响核心性能。
-            </div>
-        </div>
-        
-        <div class="commit-item">
-            <div class="commit-header">
-                <span class="category-badge" data-category="Performance">⚡ Performance</span>
-                <div class="commit-title">
-                    <a href="https://github.com/vllm-project/vllm/commit/935c46dd9bad76b11c4f7392ed8140109093e7ca" target="_blank">
-                        [Model] Add Granite 4.0 1B speech to supported models (#38019)
-                    </a>
-                </div>
-            </div>
-            
-            <div class="commit-meta">
-                👤 Nick Cao | 🕒 2026-03-24 14:23:41 -0400
-            </div>
-            
-            <div class="commit-analysis">
-                📝 <strong>AI 分析:</strong>
-                1. 这是一个功能新增提交，在 vLLM 项目中添加了对 Granite 4.0 1B 语音模型的支持，属于模型扩展。
-
-2. 技术亮点是扩展了 vLLM 的模型支持范围，新增了一个特定参数规模的语音模型配置，使框架能适配更多类型的 AI 模型。
-
-3. 对用户而言可以直接使用该新模型进行推理；对开发者则提供了模型配置的参考范例，不影响项目核心性能。
-            </div>
-        </div>
-        
-        <div class="commit-item">
-            <div class="commit-header">
-                <span class="category-badge" data-category="BugFix">🐛 BugFix</span>
-                <div class="commit-title">
-                    <a href="https://github.com/vllm-project/vllm/commit/057fc94cbdcfbb484d4aac5f244aee1eefe17f0e" target="_blank">
-                        [Bugfix] Fix structured output crash on CPU due to pin_memory=True (#37706)
-                    </a>
-                </div>
-            </div>
-            
-            <div class="commit-meta">
-                👤 Willy Hardy | 🕒 2026-03-24 13:44:17 -0400
-            </div>
-            
-            <div class="commit-analysis">
-                📝 <strong>AI 分析:</strong>
-                1. 这是一个bug修复，解决了CPU设备上因pin_memory=True导致的structured output功能崩溃问题。  
-2. 技术亮点是正确处理了CPU与GPU内存管理差异，移除了CPU场景下不必要的内存固定操作。  
-3. 对项目影响是修复了CPU用户的运行崩溃，提升了跨设备兼容性，开发者需注意内存参数与设备的适配。
-            </div>
-        </div>
-        
-        <div class="commit-item">
-            <div class="commit-header">
-                <span class="category-badge" data-category="BugFix">🐛 BugFix</span>
-                <div class="commit-title">
-                    <a href="https://github.com/vllm-project/vllm/commit/b58c5f28aa687de58e0d314eb1d43a3e26359689" target="_blank">
-                        docs: fix broken offline inference paths in documentation (#37998)
-                    </a>
-                </div>
-            </div>
-            
-            <div class="commit-meta">
-                👤 Vineeta Tiwari | 🕒 2026-03-24 23:05:14 +0530
-            </div>
-            
-            <div class="commit-analysis">
-                📝 <strong>AI 分析:</strong>
-                1. 这是一个文档修复提交，修正了离线推理文档中错误的文件路径引用，属于文档维护类更新。  
-2. 技术亮点是准确识别并修正了文档中与实际代码结构不匹配的路径描述，确保用户能正确执行离线推理流程。  
-3. 对项目影响是提升了文档的准确性，避免用户因路径错误导致操作失败，改善了使用体验。
-            </div>
-        </div>
-        
-        <div class="commit-item">
-            <div class="commit-header">
-                <span class="category-badge" data-category="BugFix">🐛 BugFix</span>
-                <div class="commit-title">
-                    <a href="https://github.com/vllm-project/vllm/commit/c07e2ca6e0ace42aaeae96b5ce6b8525e592e2ae" target="_blank">
-                        Fix Mamba state corruption from referencing stale block table entries (#37728) (#37728) (#37728)
-                    </a>
-                </div>
-            </div>
-            
-            <div class="commit-meta">
-                👤 Ming Yang | 🕒 2026-03-24 10:29:59 -0700
-            </div>
-            
-            <div class="commit-analysis">
-                📝 <strong>AI 分析:</strong>
-                1. 这是一个bug修复，解决了Mamba模型因引用过时的块表条目而导致状态损坏的问题。  
-2. 技术亮点是修正了状态管理逻辑，确保推理过程中块表引用的正确性，防止状态数据污染。  
-3. 对项目影响是提升了Mamba模型推理的稳定性，避免因状态错误产生不可预测的输出结果。
-            </div>
-        </div>
-        
-        <div class="commit-item">
-            <div class="commit-header">
-                <span class="category-badge" data-category="BugFix">🐛 BugFix</span>
-                <div class="commit-title">
-                    <a href="https://github.com/vllm-project/vllm/commit/4df5fa74396bef3995a6192573f75d58a2976ebc" target="_blank">
-                        [Bugfix] Force continuous usage stats when CLI override is enabled (#37923)
-                    </a>
-                </div>
-            </div>
-            
-            <div class="commit-meta">
-                👤 Dhruv Singal | 🕒 2026-03-24 10:29:50 -0700
-            </div>
-            
-            <div class="commit-analysis">
-                📝 <strong>AI 分析:</strong>
-                1. 这是一个bug修复，修复了当CLI覆盖启用时连续使用统计信息未正确强制生效的问题。  
-2. 技术亮点是确保命令行参数配置能正确覆盖并强制启用连续使用统计，避免配置冲突。  
-3. 对项目的影响是保证了用户通过CLI配置的统计行为能按预期生效，提升了配置的可靠性。
-            </div>
-        </div>
-        
-        <div class="commit-item">
-            <div class="commit-header">
-                <span class="category-badge" data-category="Feature">🚀 Feature</span>
-                <div class="commit-title">
-                    <a href="https://github.com/vllm-project/vllm/commit/a5416bc52e5d516008388c833a8d6270e92a894c" target="_blank">
-                        [XPU] Support Intel XPU hardware information collection in usage stats (#37964)
-                    </a>
-                </div>
-            </div>
-            
-            <div class="commit-meta">
-                👤 sihao_li | 🕒 2026-03-25 01:29:17 +0800
-            </div>
-            
-            <div class="commit-analysis">
-                📝 <strong>AI 分析:</strong>
-                1. 该 commit 新增了对 Intel XPU 硬件信息收集的功能，属于新特性开发，用于在 vLLM 的用量统计中支持 Intel XPU 设备。
-
-2. 技术亮点是扩展了硬件监控能力，通过 `pynvml` 的类似方式获取 XPU 的设备名称和驱动版本，实现了对 Intel GPU 的兼容支持。
-
-3. 对项目的影响是增强了 vLLM 在 Intel 硬件平台上的可观测性，为使用 Intel XPU 的用户提供了设备监控支持，便于统计和分析。
-            </div>
-        </div>
-        
-        <div class="commit-item">
-            <div class="commit-header">
-                <span class="category-badge" data-category="BugFix">🐛 BugFix</span>
-                <div class="commit-title">
-                    <a href="https://github.com/vllm-project/vllm/commit/b3601da6e7feb2b2b522f38a8b0d95e590262b63" target="_blank">
-                        [Mypy] Fix mypy for `vllm/model_executor` (except `vllm/model_executor/layers`) (#37904)
-                    </a>
-                </div>
-            </div>
-            
-            <div class="commit-meta">
-                👤 Harry Mellor | 🕒 2026-03-24 17:14:01 +0000
-            </div>
-            
-            <div class="commit-analysis">
-                📝 <strong>AI 分析:</strong>
-                1. 这是一个重构类提交，主要修复了 `vllm/model_executor` 目录下（除 `layers` 子目录外）的 Mypy 类型检查错误，属于代码质量改进。  
-2. 技术亮点是统一了类型注解规范，提升了代码的静态类型安全性和可维护性，为后续开发减少潜在类型错误。  
-3. 对项目的影响是增强了代码健壮性，使开发者能更早发现类型相关的问题，但对最终用户无直接影响。
-            </div>
-        </div>
-        
-        <div class="commit-item">
-            <div class="commit-header">
-                <span class="category-badge" data-category="Performance">⚡ Performance</span>
-                <div class="commit-title">
-                    <a href="https://github.com/vllm-project/vllm/commit/dc78c2c933ac8903d7e34bff7b5161eae70595fc" target="_blank">
-                        [Core] add option to schedule requests based on full ISL (#37307)
-                    </a>
-                </div>
-            </div>
-            
-            <div class="commit-meta">
-                👤 Dan Blanaru | 🕒 2026-03-24 18:01:12 +0100
-            </div>
-            
-            <div class="commit-analysis">
-                📝 <strong>AI 分析:</strong>
-                1. 这是一个功能增强，在核心调度器中新增了基于完整输入序列长度（ISL）的请求调度选项，允许更灵活的调度策略配置。
-
-2. 技术亮点是扩展了调度器的策略选择，通过添加 `full_isl_scheduling` 参数让用户可以选择基于完整输入序列而非当前剩余长度进行优先级排序。
-
-3. 对开发者提供了更细粒度的调度控制能力，对用户可以根据实际负载特征选择更合适的调度策略以优化吞吐量或延迟表现。
-            </div>
-        </div>
-        
-        <div class="commit-item">
-            <div class="commit-header">
-                <span class="category-badge" data-category="Performance">⚡ Performance</span>
-                <div class="commit-title">
-                    <a href="https://github.com/vllm-project/vllm/commit/4731884796d43bd8493769dbfb0e199a2a542092" target="_blank">
-                        [Feature] limit thinking tokens (hard limit) (#20859)
-                    </a>
-                </div>
-            </div>
-            
-            <div class="commit-meta">
-                👤 Sungjae Lee | 🕒 2026-03-25 01:53:07 +0900
-            </div>
-            
-            <div class="commit-analysis">
-                📝 <strong>AI 分析:</strong>
-                这是一个新增硬性限制思维令牌数量的功能特性。技术亮点在于为推理过程中的思维令牌添加了可配置的硬性上限，防止其过度消耗资源。这使开发者能更可控地管理推理成本，避免因思维令牌无限制生成而导致的性能下降或资源浪费。
-            </div>
-        </div>
-        
-        <div class="commit-item">
-            <div class="commit-header">
-                <span class="category-badge" data-category="Docs">📚 Docs</span>
-                <div class="commit-title">
-                    <a href="https://github.com/vllm-project/vllm/commit/8de5261e69af81aaf7f68d420b69199653cd1882" target="_blank">
-                        Update new contributor message (#37999)
-                    </a>
-                </div>
-            </div>
-            
-            <div class="commit-meta">
-                👤 Harry Mellor | 🕒 2026-03-24 16:01:41 +0000
-            </div>
-            
-            <div class="commit-analysis">
-                📝 <strong>AI 分析:</strong>
-                这是一个文档更新 commit，主要修改了项目的新贡献者欢迎信息。技术上是简单的文本内容调整，不涉及功能代码变更。对项目的影响是改善了社区体验，让新贡献者获得更友好的引导信息。
-            </div>
-        </div>
-        
-        <div class="commit-item">
-            <div class="commit-header">
-                <span class="category-badge" data-category="Refactor">♻️ Refactor</span>
-                <div class="commit-title">
-                    <a href="https://github.com/vllm-project/vllm/commit/1b6cb920e6ebcac57154e6154578c39d4892a16c" target="_blank">
-                        [Deprecate] Deprecate pooling multi task support. (#37956)
-                    </a>
-                </div>
-            </div>
-            
-            <div class="commit-meta">
-                👤 wang.yuqi | 🕒 2026-03-24 22:07:47 +0800
-            </div>
-            
-            <div class="commit-analysis">
-                📝 <strong>AI 分析:</strong>
-                1. 这是一个功能弃用提交，移除了对 pooling 多任务支持的相关代码，属于功能清理和重构。  
-2. 技术亮点是简化了代码架构，移除了不再需要的多任务处理逻辑，减少了维护复杂度。  
-3. 对项目的影响是开发者需要迁移相关功能，但长期来看有利于代码库的清晰和稳定。
-            </div>
-        </div>
-        
-        <div class="commit-item">
-            <div class="commit-header">
-                <span class="category-badge" data-category="BugFix">🐛 BugFix</span>
-                <div class="commit-title">
-                    <a href="https://github.com/vllm-project/vllm/commit/352b90c4a4f2af1d75cdc09fecf30a47a4ca39fb" target="_blank">
-                        [Bugfix] Add replacement of _compute_slot_mapping_kernel on CPU (#37987)
-                    </a>
-                </div>
-            </div>
-            
-            <div class="commit-meta">
-                👤 Li, Jiang | 🕒 2026-03-24 22:00:20 +0800
-            </div>
-            
-            <div class="commit-analysis">
-                📝 <strong>AI 分析:</strong>
-                1. 这是一个bug修复，针对CPU设备添加了缺失的`_compute_slot_mapping_kernel`内核替换，解决了CPU模式下相关功能无法正常工作的问题。  
-2. 技术亮点是扩展了内核调度机制，确保CPU与GPU执行路径的一致性，属于平台兼容性改进。  
-3. 对项目的影响是修复了CPU推理场景下的功能缺陷，提升了框架在无GPU环境下的可用性和稳定性。
-            </div>
-        </div>
-        
-        <div class="commit-item">
-            <div class="commit-header">
-                <span class="category-badge" data-category="BugFix">🐛 BugFix</span>
-                <div class="commit-title">
-                    <a href="https://github.com/vllm-project/vllm/commit/1c0aabdeb0cf77019a1f89b5bed5b8eebdd5c211" target="_blank">
-                        [Bugfix] Suppress spurious CPU KV cache warning in `launch render` (#37911)
-                    </a>
-                </div>
-            </div>
-            
-            <div class="commit-meta">
-                👤 Sage | 🕒 2026-03-24 14:36:18 +0200
-            </div>
-            
-            <div class="commit-analysis">
-                📝 <strong>AI 分析:</strong>
-                1. 这是一个bug修复，修复了在`launch render`命令中出现的虚假CPU KV缓存警告问题，属于功能性问题修正。
-2. 技术亮点是精确控制了警告的触发条件，避免了在特定场景下不必要的警告输出。
-3. 对用户来说消除了误导性警告的干扰，对开发者则保持了日志的准确性，提升了工具链的可靠性。
-            </div>
-        </div>
-        
-        <div class="commit-item">
-            <div class="commit-header">
-                <span class="category-badge" data-category="BugFix">🐛 BugFix</span>
-                <div class="commit-title">
-                    <a href="https://github.com/vllm-project/vllm/commit/14acf429ac08b6d538ca6feb3e06b6d13895804d" target="_blank">
-                        [EPLB] Remove main waits in case of slow EPLB (#36271)
-                    </a>
-                </div>
-            </div>
-            
-            <div class="commit-meta">
-                👤 Ilya Markov | 🕒 2026-03-24 12:50:44 +0100
-            </div>
-            
-            <div class="commit-analysis">
-                📝 <strong>AI 分析:</strong>
-                1. 这是一个功能优化，修复了EPLB（推测性解码负载均衡器）在慢速情况下可能导致主进程阻塞等待的问题。
-2. 技术亮点是移除了主进程的等待逻辑，优化了推测性解码的协调机制，提升了系统在负载不均衡时的响应性。
-3. 对项目的影响是提高了vLLM推理服务的稳定性和吞吐量，特别是在使用推测性解码时能更好地处理后端worker性能差异的情况。
-            </div>
-        </div>
-        
-        <div class="commit-item">
-            <div class="commit-header">
-                <span class="category-badge" data-category="BugFix">🐛 BugFix</span>
-                <div class="commit-title">
-                    <a href="https://github.com/vllm-project/vllm/commit/ce57fd555703e2b24352fd582dbb2b687d7ba7c5" target="_blank">
-                        [Docs] Fix build (#37991)
-                    </a>
-                </div>
-            </div>
-            
-            <div class="commit-meta">
-                👤 Harry Mellor | 🕒 2026-03-24 10:20:49 +0000
-            </div>
-            
-            <div class="commit-analysis">
-                📝 <strong>AI 分析:</strong>
-                1. 这是一个文档修复提交，主要修复了文档构建问题（可能是链接、格式或依赖问题），属于维护性更新。
-
-2. 技术亮点在于解决了文档构建流程中的具体问题，确保文档能正确生成和部署。
-
-3. 对项目的影响是改善了开发者文档的可访问性和准确性，但不会影响核心代码功能或性能。
-            </div>
-        </div>
-        
-        <div class="commit-item">
-            <div class="commit-header">
-                <span class="category-badge" data-category="BugFix">🐛 BugFix</span>
-                <div class="commit-title">
-                    <a href="https://github.com/vllm-project/vllm/commit/2e67fa756d05518823196815a30bc633031ddb60" target="_blank">
-                        Fix tool_parser_cls type annotation from Callable to type[ToolParser] (#37957)
-                    </a>
-                </div>
-            </div>
-            
-            <div class="commit-meta">
-                👤 Flora Feng | 🕒 2026-03-24 01:58:27 -0400
-            </div>
-            
-            <div class="commit-analysis">
-                📝 <strong>AI 分析:</strong>
-                这是一个类型注解修复的 commit，将 `tool_parser_cls` 的类型从 `Callable` 修正为 `type[ToolParser]`，以准确反映其应为类而非可调用对象。这属于代码质量改进，有助于提升开发者体验，通过更精确的类型提示来增强 IDE 支持和静态类型检查。
-            </div>
-        </div>
-        
-        <div class="commit-item">
-            <div class="commit-header">
-                <span class="category-badge" data-category="Refactor">♻️ Refactor</span>
-                <div class="commit-title">
-                    <a href="https://github.com/vllm-project/vllm/commit/e3c6c10cad9b0f9c36b4ca58933316b3e400f1cf" target="_blank">
-                        [KV Offload] Refactor CPU offloading: pluggable CachePolicy, remove Backend abstraction, restructure into `cpu/` package (#37874)
-                    </a>
-                </div>
-            </div>
-            
-            <div class="commit-meta">
-                👤 Ronen Schaffer | 🕒 2026-03-24 07:02:51 +0200
-            </div>
-            
-            <div class="commit-analysis">
-                📝 <strong>AI 分析:</strong>
-                这是一个重构性提交，主要将CPU KV缓存卸载功能重构为模块化架构。技术亮点是引入了可插拔的CachePolicy策略模式，移除了原有的Backend抽象层，并将相关代码重组到独立的`cpu/`包中。这提升了代码的可维护性和扩展性，使开发者能更灵活地实现不同的缓存策略，但对最终用户功能无直接影响。
-            </div>
-        </div>
-        
-        <div class="commit-item">
-            <div class="commit-header">
-                <span class="category-badge" data-category="BugFix">🐛 BugFix</span>
-                <div class="commit-title">
-                    <a href="https://github.com/vllm-project/vllm/commit/16a664df240f43c92861e97d5b59a8276e89698b" target="_blank">
-                        [Frontend][Bugfix] Pass default_chat_template_kwargs to AnthropicServingMessages (#37899)
-                    </a>
-                </div>
-            </div>
-            
-            <div class="commit-meta">
-                👤 jetxa | 🕒 2026-03-24 13:00:12 +0800
-            </div>
-            
-            <div class="commit-analysis">
-                📝 <strong>AI 分析:</strong>
-                1. 这是一个Bug修复，修复了AnthropicServingMessages中未传递`default_chat_template_kwargs`参数的问题，确保聊天模板能正确接收额外配置。
-
-2. 技术亮点是修复了参数传递的遗漏，使前端服务在调用Anthropic模型时能正确处理聊天模板的定制化参数。
-
-3. 对项目的影响是提升了与Anthropic模型集成的稳定性和配置灵活性，开发者现在可以正确使用自定义的聊天模板参数。
-            </div>
-        </div>
-        
-        <div class="commit-item">
-            <div class="commit-header">
-                <span class="category-badge" data-category="Config">🔧 Config</span>
-                <div class="commit-title">
-                    <a href="https://github.com/vllm-project/vllm/commit/7281199a8c36445caa6e10d57fd7650441986a59" target="_blank">
-                        [release] Move agent queue to Release cluster queues (#37783)
-                    </a>
-                </div>
-            </div>
-            
-            <div class="commit-meta">
-                👤 Kevin H. Luu | 🕒 2026-03-23 20:36:47 -0700
-            </div>
-            
-            <div class="commit-analysis">
-                📝 <strong>AI 分析:</strong>
-                1. 这是一个功能变更，将 agent 队列从默认队列迁移到 Release 集群的专用队列中，属于部署配置调整。  
-2. 技术亮点是优化了任务队列的隔离性，通过专用集群队列提升资源管理和任务调度的可靠性。  
-3. 对项目的影响是增强了生产环境的稳定性和可维护性，对开发者而言部署流程更清晰，但用户无感知。
-            </div>
-        </div>
-        
-        <div class="commit-item">
-            <div class="commit-header">
-                <span class="category-badge" data-category="Performance">⚡ Performance</span>
-                <div class="commit-title">
-                    <a href="https://github.com/vllm-project/vllm/commit/b2dd75eb481f6d45f6ac902292559026765a1433" target="_blank">
-                        Downsize CPU jobs to use small queue (#37913)
-                    </a>
-                </div>
-            </div>
-            
-            <div class="commit-meta">
-                👤 Kevin H. Luu | 🕒 2026-03-23 20:36:37 -0700
-            </div>
-            
-            <div class="commit-analysis">
-                📝 <strong>AI 分析:</strong>
-                1. 这是一个性能优化提交，通过将CPU作业队列大小从默认值减小到更小的队列，优化了CPU资源使用效率。  
-2. 技术亮点是调整了作业队列配置，减少了内存占用和潜在的任务堆积，提升了系统在高负载下的响应稳定性。  
-3. 对项目的影响是降低了CPU作业的延迟和资源争用，使系统在处理并发任务时更加高效可靠。
-            </div>
-        </div>
-        
-        <div class="commit-item">
-            <div class="commit-header">
-                <span class="category-badge" data-category="Refactor">♻️ Refactor</span>
-                <div class="commit-title">
-                    <a href="https://github.com/vllm-project/vllm/commit/c59a132f9674dbc2eadbbe2d72c604dd4651f2b8" target="_blank">
-                        [V0 Deprecation] Refactor kv cache from list to element (#37487)
-                    </a>
-                </div>
-            </div>
-            
-            <div class="commit-meta">
-                👤 Wentao Ye | 🕒 2026-03-23 23:10:11 -0400
-            </div>
-            
-            <div class="commit-analysis">
-                📝 <strong>AI 分析:</strong>
-                1. 这是一个重构提交，将KV缓存从列表结构改为元素结构，属于V0版本弃用计划的一部分，旨在优化内部数据结构。
-
-2. 技术亮点是改进了KV缓存的存储架构，通过元素化存储提升内存访问效率，为后续性能优化奠定基础。
-
-3. 对开发者而言需要适配新的缓存接口，但能带来更好的内存局部性和潜在的性能提升，用户无感知。
-            </div>
-        </div>
-        
-        <div class="commit-item">
-            <div class="commit-header">
-                <span class="category-badge" data-category="Performance">⚡ Performance</span>
-                <div class="commit-title">
-                    <a href="https://github.com/vllm-project/vllm/commit/de99d91ecee85b5d886ca0a608bfb69c2fcb8edb" target="_blank">
-                        [ROCm][CI] Split Entrypoints Integration (API Server 1) into 3 jobs (#37906)
-                    </a>
-                </div>
-            </div>
-            
-            <div class="commit-meta">
-                👤 Andreas Karatzas | 🕒 2026-03-23 20:48:37 -0500
-            </div>
-            
-            <div class="commit-analysis">
-                📝 <strong>AI 分析:</strong>
-                这是一个 CI/CD 配置优化提交，将 ROCm 平台上的集成测试任务拆分为三个并行作业以提升测试效率。主要技术亮点是通过并行化缩短测试时间，优化了开发工作流程。对项目的影响是加速了 ROCm 相关的持续集成过程，提高了开发者的迭代速度。
-            </div>
-        </div>
-        
-        <div class="commit-item">
-            <div class="commit-header">
-                <span class="category-badge" data-category="Performance">⚡ Performance</span>
-                <div class="commit-title">
-                    <a href="https://github.com/vllm-project/vllm/commit/83c9d525b623566f45d161593e7610cb65aaad60" target="_blank">
-                        [CI] Add batch invariant test: Block FP8 + small MOE (#37895)
-                    </a>
-                </div>
-            </div>
-            
-            <div class="commit-meta">
-                👤 Wentao Ye | 🕒 2026-03-23 21:16:14 -0400
-            </div>
-            
-            <div class="commit-analysis">
-                📝 <strong>AI 分析:</strong>
-                1. 这是一个CI测试增强提交，为Block FP8量化功能和小型MOE模型添加了批量不变性测试，属于测试覆盖范围扩展。  
-2. 技术亮点是验证了FP8量化与MOE架构在批量推理中的数值稳定性，确保混合精度计算在不同批量大小下的一致性。  
-3. 对项目而言，这提升了混合专家模型与低精度计算的可信度，有助于开发者更安全地优化推理性能。
-            </div>
-        </div>
-        
-        <div class="commit-item">
-            <div class="commit-header">
-                <span class="category-badge" data-category="Refactor">♻️ Refactor</span>
-                <div class="commit-title">
-                    <a href="https://github.com/vllm-project/vllm/commit/8f4824b664c7e67db2f4e06e991748d932474955" target="_blank">
-                        [Model Runner V2] Gather multimodal embeddings before draft model postprocess (#37932)
-                    </a>
-                </div>
-            </div>
-            
-            <div class="commit-meta">
-                👤 Giancarlo Delfin | 🕒 2026-03-23 18:14:13 -0700
-            </div>
-            
-            <div class="commit-analysis">
-                📝 <strong>AI 分析:</strong>
-                1. 这是一个功能优化，主要修改了模型运行器V2中多模态嵌入的收集时机，将其提前到草稿模型后处理之前。
-
-2. 技术亮点是架构改进，通过调整处理流程的顺序来优化多模态推理的数据流。
-
-3. 对项目的影响是提升了多模态场景下的处理效率，使开发者能更高效地集成视觉语言模型。
+                1. 这是一个针对 ROCm 平台的 bug 修复，主要修正了在混合模型中使用 `cp_mha_gather_cache_kernel` 内核时 stride 计算错误的问题。  
+2. 技术亮点是修复了缓存内核中 stride 的准确计算，确保了混合模型在 AMD GPU 上的正确内存访问和计算。  
+3. 该修复提升了 ROCm 平台下混合模型推理的稳定性和正确性，对使用 AMD GPU 的开发者有直接影响。
             </div>
         </div>
         
@@ -1026,21 +382,65 @@
             <div class="commit-header">
                 <span class="category-badge" data-category="Test">✅ Test</span>
                 <div class="commit-title">
-                    <a href="https://github.com/vllm-project/vllm/commit/56777b5c898dcb92dbe6d64fecfccb670f919a0d" target="_blank">
-                        [Test] E2E Nemotron-3-Super tests (#36803)
+                    <a href="https://github.com/vllm-project/vllm/commit/9c3ae04bfe6532d6d6d812ae6688366c9911555b" target="_blank">
+                        [ROCm][CI] Add LM Eval Qwen3.5 Models test for MI355 (#38155)
                     </a>
                 </div>
             </div>
             
             <div class="commit-meta">
-                👤 roikoren755 | 🕒 2026-03-24 02:49:56 +0200
+                👤 Andreas Karatzas | 🕒 2026-03-26 11:51:18 -0500
             </div>
             
             <div class="commit-analysis">
                 📝 <strong>AI 分析:</strong>
-                1. 这是一个测试相关的提交，为Nemotron-3-Super模型添加了端到端（E2E）测试，属于功能测试的补充。  
-2. 技术亮点是新增了针对特定大模型的完整流程测试，确保该模型在项目中的集成与运行符合预期。  
-3. 对项目的影响是提升了代码可靠性，为开发者验证模型功能提供了自动化测试支持，但普通用户无感知。
+                1. 该 commit 在 ROCm CI 测试中新增了对 MI355 显卡上 Qwen3.5 模型的 LM Eval 评估测试，属于功能扩展和测试覆盖增强。  
+2. 技术亮点是扩展了 AMD GPU 平台的模型兼容性验证，确保特定硬件（MI355）能稳定运行 Qwen3.5 系列模型。  
+3. 对项目而言，这提升了 ROCm 后端的测试完备性，为 AMD 硬件用户提供了更可靠的模型支持验证。
+            </div>
+        </div>
+        
+        <div class="commit-item">
+            <div class="commit-header">
+                <span class="category-badge" data-category="BugFix">🐛 BugFix</span>
+                <div class="commit-title">
+                    <a href="https://github.com/vllm-project/vllm/commit/a8e48a7b85f035df401cab03dfb11b16f98aa413" target="_blank">
+                        [CI] Fix conch kernel crash on 3D input by reshaping to 2D before GEMM (#38178)
+                    </a>
+                </div>
+            </div>
+            
+            <div class="commit-meta">
+                👤 Andreas Karatzas | 🕒 2026-03-26 11:46:03 -0500
+            </div>
+            
+            <div class="commit-analysis">
+                📝 <strong>AI 分析:</strong>
+                1. 这是一个 bug 修复，解决了 conch 内核在处理 3D 输入时崩溃的问题，通过在执行 GEMM 操作前将输入重塑为 2D 来修复。  
+2. 技术亮点是正确处理了张量维度，避免了底层内核因不支持的输入形状而崩溃。  
+3. 对项目的影响是提升了系统稳定性，确保 3D 输入场景下推理流程正常执行，对用户和开发者透明。
+            </div>
+        </div>
+        
+        <div class="commit-item">
+            <div class="commit-header">
+                <span class="category-badge" data-category="BugFix">🐛 BugFix</span>
+                <div class="commit-title">
+                    <a href="https://github.com/vllm-project/vllm/commit/b9dbc5c4ab2b01f626376ffaeb68e575e70ff58c" target="_blank">
+                        [Mamba][APC] Add test case to compare apc outputs  (#34977)
+                    </a>
+                </div>
+            </div>
+            
+            <div class="commit-meta">
+                👤 Divakar Verma | 🕒 2026-03-26 12:40:35 -0400
+            </div>
+            
+            <div class="commit-analysis">
+                📝 <strong>AI 分析:</strong>
+                1. 这是一个测试相关的提交，为Mamba模型的APC（可能指Attention/Context机制）功能添加了测试用例，用于验证输出结果的一致性。  
+2. 技术亮点是增加了模型输出的对比测试，确保APC功能的正确性和稳定性，属于质量保障改进。  
+3. 对项目的影响是提升了Mamba模块的测试覆盖率，有助于开发者后续维护和验证相关功能，降低回归错误风险。
             </div>
         </div>
         
@@ -1048,21 +448,21 @@
             <div class="commit-header">
                 <span class="category-badge" data-category="Refactor">♻️ Refactor</span>
                 <div class="commit-title">
-                    <a href="https://github.com/vllm-project/vllm/commit/2488a82f89b15ad2ebed12160dcc423d44210db2" target="_blank">
-                        [CI] Split V1 Others into 3 separate jobs (#37016)
+                    <a href="https://github.com/vllm-project/vllm/commit/60af7b967bf52aa9623aa4f224a0d281757ba9b0" target="_blank">
+                        [Releases] [ROCm] Enable Nightly Docker Image and Wheel Releases for ROCm (#37283)
                     </a>
                 </div>
             </div>
             
             <div class="commit-meta">
-                👤 Kevin H. Luu | 🕒 2026-03-23 15:44:38 -0700
+                👤 TJian | 🕒 2026-03-27 00:32:25 +0800
             </div>
             
             <div class="commit-analysis">
                 📝 <strong>AI 分析:</strong>
-                1. 这是一个 CI/CD 配置重构，将原有的 "V1 Others" 测试任务拆分为三个独立的并行任务，以优化持续集成流程。  
-2. 技术亮点是通过任务拆分实现并行化测试，缩短整体 CI 运行时间，提升开发效率。  
-3. 对项目的影响是加速代码合并流程，减少开发者等待测试反馈的时间，但不会直接影响最终用户功能。
+                1. 该 commit 为 ROCm 平台启用了夜间 Docker 镜像和 Wheel 包的自动化发布功能，属于 CI/CD 流程的扩展性改进。  
+2. 技术亮点在于将现有的发布流水线适配到 ROCm 硬件生态，实现了跨平台（AMD GPU）的持续交付能力。  
+3. 对项目影响是方便 ROCm 用户获取最新构建版本，提升了 AMD GPU 开发者的体验，并增强了 vLLM 对异构计算环境的支持。
             </div>
         </div>
         
@@ -1070,19 +470,19 @@
             <div class="commit-header">
                 <span class="category-badge" data-category="BugFix">🐛 BugFix</span>
                 <div class="commit-title">
-                    <a href="https://github.com/vllm-project/vllm/commit/dc6908ac6a188234c1480ed3e2bf3b2b8136642a" target="_blank">
-                        [Bugfix] Register VLLM_BATCH_INVARIANT in envs.py to fix spurious unknown env var warning (#35007)
+                    <a href="https://github.com/vllm-project/vllm/commit/bdc1719eb9b27ef4a30c1f753b406bf05c8edd3a" target="_blank">
+                        [ROCm][CI] Fix AITER state leak in shared_fused_moe_routed_transform test (#38137)
                     </a>
                 </div>
             </div>
             
             <div class="commit-meta">
-                👤 Ranran | 🕒 2026-03-23 17:31:14 -0500
+                👤 Andreas Karatzas | 🕒 2026-03-26 11:26:46 -0500
             </div>
             
             <div class="commit-analysis">
                 📝 <strong>AI 分析:</strong>
-                这是一个bug修复，主要解决了环境变量警告问题。技术亮点是正确注册了`VLLM_BATCH_INVARIANT`环境变量到验证列表中，消除了虚假的未知环境变量警告。对用户和开发者来说，这提升了使用体验，避免了不必要的警告干扰。
+                这是一个针对ROCm平台的bug修复commit，主要解决了测试用例中的内存泄漏问题。技术亮点是修复了AITER（异步迭代器）状态在共享融合MOE路由转换测试中未正确释放的问题，避免了测试过程中的资源泄漏。对项目的影响是提升了ROCm平台下测试的稳定性和资源管理可靠性，防止内存泄漏影响后续测试执行。
             </div>
         </div>
         
@@ -1090,21 +490,21 @@
             <div class="commit-header">
                 <span class="category-badge" data-category="BugFix">🐛 BugFix</span>
                 <div class="commit-title">
-                    <a href="https://github.com/vllm-project/vllm/commit/e85f8f0932f65c17d64c9bb8e85a57bb007b369d" target="_blank">
-                        [Bug][MoE] Strengthen _supports_current_device() checks in the TRTLLM FP8, NVFP4, and FlashInfer CuteDSL MoE experts (#36728)
+                    <a href="https://github.com/vllm-project/vllm/commit/0aac2048bf3a7e60eaddf1ebcb4165ed777eb8ff" target="_blank">
+                        [Bugfix] Restore CUDA graph persistent buffers for FP8 FlashMLA decode (#35175)
                     </a>
                 </div>
             </div>
             
             <div class="commit-meta">
-                👤 yzong-rh | 🕒 2026-03-23 17:02:57 -0400
+                👤 haosdent | 🕒 2026-03-27 00:13:39 +0800
             </div>
             
             <div class="commit-analysis">
                 📝 <strong>AI 分析:</strong>
-                1. 这是一个针对MoE（专家混合）模型的bug修复，主要加强了TRTLLM FP8、NVFP4和FlashInfer CuteDSL三种专家实现中`_supports_current_device()`方法的设备兼容性检查。  
-2. 技术亮点是更严格地验证了特定硬件（如NVIDIA GPU）和计算能力（如SM版本）的支持情况，防止在不兼容的设备上错误加载专家模块。  
-3. 对项目的影响是提高了MoE模型部署的稳定性和可靠性，避免因设备不匹配导致的运行时错误，提升了开发者和用户的使用体验。
+                1. 这是一个bug修复，主要修复了FP8 FlashMLA解码模式下CUDA图持久化缓冲区未正确恢复的问题。  
+2. 技术亮点是确保FP8量化推理时CUDA图能复用持久化缓冲区，避免重复分配内存。  
+3. 对项目影响是提升了FP8解码的稳定性和性能，减少内存开销，改善用户体验。
             </div>
         </div>
         
@@ -1112,21 +512,43 @@
             <div class="commit-header">
                 <span class="category-badge" data-category="BugFix">🐛 BugFix</span>
                 <div class="commit-title">
-                    <a href="https://github.com/vllm-project/vllm/commit/5bf3c42d4c7e99f4898b18a715be515f44a22f44" target="_blank">
-                        [Bug][MoE] Fix TRTLLM NVFP4 Routing Kernel Precision (#36725)
+                    <a href="https://github.com/vllm-project/vllm/commit/cb2263218e6638cc1982d7f7a0be735e8cc46ab5" target="_blank">
+                        [Bugfix][Minor] Fix potential NameError in mamba backend selector and misc typos (#35886)
                     </a>
                 </div>
             </div>
             
             <div class="commit-meta">
-                👤 Robert Shaw | 🕒 2026-03-23 21:19:06 +0100
+                👤 Chuan (Richard) Li | 🕒 2026-03-26 08:59:24 -0700
             </div>
             
             <div class="commit-analysis">
                 📝 <strong>AI 分析:</strong>
-                1. 这是一个针对MoE（专家混合）模型的bug修复，解决了TRTLLM NVFP4路由内核的精度问题，确保路由计算在特定硬件上的准确性。  
-2. 技术亮点是修正了内核实现中的精度处理逻辑，避免了因低精度格式（如FP4）导致的路由决策错误。  
-3. 对项目的影响是提升了MoE模型在TensorRT-LLM后端上的推理稳定性，防止因路由错误引发的性能下降或输出异常。
+                1. 这是一个 bug 修复和代码清理提交，主要修复了 Mamba 后端选择器中潜在的 `NameError` 错误，并修正了一些拼写错误。  
+2. 技术亮点是消除了因变量未定义而导致的运行时异常风险，提升了代码的健壮性和可读性。  
+3. 对项目的影响是增强了 Mamba 后端代码的稳定性，避免了潜在的崩溃，对开发者来说代码质量有所提升。
+            </div>
+        </div>
+        
+        <div class="commit-item">
+            <div class="commit-header">
+                <span class="category-badge" data-category="Test">✅ Test</span>
+                <div class="commit-title">
+                    <a href="https://github.com/vllm-project/vllm/commit/e054f152faa48ab27389f490d6e86c959d86d122" target="_blank">
+                        [CI] Add batch invariant test for b200 (#38014)
+                    </a>
+                </div>
+            </div>
+            
+            <div class="commit-meta">
+                👤 Wentao Ye | 🕒 2026-03-26 11:54:54 -0400
+            </div>
+            
+            <div class="commit-analysis">
+                📝 <strong>AI 分析:</strong>
+                1. 这是一个CI测试相关的提交，为B200芯片添加了批量不变性测试，属于测试覆盖范围扩展。  
+2. 技术亮点是新增了针对特定硬件（B200）的批量处理一致性验证，确保模型在不同批量大小下的输出稳定性。  
+3. 对项目的影响是增强了CI测试的硬件兼容性验证，有助于提前发现B200平台上的批量处理相关缺陷，提升代码可靠性。
             </div>
         </div>
         
@@ -1134,23 +556,43 @@
             <div class="commit-header">
                 <span class="category-badge" data-category="BugFix">🐛 BugFix</span>
                 <div class="commit-title">
-                    <a href="https://github.com/vllm-project/vllm/commit/38364a7e32c923cfbd71f4d749fb2791c1741bd4" target="_blank">
-                        [Sparse24] [Deprecation] Remove Sparse24 CT integration and kernels (#36799)
+                    <a href="https://github.com/vllm-project/vllm/commit/0f5b5260401e3c59adec8ffc078ae0f799b08f80" target="_blank">
+                        [Fix] Remove unused packing_position_embedding from PaddleOCRVL for better checkpoint compatibility (#38232)
                     </a>
                 </div>
             </div>
             
             <div class="commit-meta">
-                👤 Kyle Sayers | 🕒 2026-03-23 16:03:29 -0400
+                👤 zhang-prog | 🕒 2026-03-26 23:34:49 +0800
             </div>
             
             <div class="commit-analysis">
                 📝 <strong>AI 分析:</strong>
-                1. 该 commit 移除了 Sparse24 CT（Continuous Tensor）集成和相关内核代码，属于**功能移除/清理**，旨在废弃过时的稀疏计算实现。
-
-2. **技术亮点**是精简代码库，移除不再维护的专有稀疏内核，减少维护负担和潜在兼容性问题。
-
-3. **影响**：对开发者简化了代码结构，但依赖此功能的用户需迁移至其他稀疏方案；性能无直接影响，但长期有利于项目架构清晰度。
+                1. 这是一个bug修复，移除了PaddleOCRVL模型中未使用的`packing_position_embedding`参数，以提升检查点的兼容性。  
+2. 技术亮点是简化了模型结构，消除了冗余参数，确保模型在不同版本间能正确加载。  
+3. 对用户和开发者而言，修复后检查点的加载更稳定，避免了因参数不匹配导致的错误。
+            </div>
+        </div>
+        
+        <div class="commit-item">
+            <div class="commit-header">
+                <span class="category-badge" data-category="BugFix">🐛 BugFix</span>
+                <div class="commit-title">
+                    <a href="https://github.com/vllm-project/vllm/commit/be1a85b7a2929f25c93d469fdd733a3576609e70" target="_blank">
+                        Revert "[MoE Kernel] Flashinfer nvfp4 cutedsl moe kernel integration" (#38050) (#38169)
+                    </a>
+                </div>
+            </div>
+            
+            <div class="commit-meta">
+                👤 Zhewen Li | 🕒 2026-03-26 07:59:09 -0700
+            </div>
+            
+            <div class="commit-analysis">
+                📝 <strong>AI 分析:</strong>
+                1. 这是一个回滚提交，撤销了之前集成Flashinfer nvfp4 cutedsl的MoE内核代码，属于功能回退和问题修复。  
+2. 技术亮点是移除了实验性但可能存在问题的MoE内核实现，暂时回归到更稳定的代码状态。  
+3. 对项目的影响是避免了潜在的不稳定因素，确保系统可靠性，但暂时放弃了该MoE内核可能带来的性能优化。
             </div>
         </div>
         
@@ -1158,21 +600,43 @@
             <div class="commit-header">
                 <span class="category-badge" data-category="Refactor">♻️ Refactor</span>
                 <div class="commit-title">
-                    <a href="https://github.com/vllm-project/vllm/commit/fafe76b4af175d48b9b69204c995ee167b46aca1" target="_blank">
-                        [Async][Spec Decoding] Zero-bubble async scheduling + spec decoding (#32951)
+                    <a href="https://github.com/vllm-project/vllm/commit/2e225f7bd23f533e3ffd909fd5596a85f352c518" target="_blank">
+                        [Renderer] Consolidate factory methods (#38218)
                     </a>
                 </div>
             </div>
             
             <div class="commit-meta">
-                👤 Matthew Bonanni | 🕒 2026-03-23 15:37:22 -0400
+                👤 Cyrus Leung | 🕒 2026-03-26 20:19:22 +0800
             </div>
             
             <div class="commit-analysis">
                 📝 <strong>AI 分析:</strong>
-                1. 这是一个功能增强提交，在vLLM中实现了零气泡异步调度与推测解码，结合了异步执行和推测解码两种优化技术。  
-2. 技术亮点是通过消除调度间隙（零气泡）提升GPU利用率，同时利用推测解码减少大语言模型推理的延迟。  
-3. 该改进显著提升了系统的吞吐量和响应速度，使终端用户获得更快的推理体验，并为开发者提供了更高效的异步调度框架。
+                1. 这是一个重构提交，将渲染器（Renderer）的多个工厂方法统一为单个 `create` 方法，简化了创建逻辑并移除了冗余代码。
+2. 技术亮点是架构改进，通过工厂模式整合减少了代码重复，提升了模块的内聚性和可维护性。
+3. 对开发者而言，接口更清晰、易于使用；对项目长期维护有利，但用户无感知。
+            </div>
+        </div>
+        
+        <div class="commit-item">
+            <div class="commit-header">
+                <span class="category-badge" data-category="BugFix">🐛 BugFix</span>
+                <div class="commit-title">
+                    <a href="https://github.com/vllm-project/vllm/commit/757eafcf37ba1db654bf9abb96e39054af0dc69d" target="_blank">
+                        [bug-fix] GLM OCR Patch Merger context_dim (#37962)
+                    </a>
+                </div>
+            </div>
+            
+            <div class="commit-meta">
+                👤 Jared Wen | 🕒 2026-03-26 20:11:21 +0800
+            </div>
+            
+            <div class="commit-analysis">
+                📝 <strong>AI 分析:</strong>
+                1. 这是一个bug修复，修复了GLM OCR Patch Merger中`context_dim`参数传递错误的问题，确保模型能正确接收上下文维度信息。  
+2. 技术亮点是修正了模型层间参数传递的逻辑，避免了因维度不匹配导致的潜在运行时错误或性能异常。  
+3. 对项目的影响是提升了GLM模型在处理OCR任务时的稳定性和正确性，对依赖该功能的用户和开发者至关重要。
             </div>
         </div>
         
@@ -1180,23 +644,217 @@
             <div class="commit-header">
                 <span class="category-badge" data-category="Refactor">♻️ Refactor</span>
                 <div class="commit-title">
-                    <a href="https://github.com/vllm-project/vllm/commit/ffb5b32b5f2a37ea58261747aef9e5f3907b9941" target="_blank">
-                        [MRV2] Consider spec decoding in warmup (#37812)
+                    <a href="https://github.com/vllm-project/vllm/commit/dcdc1458931a1a57cbcadb92b2dfc10d225d675f" target="_blank">
+                        [CI] Reorganize scoring tests (#38207)
                     </a>
                 </div>
             </div>
             
             <div class="commit-meta">
-                👤 Woosuk Kwon | 🕒 2026-03-23 10:45:43 -0700
+                👤 wang.yuqi | 🕒 2026-03-26 20:07:01 +0800
             </div>
             
             <div class="commit-analysis">
                 📝 <strong>AI 分析:</strong>
-                1. 这是一个功能优化，在MRV2预热阶段加入了推测解码的考虑，确保预热过程能准确反映推测解码的实际执行情况。
+                1. 这是一个重构性质的提交，主要对评分测试（scoring tests）进行了重新组织，属于测试代码的结构优化。  
+2. 技术亮点是改进了测试代码的架构，通过模块化重组提升了测试的可维护性和清晰度。  
+3. 对开发者来说，测试结构更清晰便于维护，但不会直接影响最终用户或运行时性能。
+            </div>
+        </div>
+        
+        <div class="commit-item">
+            <div class="commit-header">
+                <span class="category-badge" data-category="BugFix">🐛 BugFix</span>
+                <div class="commit-title">
+                    <a href="https://github.com/vllm-project/vllm/commit/f2d16207c794e40c323adec50245ceecc4e6b635" target="_blank">
+                        [ROCm][CI] Fix flaky GPTQ compile correctness test (#38161)
+                    </a>
+                </div>
+            </div>
+            
+            <div class="commit-meta">
+                👤 Andreas Karatzas | 🕒 2026-03-26 06:57:00 -0500
+            </div>
+            
+            <div class="commit-analysis">
+                📝 <strong>AI 分析:</strong>
+                1. 这是一个针对ROCm平台的bug修复，主要解决了GPTQ编译正确性测试中的偶发性失败问题，属于测试稳定性改进。
 
-2. 技术亮点是改进了预热阶段的性能评估准确性，通过模拟推测解码的执行模式来优化预热策略。
+2. 技术亮点在于通过调整测试参数（如`max_num_seqs`）来避免GPU内存分配竞争，确保编译测试在ROCm环境下稳定执行。
 
-3. 对项目的影响是提升了推测解码场景下的预热精度，使系统能更准确地预估资源需求，改善整体推理性能。
+3. 对项目影响是提升了ROCm平台CI测试的可靠性，减少了因测试不稳定性导致的误报，有利于开发者维护AMD GPU支持。
+            </div>
+        </div>
+        
+        <div class="commit-item">
+            <div class="commit-header">
+                <span class="category-badge" data-category="BugFix">🐛 BugFix</span>
+                <div class="commit-title">
+                    <a href="https://github.com/vllm-project/vllm/commit/37a83007fef9925609a8d9b7c7b86bb41dab4e5d" target="_blank">
+                        [ROCm][CI] Fix wvSplitKrc mock argument order in test_rocm_unquantized_gemm (#38167)
+                    </a>
+                </div>
+            </div>
+            
+            <div class="commit-meta">
+                👤 Andreas Karatzas | 🕒 2026-03-26 06:54:59 -0500
+            </div>
+            
+            <div class="commit-analysis">
+                📝 <strong>AI 分析:</strong>
+                1. 这是一个针对 ROCm 平台的 CI 测试修复，修正了测试中模拟函数 `wvSplitKrc` 的参数顺序错误，属于 bug 修复。  
+2. 技术亮点是确保了 ROCm 后端特定算子测试的正确性，避免了因参数顺序不匹配导致的测试失败。  
+3. 对项目的影响是提升了 ROCm 平台 CI 测试的稳定性，有助于开发者更可靠地验证相关功能。
+            </div>
+        </div>
+        
+        <div class="commit-item">
+            <div class="commit-header">
+                <span class="category-badge" data-category="Refactor">♻️ Refactor</span>
+                <div class="commit-title">
+                    <a href="https://github.com/vllm-project/vllm/commit/bf5eec638d7571f0b88ea48a3d13709322b19a0c" target="_blank">
+                        [Refactor] Remove unused utils (#38153)
+                    </a>
+                </div>
+            </div>
+            
+            <div class="commit-meta">
+                👤 Wentao Ye | 🕒 2026-03-26 05:08:19 -0400
+            </div>
+            
+            <div class="commit-analysis">
+                📝 <strong>AI 分析:</strong>
+                1. 这是一个重构提交，删除了项目中未使用的工具函数和导入，属于代码清理优化。  
+2. 技术亮点是移除了冗余代码，简化了代码结构，提升了项目的可维护性。  
+3. 对开发者而言，减少了代码维护负担，但对最终用户没有直接影响。
+            </div>
+        </div>
+        
+        <div class="commit-item">
+            <div class="commit-header">
+                <span class="category-badge" data-category="BugFix">🐛 BugFix</span>
+                <div class="commit-title">
+                    <a href="https://github.com/vllm-project/vllm/commit/b1cb1d3d2c2332e2bd30d63ba18ff6a4a046c122" target="_blank">
+                        DOC: Documentation pages fixes (#38125)
+                    </a>
+                </div>
+            </div>
+            
+            <div class="commit-meta">
+                👤 Mateusz Sokół | 🕒 2026-03-26 09:55:42 +0100
+            </div>
+            
+            <div class="commit-analysis">
+                📝 <strong>AI 分析:</strong>
+                1. 这是一个文档修复提交，主要修正了文档页面中的错误和问题，属于文档维护性质的工作。  
+2. 技术亮点在于提升了文档的准确性和可读性，但没有涉及代码功能、性能或架构的变更。  
+3. 对用户和开发者来说，能获得更可靠的文档参考，但不会影响系统运行或开发接口。
+            </div>
+        </div>
+        
+        <div class="commit-item">
+            <div class="commit-header">
+                <span class="category-badge" data-category="BugFix">🐛 BugFix</span>
+                <div class="commit-title">
+                    <a href="https://github.com/vllm-project/vllm/commit/6ae8bbd0c2fa5b057f0c3066bc6519792f7048af" target="_blank">
+                        [XPU] Disable xpu graph by default (#38193)
+                    </a>
+                </div>
+            </div>
+            
+            <div class="commit-meta">
+                👤 Kunshang Ji | 🕒 2026-03-26 16:53:45 +0800
+            </div>
+            
+            <div class="commit-analysis">
+                📝 <strong>AI 分析:</strong>
+                1. 这是一个功能调整，将 XPU 图模式默认禁用，属于配置优化。  
+2. 技术亮点是避免 XPU 图模式在某些场景下的潜在问题，提升稳定性。  
+3. 对用户而言，默认配置更安全，开发者需显式启用该功能以利用其性能优势。
+            </div>
+        </div>
+        
+        <div class="commit-item">
+            <div class="commit-header">
+                <span class="category-badge" data-category="BugFix">🐛 BugFix</span>
+                <div class="commit-title">
+                    <a href="https://github.com/vllm-project/vllm/commit/a9213c0ffea4c6485dd1d03de5e8b3ff96dda924" target="_blank">
+                        [Doc] Fix outdated reference to CUDAGraphManager (#38209)
+                    </a>
+                </div>
+            </div>
+            
+            <div class="commit-meta">
+                👤 Cyrus Leung | 🕒 2026-03-26 16:52:38 +0800
+            </div>
+            
+            <div class="commit-analysis">
+                📝 <strong>AI 分析:</strong>
+                这是一个文档修复类提交，主要修正了代码注释中对已重命名类 `CUDAGraphManager` 的过时引用，将其更新为正确的 `CUDAGraphRunner`。技术亮点在于维护了代码文档的准确性，避免了开发者产生混淆。对项目的影响是提升了代码可读性和维护性，有助于开发者正确理解相关实现。
+            </div>
+        </div>
+        
+        <div class="commit-item">
+            <div class="commit-header">
+                <span class="category-badge" data-category="Refactor">♻️ Refactor</span>
+                <div class="commit-title">
+                    <a href="https://github.com/vllm-project/vllm/commit/502c41a8f65e50f394882c6f957ef22b0bdef5a4" target="_blank">
+                        [Model] Use helper function to run MM processors with token inputs (where applicable) (#38018)
+                    </a>
+                </div>
+            </div>
+            
+            <div class="commit-meta">
+                👤 Cyrus Leung | 🕒 2026-03-26 16:44:04 +0800
+            </div>
+            
+            <div class="commit-analysis">
+                📝 <strong>AI 分析:</strong>
+                这是一个**重构性提交**，主要将多模态模型处理token输入的逻辑统一封装为辅助函数，提升了代码复用性和可维护性。技术亮点在于**通过提取公共函数减少了重复代码**，使不同多模态处理器的调用方式标准化。对开发者而言，这**简化了后续模型扩展的代码结构**，但不会影响终端用户的现有功能或性能。
+            </div>
+        </div>
+        
+        <div class="commit-item">
+            <div class="commit-header">
+                <span class="category-badge" data-category="BugFix">🐛 BugFix</span>
+                <div class="commit-title">
+                    <a href="https://github.com/vllm-project/vllm/commit/52069012fe53714581682ded6746cd311108bf3a" target="_blank">
+                        [Bugfix] Fix DeepGemm E8M0 accuracy degradation for Qwen3.5 FP8 on Blackwell (#38083)
+                    </a>
+                </div>
+            </div>
+            
+            <div class="commit-meta">
+                👤 Vadim Gimpelson | 🕒 2026-03-26 12:21:47 +0400
+            </div>
+            
+            <div class="commit-analysis">
+                📝 <strong>AI 分析:</strong>
+                1. 这是一个 bug 修复，解决了在 Blackwell 架构上使用 DeepGemm E8M0 精度时，Qwen3.5 FP8 模型的准确率下降问题。
+2. 技术亮点是针对特定硬件（NVIDIA Blackwell）和特定计算模式（FP8 E8M0）的精度优化，确保了低精度运算的数值准确性。
+3. 对项目的影响是提升了特定硬件和模型配置下的推理准确性，保障了用户在该场景下的使用体验。
+            </div>
+        </div>
+        
+        <div class="commit-item">
+            <div class="commit-header">
+                <span class="category-badge" data-category="BugFix">🐛 BugFix</span>
+                <div class="commit-title">
+                    <a href="https://github.com/vllm-project/vllm/commit/71161e8b63f9534d6ac5e098a4874621164d1f1e" target="_blank">
+                        [cpu][ci] remove soft-fail for Arm CI and add quant model tests (#37691)
+                    </a>
+                </div>
+            </div>
+            
+            <div class="commit-meta">
+                👤 Fadi Arafeh | 🕒 2026-03-26 07:03:31 +0000
+            </div>
+            
+            <div class="commit-analysis">
+                📝 <strong>AI 分析:</strong>
+                1. 该 commit 移除了 Arm CI 的软失败机制，并增加了量化模型测试，属于 CI/CD 流程的改进和测试覆盖增强。  
+2. 技术亮点是强化了 Arm 架构的持续集成可靠性，通过新增量化测试确保模型在特定硬件上的功能正确性。  
+3. 对项目而言，这提升了 Arm 平台代码的稳定性验证，有助于开发者及早发现兼容性问题，增强多架构支持的可信度。
             </div>
         </div>
         
@@ -1204,19 +862,21 @@
             <div class="commit-header">
                 <span class="category-badge" data-category="Performance">⚡ Performance</span>
                 <div class="commit-title">
-                    <a href="https://github.com/vllm-project/vllm/commit/91fd695b758c56b22835a943d13594e353daeb7c" target="_blank">
-                        [CI] split Entrypoints Integration (API Server 1) into 3 jobs (#37882)
+                    <a href="https://github.com/vllm-project/vllm/commit/38de822310239a50c610a420e2ed9f6dd670d5a7" target="_blank">
+                        [Model] Add torch.compile support for InternVL vision encoder (#38049)
                     </a>
                 </div>
             </div>
             
             <div class="commit-meta">
-                👤 Kunshang Ji | 🕒 2026-03-24 01:37:56 +0800
+                👤 Terry Gao | 🕒 2026-03-25 23:52:29 -0700
             </div>
             
             <div class="commit-analysis">
                 📝 <strong>AI 分析:</strong>
-                这是一个 CI/CD 优化相关的提交，主要将原有的 "Entrypoints Integration (API Server 1)" 集成测试任务拆分为三个独立的并行作业，以缩短整体测试运行时间。技术亮点在于通过任务拆分实现了测试的并行化，提升了持续集成管道的执行效率。这对项目的影响是加快了开发反馈循环，提升了开发者的工作效率，但不会直接影响最终用户的功能或性能。
+                1. 该 commit 为 InternVL 视觉编码器添加了 torch.compile 支持，属于性能优化类的新功能。  
+2. 技术亮点是通过包装类 `InternVLVisionEncoderWrapper` 兼容动态输入尺寸，并利用 `torch.compile` 提升推理性能。  
+3. 对项目而言，开发者可启用编译优化以提升视觉编码速度，但需注意动态尺寸可能触发重新编译。
             </div>
         </div>
         
@@ -1224,21 +884,67 @@
             <div class="commit-header">
                 <span class="category-badge" data-category="BugFix">🐛 BugFix</span>
                 <div class="commit-title">
-                    <a href="https://github.com/vllm-project/vllm/commit/1cbbcfe8a334bab004c43a60be201c8ab528e0d2" target="_blank">
-                        [CI][PD] Add Hybrid SSM integration tests to CI (#37657)
+                    <a href="https://github.com/vllm-project/vllm/commit/2bfbdca23c60536f43850c9bec07fcc2b8f8e810" target="_blank">
+                        [Bugfix] Fix benchmark_fused_collective.py (#38082)
                     </a>
                 </div>
             </div>
             
             <div class="commit-meta">
-                👤 Nicolò Lucchesi | 🕒 2026-03-23 16:58:19 +0100
+                👤 Jee Jee Li | 🕒 2026-03-26 14:51:00 +0800
             </div>
             
             <div class="commit-analysis">
                 📝 <strong>AI 分析:</strong>
-                1. 这是一个CI测试相关的提交，主要功能是为Hybrid SSM（选择性状态空间模型）添加集成测试到持续集成流程中。  
-2. 技术亮点是扩展了CI测试覆盖范围，确保Hybrid SSM这一新特性在代码变更时能保持稳定性和兼容性。  
-3. 对项目的影响是提升了开发可靠性，帮助开发者及早发现该模块的集成问题，但不会直接影响终端用户功能。
+                1. 这是一个bug修复，修复了benchmark_fused_collective.py脚本中的错误，确保分布式通信基准测试能正常运行。  
+2. 技术亮点是修正了分布式通信测试的逻辑，避免了因参数传递错误导致的执行失败。  
+3. 对项目的影响是提升了基准测试的可靠性，帮助开发者更准确地评估分布式通信性能。
+            </div>
+        </div>
+        
+        <div class="commit-item">
+            <div class="commit-header">
+                <span class="category-badge" data-category="Performance">⚡ Performance</span>
+                <div class="commit-title">
+                    <a href="https://github.com/vllm-project/vllm/commit/2908094567e7ebbf59b0f3b9be036d8929901971" target="_blank">
+                        Add `/v1/chat/completions/batch` endpoint for batched chat completions (#38011)
+                    </a>
+                </div>
+            </div>
+            
+            <div class="commit-meta">
+                👤 Matej Rojec | 🕒 2026-03-26 05:13:33 +0100
+            </div>
+            
+            <div class="commit-analysis">
+                📝 <strong>AI 分析:</strong>
+                1. 该 commit 新增了 `/v1/chat/completions/batch` 端点，支持批量聊天补全功能，属于新特性开发。  
+2. 技术亮点是通过批量处理接口优化了高并发场景下的请求效率，提升了服务端吞吐能力。  
+3. 对用户而言可以直接发送批量请求减少网络开销，对开发者则提供了更灵活的 API 调用方式，整体提升了系统性能。
+            </div>
+        </div>
+        
+        <div class="commit-item">
+            <div class="commit-header">
+                <span class="category-badge" data-category="BugFix">🐛 BugFix</span>
+                <div class="commit-title">
+                    <a href="https://github.com/vllm-project/vllm/commit/e6bf9f15ec9d8bc75a583cd9477159b1232b635b" target="_blank">
+                        [Bugfix][CI] Fix Marlin FP8 Linear Kernel for Compressed Tensors Format  (#38092)
+                    </a>
+                </div>
+            </div>
+            
+            <div class="commit-meta">
+                👤 BadrBasowid | 🕒 2026-03-26 12:11:43 +0800
+            </div>
+            
+            <div class="commit-analysis">
+                📝 <strong>AI 分析:</strong>
+                1. 这是一个bug修复，主要修复了Marlin FP8线性内核在处理压缩张量格式时的问题，并修复了CI测试。
+
+2. 技术亮点是修复了FP8量化内核在特定压缩格式下的计算错误，确保低精度计算在压缩存储格式下的正确性。
+
+3. 对项目的影响是修复了FP8量化功能的核心bug，保证了模型推理的数值正确性和稳定性，特别是对使用压缩格式的FP8量化模型用户至关重要。
             </div>
         </div>
         
@@ -1246,19 +952,313 @@
             <div class="commit-header">
                 <span class="category-badge" data-category="Refactor">♻️ Refactor</span>
                 <div class="commit-title">
-                    <a href="https://github.com/vllm-project/vllm/commit/aceadb5ee1eb0e637706c898b410b18c7b8cc6b2" target="_blank">
-                        Use lazy graph module during split_module to defer recompile() (#37609)
+                    <a href="https://github.com/vllm-project/vllm/commit/144030c84ebf03b4f911ad8bab6432729418729c" target="_blank">
+                        Relocate Encoder CUDA graph manager (#38116)
                     </a>
                 </div>
             </div>
             
             <div class="commit-meta">
-                👤 Angela Yi | 🕒 2026-03-23 08:21:29 -0700
+                👤 Woosuk Kwon | 🕒 2026-03-25 20:52:12 -0700
             </div>
             
             <div class="commit-analysis">
                 📝 <strong>AI 分析:</strong>
-                这是一个**性能优化**的 commit，通过使用惰性图模块延迟 `recompile()` 调用，减少了在 `split_module` 过程中的不必要的即时编译开销。技术亮点在于**优化了模块分割时的编译策略**，提升了动态图构建阶段的效率。对项目的影响是**降低了内部计算图重构时的延迟**，使开发者能更高效地进行模型分割与编译，但对终端用户无直接影响。
+                这是一个重构性质的 commit，将 Encoder CUDA 图管理器从 `vllm/entrypoints/openai/api_server.py` 移动到了 `vllm/executor/encoder_cuda_graph.py`。主要目的是**改进代码架构**，将特定组件的管理逻辑集中到更合适的模块中，提升了代码的组织性和可维护性。这对开发者来说意味着**模块职责更清晰**，但不会直接影响最终用户的功能或性能。
+            </div>
+        </div>
+        
+        <div class="commit-item">
+            <div class="commit-header">
+                <span class="category-badge" data-category="Refactor">♻️ Refactor</span>
+                <div class="commit-title">
+                    <a href="https://github.com/vllm-project/vllm/commit/e2db2b42347ae27da3083c530c71b251861ed220" target="_blank">
+                        [Tool Parser][1/3] Pass tools to ToolParser constructor (#38029)
+                    </a>
+                </div>
+            </div>
+            
+            <div class="commit-meta">
+                👤 Flora Feng | 🕒 2026-03-25 22:29:06 -0400
+            </div>
+            
+            <div class="commit-analysis">
+                📝 <strong>AI 分析:</strong>
+                1. 这是一个功能增强提交，将工具参数从方法调用移至ToolParser构造函数，属于工具解析器重构的第一部分。  
+2. 技术亮点是解耦工具配置与解析逻辑，提升了代码的可维护性和扩展性。  
+3. 对开发者而言，这简化了工具解析器的使用方式，为后续工具集成功能提供了更清晰的架构基础。
+            </div>
+        </div>
+        
+        <div class="commit-item">
+            <div class="commit-header">
+                <span class="category-badge" data-category="BugFix">🐛 BugFix</span>
+                <div class="commit-title">
+                    <a href="https://github.com/vllm-project/vllm/commit/87f05d6880d0795d658fd4a5dacc0109704a8c4c" target="_blank">
+                        [Revert] Remove DeepGEMM availability check in DeepseekV32IndexerMetadataBuilder (#38076)
+                    </a>
+                </div>
+            </div>
+            
+            <div class="commit-meta">
+                👤 Chauncey | 🕒 2026-03-26 09:43:51 +0800
+            </div>
+            
+            <div class="commit-analysis">
+                📝 <strong>AI 分析:</strong>
+                1. 这是一个**回滚操作**，撤销了之前移除DeepGEMM可用性检查的改动，属于**bug修复**，旨在恢复对特定硬件兼容性的验证。  
+2. **技术亮点**在于重新引入了对DeepGEMM的运行时检测，确保模型索引器在支持的硬件上正常运行，避免潜在兼容性问题。  
+3. **影响**是提升了Deepseek-V3模型在不同硬件环境下的稳定性和兼容性，开发者需注意该检查的必要性，用户则能获得更可靠的推理体验。
+            </div>
+        </div>
+        
+        <div class="commit-item">
+            <div class="commit-header">
+                <span class="category-badge" data-category="Refactor">♻️ Refactor</span>
+                <div class="commit-title">
+                    <a href="https://github.com/vllm-project/vllm/commit/36f6aede23e157bb8f505d548140109db3b65bec" target="_blank">
+                        [Misc] Optimized check to encapsulate both CUDA and ROCm platforms (#34549)
+                    </a>
+                </div>
+            </div>
+            
+            <div class="commit-meta">
+                👤 Andreas Karatzas | 🕒 2026-03-25 20:43:07 -0500
+            </div>
+            
+            <div class="commit-analysis">
+                📝 <strong>AI 分析:</strong>
+                1. 这是一个重构性提交，优化了同时检查CUDA和ROCm平台的代码逻辑，通过统一封装简化了平台检测条件。  
+2. 技术亮点是使用更简洁的布尔表达式替代多个平台判断，提高了代码可读性并减少了重复条件分支。  
+3. 对开发者而言，平台检测逻辑更清晰易维护，但不会影响最终用户的功能或性能表现。
+            </div>
+        </div>
+        
+        <div class="commit-item">
+            <div class="commit-header">
+                <span class="category-badge" data-category="BugFix">🐛 BugFix</span>
+                <div class="commit-title">
+                    <a href="https://github.com/vllm-project/vllm/commit/9704a5c3106a1d42c8f5b2dd51d8585ecc7db482" target="_blank">
+                        Disable dual stream execution of input projection for Qwen3 (#38152)
+                    </a>
+                </div>
+            </div>
+            
+            <div class="commit-meta">
+                👤 Xin Yang | 🕒 2026-03-25 18:20:39 -0700
+            </div>
+            
+            <div class="commit-analysis">
+                📝 <strong>AI 分析:</strong>
+                1. 这是一个针对 Qwen3 模型的 bug 修复，禁用了其输入投影层的双流执行功能，以解决特定架构下的兼容性问题。
+
+2. 技术亮点是识别并修复了 Qwen3 模型在特定硬件（如 NVIDIA Hopper 架构）上因双流执行优化导致的潜在计算错误或性能异常。
+
+3. 对项目的影响是提升了 Qwen3 模型在 vLLM 推理服务中的稳定性和计算正确性，确保其在不同硬件环境下都能可靠运行。
+            </div>
+        </div>
+        
+        <div class="commit-item">
+            <div class="commit-header">
+                <span class="category-badge" data-category="BugFix">🐛 BugFix</span>
+                <div class="commit-title">
+                    <a href="https://github.com/vllm-project/vllm/commit/74056039b776776ed29eb0649e51ac6780592a4c" target="_blank">
+                        Fix minimax m2.5 nvfp4 kv scales weight loading (#37214)
+                    </a>
+                </div>
+            </div>
+            
+            <div class="commit-meta">
+                👤 Wei Zhao | 🕒 2026-03-25 20:48:06 -0400
+            </div>
+            
+            <div class="commit-analysis">
+                📝 <strong>AI 分析:</strong>
+                1. 这是一个bug修复，主要解决了Minimax M2.5模型在使用nvfp4量化格式时，KV缓存缩放权重加载错误的问题。
+2. 技术亮点是修复了特定量化格式（nvfp4）与特定硬件/模型架构（Minimax M2.5）组合下的权重加载逻辑，确保了数据精度。
+3. 该修复直接影响使用相关配置的用户，能正确加载模型并保证推理精度，避免了因权重错误导致的性能下降或错误结果。
+            </div>
+        </div>
+        
+        <div class="commit-item">
+            <div class="commit-header">
+                <span class="category-badge" data-category="BugFix">🐛 BugFix</span>
+                <div class="commit-title">
+                    <a href="https://github.com/vllm-project/vllm/commit/d7d51a7ee5ce3b0fe420e773e2dcd38336c338ff" target="_blank">
+                        [Bugfix] Fix Qwen3.5-FP8 Weight Loading Error on TPU (#37348)
+                    </a>
+                </div>
+            </div>
+            
+            <div class="commit-meta">
+                👤 Jacob Platin | 🕒 2026-03-25 17:46:01 -0700
+            </div>
+            
+            <div class="commit-analysis">
+                📝 <strong>AI 分析:</strong>
+                1. 这是一个针对Qwen3.5-FP8模型在TPU上权重加载错误的Bug修复，解决了特定硬件上的兼容性问题。  
+2. 技术亮点是修正了TPU后端对FP8量化权重的处理逻辑，确保了模型在不同硬件平台间的正确加载。  
+3. 该修复提升了项目在TPU设备上的稳定性和模型支持范围，使开发者能顺利在更多硬件上部署Qwen3.5-FP8模型。
+            </div>
+        </div>
+        
+        <div class="commit-item">
+            <div class="commit-header">
+                <span class="category-badge" data-category="BugFix">🐛 BugFix</span>
+                <div class="commit-title">
+                    <a href="https://github.com/vllm-project/vllm/commit/3c3c084240261a012531ab990be1d13f1e651c26" target="_blank">
+                        Various Transformers v5 fixes (#38127)
+                    </a>
+                </div>
+            </div>
+            
+            <div class="commit-meta">
+                👤 Harry Mellor | 🕒 2026-03-26 00:10:08 +0000
+            </div>
+            
+            <div class="commit-analysis">
+                📝 <strong>AI 分析:</strong>
+                1. 这是一个针对Transformers v5兼容性的修复提交，主要解决了多个模型适配问题，属于bug修复和功能维护。
+
+2. 技术亮点包括修复了模型配置加载、注意力机制兼容性等关键问题，确保vLLM能够正确支持最新版Transformers库。
+
+3. 对项目影响是提升了框架对新版Transformers的兼容性，使开发者能无缝使用最新模型，避免因版本升级导致的运行时错误。
+            </div>
+        </div>
+        
+        <div class="commit-item">
+            <div class="commit-header">
+                <span class="category-badge" data-category="Config">🔧 Config</span>
+                <div class="commit-title">
+                    <a href="https://github.com/vllm-project/vllm/commit/7b54f60db0f55d74dac8aa3040c02363b7a9f6ec" target="_blank">
+                        [Cohere] Enable Cohere-Transcribe (#38120)
+                    </a>
+                </div>
+            </div>
+            
+            <div class="commit-meta">
+                👤 Ekagra Ranjan | 🕒 2026-03-25 19:13:51 -0400
+            </div>
+            
+            <div class="commit-analysis">
+                📝 <strong>AI 分析:</strong>
+                1. 这个 commit 为 vLLM 项目添加了对 Cohere-Transcribe 模型的支持，属于新功能实现。
+2. 技术亮点是扩展了模型注册机制，通过新增 `cohere_transcribe` 模型类和相关配置，使项目能兼容该语音转录模型。
+3. 对用户而言，现在可以直接使用 vLLM 推理 Cohere-Transcribe 模型；对开发者来说，这展示了如何为 vLLM 集成新的模型架构。
+            </div>
+        </div>
+        
+        <div class="commit-item">
+            <div class="commit-header">
+                <span class="category-badge" data-category="BugFix">🐛 BugFix</span>
+                <div class="commit-title">
+                    <a href="https://github.com/vllm-project/vllm/commit/a0e8c74005f5782fad30be912c12cd37fc2813e9" target="_blank">
+                        [ROCm]: Update rope+kvcache fusion conditions and disable custom op by default (#36716)
+                    </a>
+                </div>
+            </div>
+            
+            <div class="commit-meta">
+                👤 Rohan Potdar | 🕒 2026-03-25 15:58:44 -0500
+            </div>
+            
+            <div class="commit-analysis">
+                📝 <strong>AI 分析:</strong>
+                1. 这是一个针对 ROCm 平台的 bug 修复和配置调整，主要修复了旋转位置编码（RoPE）与 KV 缓存融合的条件判断，并默认禁用了自定义算子以提高兼容性。
+
+2. 技术亮点是修正了融合内核的触发逻辑，避免了在特定硬件配置下的错误执行，同时将默认行为切换为更稳定的标准实现。
+
+3. 该提交提升了 ROCm 平台（AMD GPU）的稳定性和兼容性，对用户而言运行更可靠，对开发者则减少了平台相关的调试负担。
+            </div>
+        </div>
+        
+        <div class="commit-item">
+            <div class="commit-header">
+                <span class="category-badge" data-category="Feature">🚀 Feature</span>
+                <div class="commit-title">
+                    <a href="https://github.com/vllm-project/vllm/commit/70a2152830959d0d5e25d60869f2fb3e2fa3733c" target="_blank">
+                        [MultiModal] add support for numpy array embeddings (#38119)
+                    </a>
+                </div>
+            </div>
+            
+            <div class="commit-meta">
+                👤 Guillaume Guy | 🕒 2026-03-25 15:13:04 -0500
+            </div>
+            
+            <div class="commit-analysis">
+                📝 <strong>AI 分析:</strong>
+                1. 这是一个功能增强提交，为多模态功能添加了对NumPy数组嵌入的支持，允许用户直接传入NumPy数组作为输入。  
+2. 技术亮点是扩展了输入数据类型的兼容性，简化了用户将现有NumPy数据集成到vLLM推理流程中的步骤。  
+3. 对项目而言，这降低了多模态模型的使用门槛，提升了开发便利性，同时保持了后端处理效率。
+            </div>
+        </div>
+        
+        <div class="commit-item">
+            <div class="commit-header">
+                <span class="category-badge" data-category="Refactor">♻️ Refactor</span>
+                <div class="commit-title">
+                    <a href="https://github.com/vllm-project/vllm/commit/978fc18bf000dbe36d361e32995b7178dbdde20c" target="_blank">
+                        [ROCm] Utilize persistent MLA kernel from AITER (#36574)
+                    </a>
+                </div>
+            </div>
+            
+            <div class="commit-meta">
+                👤 Sathish Sanjeevi | 🕒 2026-03-25 12:00:42 -0700
+            </div>
+            
+            <div class="commit-analysis">
+                📝 <strong>AI 分析:</strong>
+                1. 这是一个针对ROCm平台的功能优化，通过使用AITER中的持久化MLA（Multi-Head Latent Attention）内核来改进vLLM的注意力计算。  
+2. 技术亮点是引入了高性能的持久化内核，减少了内核启动开销，从而提升了AMD GPU上的注意力计算性能。  
+3. 对项目的影响是显著提升了ROCm平台下的推理效率，使AMD GPU用户获得更好的性能体验，同时保持了代码的可维护性。
+            </div>
+        </div>
+        
+        <div class="commit-item">
+            <div class="commit-header">
+                <span class="category-badge" data-category="BugFix">🐛 BugFix</span>
+                <div class="commit-title">
+                    <a href="https://github.com/vllm-project/vllm/commit/7d6917bef552d6aff70142ab9fb8af648081d4db" target="_blank">
+                        [ROCm] Fix MoE kernel test failures on gfx950 (#37833)
+                    </a>
+                </div>
+            </div>
+            
+            <div class="commit-meta">
+                👤 Andreas Karatzas | 🕒 2026-03-25 13:46:40 -0500
+            </div>
+            
+            <div class="commit-analysis">
+                📝 <strong>AI 分析:</strong>
+                1. 这是一个针对ROCm平台的bug修复，主要解决了在gfx950架构上MoE（混合专家）内核测试失败的问题。
+
+2. 技术亮点是修复了AMD特定GPU架构（gfx950）的硬件兼容性问题，确保了MoE内核在ROCm平台上的正确执行。
+
+3. 对项目的影响是提升了vLLM在AMD GPU上的稳定性和兼容性，使开发者能在gfx950架构上正常使用MoE相关功能。
+            </div>
+        </div>
+        
+        <div class="commit-item">
+            <div class="commit-header">
+                <span class="category-badge" data-category="BugFix">🐛 BugFix</span>
+                <div class="commit-title">
+                    <a href="https://github.com/vllm-project/vllm/commit/e38817fadbe10393ec8ef2fd52fe9a086d7365c1" target="_blank">
+                        [Core][KV Connector] Remove use of num_cached_tokens in error handling (#38096)
+                    </a>
+                </div>
+            </div>
+            
+            <div class="commit-meta">
+                👤 Mark McLoughlin | 🕒 2026-03-25 18:20:48 +0000
+            </div>
+            
+            <div class="commit-analysis">
+                📝 <strong>AI 分析:</strong>
+                1. 这是一个重构提交，移除了KV连接器中错误处理对`num_cached_tokens`的依赖，简化了代码逻辑。  
+2. 技术亮点是清理了冗余的状态管理，使错误处理更直接地基于`num_tokens`参数，提升了代码可维护性。  
+3. 对开发者而言，减少了状态跟踪的复杂性，但不会影响用户可见的功能或性能。
             </div>
         </div>
         
