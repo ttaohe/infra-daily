@@ -121,3 +121,6 @@ python3 monitor.py && python3 generate_html.py
 ---
 
 **项目位置**: `/root/.openclaw/workspace/infra-daily/`
+
+
+<!-- Security scan triggered at 2026-09-05 07:50:27 -->
