@@ -2,8 +2,16 @@ name: Infra Daily Monitor
 
 on:
   schedule:
-    - cron: "0 0 */2 * *"
+    # 01:17 UTC = 09:17 Beijing time; offset from the crowded top of hour.
+    - cron: "17 1 * * *"
   workflow_dispatch:
+
+concurrency:
+  group: infra-daily-monitor
+  cancel-in-progress: false
+
+env:
+  TZ: Asia/Shanghai
 
 permissions:
   contents: write
@@ -52,7 +60,8 @@ jobs:
       run: |
         git config --local user.email "ttaohe828@gmail.com"
         git config --local user.name "ttaohe"
-        git add reports/ || true
+        git add -f reports/report_*.json
+        git add reports/
         git commit -m "chore: update daily report $(date +'%Y-%m-%d')" || echo "No changes to commit"
         git push
     
