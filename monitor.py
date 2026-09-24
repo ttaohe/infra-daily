@@ -26,9 +26,21 @@ def get_last_run_time():
         with open(state_file) as f:
             state = json.load(f)
             return datetime.fromisoformat(state.get("last_run", "2026-01-01"))
-    else:
-        # 虚拟起点：2026年1月1日
-        return datetime(2026, 1, 1)
+    reports = sorted(Path("reports").glob("report_*.json"))
+    if reports:
+        with reports[-1].open(encoding="utf-8") as f:
+            return datetime.fromisoformat(json.load(f)["generated_at"])
+    # Earlier runs committed only HTML; use its last commit as the migration boundary.
+    try:
+        result = subprocess.run(
+            ["git", "log", "-1", "--format=%cI", "--", "reports/index.html"],
+            capture_output=True, text=True, check=True,
+        )
+        if result.stdout.strip():
+            return datetime.fromisoformat(result.stdout.strip()).astimezone().replace(tzinfo=None)
+    except (subprocess.CalledProcessError, ValueError):
+        pass
+    return datetime(2026, 1, 1)
 
 def save_run_time():
     """保存本次运行时间"""
