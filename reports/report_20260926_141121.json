@@ -1,0 +1,1657 @@
+{
+  "generated_at": "2026-09-26T14:11:21.506275",
+  "last_run": "2026-09-25T14:12:08.636027",
+  "total_commits": 150,
+  "commits": [
+    {
+      "repo": "vllm-project/vllm",
+      "commit": {
+        "sha": "3b4566c5cf014605de6aeab6eb831b4f20511c17",
+        "date": "2026-09-26 01:03:45 -0500",
+        "title": "[CI] Only isolate the registry tests that need a fresh process (#58764)",
+        "author": "Aarushi Jain"
+      },
+      "analysis": "分析失败: 401",
+      "github_url": "https://github.com/vllm-project/vllm/commit/3b4566c5cf014605de6aeab6eb831b4f20511c17"
+    },
+    {
+      "repo": "vllm-project/vllm",
+      "commit": {
+        "sha": "ddd6fbca148a867aad1fcab7ec72f582b9977db4",
+        "date": "2026-09-26 10:18:58 +0800",
+        "title": "[Bugfix][Frontend][Rust Frontend] Update DeepSeek V4.1 Flash reasoning effort mappings (#58316)",
+        "author": "zhec"
+      },
+      "analysis": "分析失败: 401",
+      "github_url": "https://github.com/vllm-project/vllm/commit/ddd6fbca148a867aad1fcab7ec72f582b9977db4"
+    },
+    {
+      "repo": "vllm-project/vllm",
+      "commit": {
+        "sha": "5840d95284fe3ae9f56f2366074f58d277d69ad8",
+        "date": "2026-09-25 21:51:18 -0400",
+        "title": "[Bugfix][ROCm] AMD-Quark mixed-precision DeepSeek-V4.1 support (#57071)",
+        "author": "xiao-llm"
+      },
+      "analysis": "分析失败: 401",
+      "github_url": "https://github.com/vllm-project/vllm/commit/5840d95284fe3ae9f56f2366074f58d277d69ad8"
+    },
+    {
+      "repo": "vllm-project/vllm",
+      "commit": {
+        "sha": "b6d2b4fc2575e89d5be7d1c26b191735932793e7",
+        "date": "2026-09-25 18:38:53 -0700",
+        "title": "[RL] Add sharding-aware NCCL M2N weight transfer (#51520)",
+        "author": "Ke Wen"
+      },
+      "analysis": "分析失败: 401",
+      "github_url": "https://github.com/vllm-project/vllm/commit/b6d2b4fc2575e89d5be7d1c26b191735932793e7"
+    },
+    {
+      "repo": "vllm-project/vllm",
+      "commit": {
+        "sha": "4bb804cc5bf0de81ce8344238b5b4522630874fd",
+        "date": "2026-09-26 09:15:57 +0800",
+        "title": "[Perf][DSv4.1] Shard the Engram wkv projection across TP ranks (#58678)",
+        "author": "Shuolei Wang"
+      },
+      "analysis": "分析失败: 401",
+      "github_url": "https://github.com/vllm-project/vllm/commit/4bb804cc5bf0de81ce8344238b5b4522630874fd"
+    },
+    {
+      "repo": "vllm-project/vllm",
+      "commit": {
+        "sha": "8a2364605c0b0581ea5d0d3720cb1125b47abc6f",
+        "date": "2026-09-25 17:40:22 -0700",
+        "title": "[Core] Bound draft-token RPC waits by the execute-model timeout (#58779)",
+        "author": "Chandra Mourya"
+      },
+      "analysis": "分析失败: 401",
+      "github_url": "https://github.com/vllm-project/vllm/commit/8a2364605c0b0581ea5d0d3720cb1125b47abc6f"
+    },
+    {
+      "repo": "vllm-project/vllm",
+      "commit": {
+        "sha": "fdcce47e9bd9d0068770e4076b8aab5b09150244",
+        "date": "2026-09-25 20:38:52 -0400",
+        "title": "[Bugfix][Frontend] Fix Inkling tool name leaking into content after reasoning (#58792)",
+        "author": "Baljinder Hothi"
+      },
+      "analysis": "分析失败: 401",
+      "github_url": "https://github.com/vllm-project/vllm/commit/fdcce47e9bd9d0068770e4076b8aab5b09150244"
+    },
+    {
+      "repo": "vllm-project/vllm",
+      "commit": {
+        "sha": "da1aaec31fb366c0ded497c1fa4b79a2fcc99969",
+        "date": "2026-09-25 20:05:33 -0400",
+        "title": "[CI] Split (H200 MIG/MI300) Basic Correctness into named jobs (#57054)",
+        "author": "Thang Nguyen"
+      },
+      "analysis": "分析失败: 401",
+      "github_url": "https://github.com/vllm-project/vllm/commit/da1aaec31fb366c0ded497c1fa4b79a2fcc99969"
+    },
+    {
+      "repo": "vllm-project/vllm",
+      "commit": {
+        "sha": "9bf44c40134c024956df9134036b1d5b3d4eef7b",
+        "date": "2026-09-26 01:29:56 +0200",
+        "title": "[Bugfix][Reasoning] Count Kimi K3 reasoning tokens (#58372)",
+        "author": "Elvir Crnčević"
+      },
+      "analysis": "分析失败: 401",
+      "github_url": "https://github.com/vllm-project/vllm/commit/9bf44c40134c024956df9134036b1d5b3d4eef7b"
+    },
+    {
+      "repo": "vllm-project/vllm",
+      "commit": {
+        "sha": "974cb65155303139cec4f5d8d8b68bbd8ef49a2a",
+        "date": "2026-09-25 19:23:11 -0400",
+        "title": "[Bugfix] V1: fix allowed_token_ids_mask aliasing in InputBatch.swap_states (#48419)",
+        "author": "Rui Zhu"
+      },
+      "analysis": "分析失败: 401",
+      "github_url": "https://github.com/vllm-project/vllm/commit/974cb65155303139cec4f5d8d8b68bbd8ef49a2a"
+    },
+    {
+      "repo": "vllm-project/vllm",
+      "commit": {
+        "sha": "b040321b333c1e9d1b9074d1a8c70e361544667e",
+        "date": "2026-09-26 07:22:13 +0800",
+        "title": "fix: perf: use startswith(x, i) instead of string slicing to avoid O(N^2) (#52580)",
+        "author": "Ricardo-M-L"
+      },
+      "analysis": "分析失败: 401",
+      "github_url": "https://github.com/vllm-project/vllm/commit/b040321b333c1e9d1b9074d1a8c70e361544667e"
+    },
+    {
+      "repo": "vllm-project/vllm",
+      "commit": {
+        "sha": "6ec2f84e1a42cdca59779ffae20aa62c8beda993",
+        "date": "2026-09-25 18:10:14 -0500",
+        "title": "[Pooling] Preserve BERT-family heads for raw logits (#57664)",
+        "author": "Taneem Ibrahim"
+      },
+      "analysis": "分析失败: 401",
+      "github_url": "https://github.com/vllm-project/vllm/commit/6ec2f84e1a42cdca59779ffae20aa62c8beda993"
+    },
+    {
+      "repo": "vllm-project/vllm",
+      "commit": {
+        "sha": "614b55f0b6dbcba0da27c261e9daa52633fe8dd0",
+        "date": "2026-09-25 15:55:21 -0700",
+        "title": "[AuxOutput] Only require Model Runner V2 on GPU platform (#58205)",
+        "author": "Linkun"
+      },
+      "analysis": "分析失败: 401",
+      "github_url": "https://github.com/vllm-project/vllm/commit/614b55f0b6dbcba0da27c261e9daa52633fe8dd0"
+    },
+    {
+      "repo": "vllm-project/vllm",
+      "commit": {
+        "sha": "e55d076f89fd01a0538a3e496d8ff20bf7980100",
+        "date": "2026-09-25 16:34:19 -0600",
+        "title": "[Bugfix] Don't drop the rest of the allocator config when toggling expandable segments (#57982)",
+        "author": "Oxana Korzh"
+      },
+      "analysis": "分析失败: 401",
+      "github_url": "https://github.com/vllm-project/vllm/commit/e55d076f89fd01a0538a3e496d8ff20bf7980100"
+    },
+    {
+      "repo": "vllm-project/vllm",
+      "commit": {
+        "sha": "4ccfe1239843998f9b3e109f159278dc0fcbf753",
+        "date": "2026-09-26 00:01:48 +0200",
+        "title": "[watermarking] golden tests for backwards compatibility (#56809)",
+        "author": "Raphaël Rialland"
+      },
+      "analysis": "分析失败: 401",
+      "github_url": "https://github.com/vllm-project/vllm/commit/4ccfe1239843998f9b3e109f159278dc0fcbf753"
+    },
+    {
+      "repo": "vllm-project/vllm",
+      "commit": {
+        "sha": "b6761e8ded57ef85b708f34af8cab1649eae1069",
+        "date": "2026-09-25 17:08:55 -0400",
+        "title": "[Bugfix] Default missing detail for Responses API input images (#57241)",
+        "author": "yzong-rh"
+      },
+      "analysis": "分析失败: 401",
+      "github_url": "https://github.com/vllm-project/vllm/commit/b6761e8ded57ef85b708f34af8cab1649eae1069"
+    },
+    {
+      "repo": "vllm-project/vllm",
+      "commit": {
+        "sha": "8b47e8b22caf0022b00df3b421cf2d41419a04a7",
+        "date": "2026-09-26 05:08:23 +0800",
+        "title": "[Perf][Frontend] Defer reasoning usage recounts for non-continuous chat streams (#56067)",
+        "author": "Cheng Rui"
+      },
+      "analysis": "分析失败: 401",
+      "github_url": "https://github.com/vllm-project/vllm/commit/8b47e8b22caf0022b00df3b421cf2d41419a04a7"
+    },
+    {
+      "repo": "vllm-project/vllm",
+      "commit": {
+        "sha": "de2d478d9a1c5c9c99dd4f6e6ef304c4a5e42617",
+        "date": "2026-09-25 14:08:00 -0700",
+        "title": "[Bugfix][Frontend] Document 404 response for `/generative_scoring` (#58788)",
+        "author": "Nick Hill"
+      },
+      "analysis": "分析失败: 401",
+      "github_url": "https://github.com/vllm-project/vllm/commit/de2d478d9a1c5c9c99dd4f6e6ef304c4a5e42617"
+    },
+    {
+      "repo": "vllm-project/vllm",
+      "commit": {
+        "sha": "7871963fcc8cd3484addb2f7abddcd0f2478028d",
+        "date": "2026-09-25 23:00:39 +0200",
+        "title": "[Bugfix][Frontend] Respect max_output_tokens in the Harmony tool-call loop (#58551)",
+        "author": "Denis Ermakov"
+      },
+      "analysis": "分析失败: 401",
+      "github_url": "https://github.com/vllm-project/vllm/commit/7871963fcc8cd3484addb2f7abddcd0f2478028d"
+    },
+    {
+      "repo": "vllm-project/vllm",
+      "commit": {
+        "sha": "83db8c83904dcccb95ed202a3453b0492ad9c2df",
+        "date": "2026-09-25 16:43:08 -0400",
+        "title": "[Feature][Frontend] Add granite_thinking_parser reasoning parser for Granite 4.2 (#55957)",
+        "author": "Yousaf"
+      },
+      "analysis": "分析失败: 401",
+      "github_url": "https://github.com/vllm-project/vllm/commit/83db8c83904dcccb95ed202a3453b0492ad9c2df"
+    },
+    {
+      "repo": "vllm-project/vllm",
+      "commit": {
+        "sha": "e440b75bb6d5d9f23a5403fab22fa8886c91b0a8",
+        "date": "2026-09-25 14:55:52 -0500",
+        "title": "[ROCm] Bump torch 2.13, triton 3.8, torchaudio, torchvision (#50605)",
+        "author": "Rohan Potdar"
+      },
+      "analysis": "分析失败: 401",
+      "github_url": "https://github.com/vllm-project/vllm/commit/e440b75bb6d5d9f23a5403fab22fa8886c91b0a8"
+    },
+    {
+      "repo": "vllm-project/vllm",
+      "commit": {
+        "sha": "31cc2264011a7f9dbbea4d6e13f696cb0eee5282",
+        "date": "2026-09-25 21:45:32 +0200",
+        "title": "[ROCm][CI] Run the MLA attention+quant fusion test on ROCm (#58717)",
+        "author": "stefankoncarevic"
+      },
+      "analysis": "分析失败: 401",
+      "github_url": "https://github.com/vllm-project/vllm/commit/31cc2264011a7f9dbbea4d6e13f696cb0eee5282"
+    },
+    {
+      "repo": "vllm-project/vllm",
+      "commit": {
+        "sha": "2d7dd0e5c1f9800a3b8c8f38fd832ee335fa7fba",
+        "date": "2026-09-25 21:44:49 +0200",
+        "title": "[Bugfix][CI] Report subprocess test skips as skips, not passes (#58701)",
+        "author": "stefankoncarevic"
+      },
+      "analysis": "分析失败: 401",
+      "github_url": "https://github.com/vllm-project/vllm/commit/2d7dd0e5c1f9800a3b8c8f38fd832ee335fa7fba"
+    },
+    {
+      "repo": "vllm-project/vllm",
+      "commit": {
+        "sha": "2bc902eb0f7d3e3e171002e456daee254497b46b",
+        "date": "2026-09-25 14:13:59 -0500",
+        "title": "[CI] [MRV2] Restore MRV2 pp dp coverage (#57735)",
+        "author": "Taneem Ibrahim"
+      },
+      "analysis": "分析失败: 401",
+      "github_url": "https://github.com/vllm-project/vllm/commit/2bc902eb0f7d3e3e171002e456daee254497b46b"
+    },
+    {
+      "repo": "vllm-project/vllm",
+      "commit": {
+        "sha": "22bbe3f1023a68a7d1f2de566dd4242fdcfd36c3",
+        "date": "2026-09-25 14:27:53 -0400",
+        "title": "[ROCm][CI] Expand single-GPU coverage on MI355 DPX (#57599)",
+        "author": "Sheral Kumar"
+      },
+      "analysis": "分析失败: 401",
+      "github_url": "https://github.com/vllm-project/vllm/commit/22bbe3f1023a68a7d1f2de566dd4242fdcfd36c3"
+    },
+    {
+      "repo": "vllm-project/vllm",
+      "commit": {
+        "sha": "353e491efd3a23057004a3ab68fcfbda4abbee13",
+        "date": "2026-09-25 12:14:55 -0600",
+        "title": "[Perf] DiffusionGemma: one-pass sampler statistics kernel (#58226)",
+        "author": "Matt Mastracci"
+      },
+      "analysis": "分析失败: 401",
+      "github_url": "https://github.com/vllm-project/vllm/commit/353e491efd3a23057004a3ab68fcfbda4abbee13"
+    },
+    {
+      "repo": "vllm-project/vllm",
+      "commit": {
+        "sha": "e3dd5b5a758a6ba1a56f0d79a652ffbb8560abab",
+        "date": "2026-09-25 20:05:54 +0200",
+        "title": "[ROCm][CI] Test AMD DeepSeek V4 MoE routing against a PyTorch reference (#58740)",
+        "author": "stefankoncarevic"
+      },
+      "analysis": "分析失败: 401",
+      "github_url": "https://github.com/vllm-project/vllm/commit/e3dd5b5a758a6ba1a56f0d79a652ffbb8560abab"
+    },
+    {
+      "repo": "vllm-project/vllm",
+      "commit": {
+        "sha": "1b922ffcbe75cd411fab98a773f47b8f0294e43b",
+        "date": "2026-09-25 20:02:15 +0200",
+        "title": "[ROCm][CI] Add quantized MoE serving test for gfx950 (#58748)",
+        "author": "stefankoncarevic"
+      },
+      "analysis": "分析失败: 401",
+      "github_url": "https://github.com/vllm-project/vllm/commit/1b922ffcbe75cd411fab98a773f47b8f0294e43b"
+    },
+    {
+      "repo": "vllm-project/vllm",
+      "commit": {
+        "sha": "b21757555ac5f853a8eff02a687d2777437e055b",
+        "date": "2026-09-25 19:43:40 +0200",
+        "title": "[ROCm][CI] Cover the AITER MQA logits dispatch on gfx950 (#58724)",
+        "author": "stefankoncarevic"
+      },
+      "analysis": "分析失败: 401",
+      "github_url": "https://github.com/vllm-project/vllm/commit/b21757555ac5f853a8eff02a687d2777437e055b"
+    },
+    {
+      "repo": "vllm-project/vllm",
+      "commit": {
+        "sha": "1417022c3dbb633f9d0c2ac1db2171445bb91b08",
+        "date": "2026-09-25 10:33:30 -0700",
+        "title": "[ROCm][Kimi-K3] Optimize low-concurrency speculative KDA (#58045)",
+        "author": "jiacao-amd"
+      },
+      "analysis": "分析失败: 401",
+      "github_url": "https://github.com/vllm-project/vllm/commit/1417022c3dbb633f9d0c2ac1db2171445bb91b08"
+    },
+    {
+      "repo": "vllm-project/vllm",
+      "commit": {
+        "sha": "c89b5b4176066d689a5fe40b0bea8b425ac0c65b",
+        "date": "2026-09-25 20:23:44 +0300",
+        "title": "[Bugfix][KV Connector] Reap expired NIXL leases behind a heartbeated head (#58292)",
+        "author": "GokayAI"
+      },
+      "analysis": "分析失败: 401",
+      "github_url": "https://github.com/vllm-project/vllm/commit/c89b5b4176066d689a5fe40b0bea8b425ac0c65b"
+    },
+    {
+      "repo": "vllm-project/vllm",
+      "commit": {
+        "sha": "c88f4824fff42794d026348b86f9b78869fa273e",
+        "date": "2026-09-25 13:15:18 -0400",
+        "title": "[GLM5.3 Perf] Optimize glm 5.3 metadata op, 1.6~4.8x kernel level performance improvement (#58450)",
+        "author": "Wentao Ye"
+      },
+      "analysis": "分析失败: 401",
+      "github_url": "https://github.com/vllm-project/vllm/commit/c88f4824fff42794d026348b86f9b78869fa273e"
+    },
+    {
+      "repo": "vllm-project/vllm",
+      "commit": {
+        "sha": "2617fe938355594c48d4512a2ef6b470962aac1a",
+        "date": "2026-09-25 10:51:34 -0600",
+        "title": "[Bugfix][GLM-5.3-Flash] kpool corruption with speculative decoding (#58454)",
+        "author": "Matt Mastracci"
+      },
+      "analysis": "分析失败: 401",
+      "github_url": "https://github.com/vllm-project/vllm/commit/2617fe938355594c48d4512a2ef6b470962aac1a"
+    },
+    {
+      "repo": "vllm-project/vllm",
+      "commit": {
+        "sha": "f83ea61cfe77f0b200f2ded1fda9be5ff591af2c",
+        "date": "2026-09-25 22:13:37 +0530",
+        "title": "[Benchmark] Record model_id in bench latency/throughput --output-json (#58112)",
+        "author": "Yashasvi Chaurasia"
+      },
+      "analysis": "分析失败: 401",
+      "github_url": "https://github.com/vllm-project/vllm/commit/f83ea61cfe77f0b200f2ded1fda9be5ff591af2c"
+    },
+    {
+      "repo": "vllm-project/vllm",
+      "commit": {
+        "sha": "2edbb32e58aa719bd02ae568fe05ae3e87d2b38e",
+        "date": "2026-09-25 10:36:36 -0600",
+        "title": "[Bugfix][GLM-5.3-Flash] SM90 sparse MLA: index_kpool mismatch leads to corruption via unread query token (#58704)",
+        "author": "Matt Mastracci"
+      },
+      "analysis": "分析失败: 401",
+      "github_url": "https://github.com/vllm-project/vllm/commit/2edbb32e58aa719bd02ae568fe05ae3e87d2b38e"
+    },
+    {
+      "repo": "vllm-project/vllm",
+      "commit": {
+        "sha": "f339e0e7571c0bd49d6d5f1acb9f21a35b65e4ed",
+        "date": "2026-09-25 18:33:19 +0200",
+        "title": "[Bugfix][Frontend] Keep logprobs of parser-suppressed streaming chunks (#58583)",
+        "author": "Denis Ermakov"
+      },
+      "analysis": "分析失败: 401",
+      "github_url": "https://github.com/vllm-project/vllm/commit/f339e0e7571c0bd49d6d5f1acb9f21a35b65e4ed"
+    },
+    {
+      "repo": "vllm-project/vllm",
+      "commit": {
+        "sha": "6491f481a7c0fb3aa77bbc6649584b545c65c871",
+        "date": "2026-09-25 12:16:27 -0400",
+        "title": "[Bugfix] Stop allocator fragmentation from shrinking the KV cache during memory profiling (#58430)",
+        "author": "Robert Shaw"
+      },
+      "analysis": "分析失败: 401",
+      "github_url": "https://github.com/vllm-project/vllm/commit/6491f481a7c0fb3aa77bbc6649584b545c65c871"
+    },
+    {
+      "repo": "vllm-project/vllm",
+      "commit": {
+        "sha": "a44d7b51511fff6fde2bafb9c4715433a7627d1c",
+        "date": "2026-09-25 17:12:28 +0100",
+        "title": "[Core][Logging] Fix JSON logging process decoration (#57957)",
+        "author": "Mark McLoughlin"
+      },
+      "analysis": "分析失败: 401",
+      "github_url": "https://github.com/vllm-project/vllm/commit/a44d7b51511fff6fde2bafb9c4715433a7627d1c"
+    },
+    {
+      "repo": "vllm-project/vllm",
+      "commit": {
+        "sha": "38cc054fc2269941cd35ecdfd198aacbb2eabfb8",
+        "date": "2026-09-25 11:19:48 -0400",
+        "title": "[Perf][Kernel] Vectorized flat abs-max for dynamic per-tensor FP8 quantization (#58194)",
+        "author": "Monishver"
+      },
+      "analysis": "分析失败: 401",
+      "github_url": "https://github.com/vllm-project/vllm/commit/38cc054fc2269941cd35ecdfd198aacbb2eabfb8"
+    },
+    {
+      "repo": "vllm-project/vllm",
+      "commit": {
+        "sha": "f550ad8bf7a3983a16aafd25ad18d8b48f4d5218",
+        "date": "2026-09-25 23:11:42 +0800",
+        "title": "[Kernel][Perf] Register-resident path for per-token-group 8-bit quant (#55330)",
+        "author": "chuan932"
+      },
+      "analysis": "分析失败: 401",
+      "github_url": "https://github.com/vllm-project/vllm/commit/f550ad8bf7a3983a16aafd25ad18d8b48f4d5218"
+    },
+    {
+      "repo": "vllm-project/vllm",
+      "commit": {
+        "sha": "bb35e2587bb5ca3f149b718744949fd10210e124",
+        "date": "2026-09-25 10:04:41 -0500",
+        "title": "[Pooling] Preserve reranker tokenization with document limits (#57666)",
+        "author": "Taneem Ibrahim"
+      },
+      "analysis": "分析失败: 401",
+      "github_url": "https://github.com/vllm-project/vllm/commit/bb35e2587bb5ca3f149b718744949fd10210e124"
+    },
+    {
+      "repo": "vllm-project/vllm",
+      "commit": {
+        "sha": "50f78084da2af4c79f54aa19f09972e2ec5d1049",
+        "date": "2026-09-25 10:01:31 -0500",
+        "title": "[Bugfix] Fix generative scoring body cancellation (#57729)",
+        "author": "Taneem Ibrahim"
+      },
+      "analysis": "分析失败: 401",
+      "github_url": "https://github.com/vllm-project/vllm/commit/50f78084da2af4c79f54aa19f09972e2ec5d1049"
+    },
+    {
+      "repo": "vllm-project/vllm",
+      "commit": {
+        "sha": "234df712ed6da81d8c8213a16cd913a747380214",
+        "date": "2026-09-25 07:59:27 -0700",
+        "title": "[MRV2] Minor model_runner.py code cleanup (#58610)",
+        "author": "Nick Hill"
+      },
+      "analysis": "分析失败: 401",
+      "github_url": "https://github.com/vllm-project/vllm/commit/234df712ed6da81d8c8213a16cd913a747380214"
+    },
+    {
+      "repo": "vllm-project/vllm",
+      "commit": {
+        "sha": "73a78e6f1f38e280986b81e0f2a9aa5e1ee6fe47",
+        "date": "2026-09-25 16:08:28 +0200",
+        "title": "[SpecDecode] Add LiLiCorr drafter (#57934)",
+        "author": "Andrii Skliar"
+      },
+      "analysis": "分析失败: 401",
+      "github_url": "https://github.com/vllm-project/vllm/commit/73a78e6f1f38e280986b81e0f2a9aa5e1ee6fe47"
+    },
+    {
+      "repo": "vllm-project/vllm",
+      "commit": {
+        "sha": "25b0add7b8a1c944d5c4e364f2de6aa82497a2ad",
+        "date": "2026-09-25 12:52:15 +0200",
+        "title": "[ROCm][CI] Pass weight_shape in MXFP8 block32 linear tests (#58698)",
+        "author": "djramic"
+      },
+      "analysis": "分析失败: 401",
+      "github_url": "https://github.com/vllm-project/vllm/commit/25b0add7b8a1c944d5c4e364f2de6aa82497a2ad"
+    },
+    {
+      "repo": "vllm-project/vllm",
+      "commit": {
+        "sha": "45d56c0baf454f2816af514011ae27c2857ee312",
+        "date": "2026-09-25 11:36:59 +0100",
+        "title": "[Core] Model console logging as CLI configuration (#57205)",
+        "author": "Mark McLoughlin"
+      },
+      "analysis": "分析失败: 401",
+      "github_url": "https://github.com/vllm-project/vllm/commit/45d56c0baf454f2816af514011ae27c2857ee312"
+    },
+    {
+      "repo": "vllm-project/vllm",
+      "commit": {
+        "sha": "fa6c407d15697e1a1d4d017d799c9d4da36c87b2",
+        "date": "2026-09-25 06:25:11 -0400",
+        "title": "[CI] Shard (H100) Helion Kernels five ways (#58645)",
+        "author": "Thang Nguyen"
+      },
+      "analysis": "分析失败: 401",
+      "github_url": "https://github.com/vllm-project/vllm/commit/fa6c407d15697e1a1d4d017d799c9d4da36c87b2"
+    },
+    {
+      "repo": "vllm-project/vllm",
+      "commit": {
+        "sha": "afea5c20c7c20d697132f6145cb68e06d447c23a",
+        "date": "2026-09-25 12:01:11 +0200",
+        "title": "[Docs] Add return annotation to `fused_mm_input_norm_triton` (#58687)",
+        "author": "Harry Mellor"
+      },
+      "analysis": "分析失败: 401",
+      "github_url": "https://github.com/vllm-project/vllm/commit/afea5c20c7c20d697132f6145cb68e06d447c23a"
+    },
+    {
+      "repo": "vllm-project/vllm",
+      "commit": {
+        "sha": "378504a5442b8a9240b359dae3e6f75f35c38f19",
+        "date": "2026-09-25 00:38:29 -0700",
+        "title": "[MoE] Defer the TRTLLM-Gen top-k finalize on the modular path (#58635)",
+        "author": "Yongye Zhu"
+      },
+      "analysis": "分析失败: 401",
+      "github_url": "https://github.com/vllm-project/vllm/commit/378504a5442b8a9240b359dae3e6f75f35c38f19"
+    },
+    {
+      "repo": "vllm-project/vllm",
+      "commit": {
+        "sha": "24928a4d62d4d317ba070d219ce0ab6c3e58bae4",
+        "date": "2026-09-25 14:56:39 +0800",
+        "title": "[UX][Frontend] Introduce `vllm preload` cli for fast restart (#56680)",
+        "author": "Isotr0py"
+      },
+      "analysis": "分析失败: 401",
+      "github_url": "https://github.com/vllm-project/vllm/commit/24928a4d62d4d317ba070d219ce0ab6c3e58bae4"
+    },
+    {
+      "repo": "pytorch/pytorch",
+      "commit": {
+        "sha": "7fe528830802c15f416786ae4c9947ac925a018a",
+        "date": "2026-09-26 04:59:05 +0000",
+        "title": "Stop instantiating unreachable cat kernels (#194184)",
+        "author": "Yuanyuan Chen"
+      },
+      "analysis": "分析失败: 401",
+      "github_url": "https://github.com/pytorch/pytorch/commit/7fe528830802c15f416786ae4c9947ac925a018a"
+    },
+    {
+      "repo": "pytorch/pytorch",
+      "commit": {
+        "sha": "f26840b6ea78716312ecc4834d7a3f6681349fe1",
+        "date": "2026-09-26 04:41:23 +0000",
+        "title": "[torchtitan hash update] update the pinned torchtitan hash (#198697)",
+        "author": "PyTorch UpdateBot"
+      },
+      "analysis": "分析失败: 401",
+      "github_url": "https://github.com/pytorch/pytorch/commit/f26840b6ea78716312ecc4834d7a3f6681349fe1"
+    },
+    {
+      "repo": "pytorch/pytorch",
+      "commit": {
+        "sha": "4aefab0c58cad9034fb12e208b18ec3d1a6d6500",
+        "date": "2026-09-26 04:34:48 +0000",
+        "title": "[Lowering Memory] Don't retain the traced graph in the export leak-detection map (#198295) (#198295)",
+        "author": "Chong Gu"
+      },
+      "analysis": "分析失败: 401",
+      "github_url": "https://github.com/pytorch/pytorch/commit/4aefab0c58cad9034fb12e208b18ec3d1a6d6500"
+    },
+    {
+      "repo": "pytorch/pytorch",
+      "commit": {
+        "sha": "050b0369b917777d5cac6342afbf8e8982864366",
+        "date": "2026-09-26 04:30:16 +0000",
+        "title": "Update Metamates merge rule (#198696)",
+        "author": "PyTorch UpdateBot"
+      },
+      "analysis": "分析失败: 401",
+      "github_url": "https://github.com/pytorch/pytorch/commit/050b0369b917777d5cac6342afbf8e8982864366"
+    },
+    {
+      "repo": "pytorch/pytorch",
+      "commit": {
+        "sha": "17b697f26c25932d8987352dbd9a6c2484c7e03a",
+        "date": "2026-09-26 03:55:28 +0000",
+        "title": "[FlexAttention] Freeze query layout before building the flex decoding GQA view (#198543)",
+        "author": "drisspg"
+      },
+      "analysis": "分析失败: 401",
+      "github_url": "https://github.com/pytorch/pytorch/commit/17b697f26c25932d8987352dbd9a6c2484c7e03a"
+    },
+    {
+      "repo": "pytorch/pytorch",
+      "commit": {
+        "sha": "116ef9f69829d7e8ab511eb65951ce5a1a089075",
+        "date": "2026-09-26 03:44:55 +0000",
+        "title": "test_cuda: propagate LD_LIBRARY_PATH in subprocess_env() (#197163)",
+        "author": "nkulshre-amd"
+      },
+      "analysis": "分析失败: 401",
+      "github_url": "https://github.com/pytorch/pytorch/commit/116ef9f69829d7e8ab511eb65951ce5a1a089075"
+    },
+    {
+      "repo": "pytorch/pytorch",
+      "commit": {
+        "sha": "ceb4b0179753bf036b2cadef732e18a1056544ba",
+        "date": "2026-09-25 12:16:03 -0700",
+        "title": "[symbolic shapes] Restore exact FloorDiv cancellation (#198575)",
+        "author": "Laith Sakka"
+      },
+      "analysis": "分析失败: 401",
+      "github_url": "https://github.com/pytorch/pytorch/commit/ceb4b0179753bf036b2cadef732e18a1056544ba"
+    },
+    {
+      "repo": "pytorch/pytorch",
+      "commit": {
+        "sha": "ef166fb295ff511bdefd628b2d2fefea9570aa61",
+        "date": "2026-09-26 03:07:21 +0000",
+        "title": "[rel-land] allow horizontal fusion of copies from dynamic inputs into concat operation (#195635) (#198294) (#198294)",
+        "author": "Laith Sakka"
+      },
+      "analysis": "分析失败: 401",
+      "github_url": "https://github.com/pytorch/pytorch/commit/ef166fb295ff511bdefd628b2d2fefea9570aa61"
+    },
+    {
+      "repo": "pytorch/pytorch",
+      "commit": {
+        "sha": "322b6774d51c3f673735adad8b4691bb3a47cbd3",
+        "date": "2026-09-26 03:06:58 +0000",
+        "title": "[reland2 of D121420443 follow details on base diff] avoid re-allocation of base views when generating example inputs. (#198660) (#198660)",
+        "author": "Laith Sakka"
+      },
+      "analysis": "分析失败: 401",
+      "github_url": "https://github.com/pytorch/pytorch/commit/322b6774d51c3f673735adad8b4691bb3a47cbd3"
+    },
+    {
+      "repo": "pytorch/pytorch",
+      "commit": {
+        "sha": "fbcf6fe24406d4d1ba8d8c72a92b9267e8978bdd",
+        "date": "2026-09-26 02:13:58 +0000",
+        "title": "MPS: also gate int64 scatter_reduce and the large-tensor tests on M1 (#198689)",
+        "author": "Huy Do"
+      },
+      "analysis": "分析失败: 401",
+      "github_url": "https://github.com/pytorch/pytorch/commit/fbcf6fe24406d4d1ba8d8c72a92b9267e8978bdd"
+    },
+    {
+      "repo": "pytorch/pytorch",
+      "commit": {
+        "sha": "aa98cb8a30ee270dfdd6669c43b252ad71caaac0",
+        "date": "2026-09-26 01:51:24 +0000",
+        "title": "[fx] make update_deps_for_fusions linear in fusion group size (#198654) (#198654)",
+        "author": "Chen Jin"
+      },
+      "analysis": "分析失败: 401",
+      "github_url": "https://github.com/pytorch/pytorch/commit/aa98cb8a30ee270dfdd6669c43b252ad71caaac0"
+    },
+    {
+      "repo": "pytorch/pytorch",
+      "commit": {
+        "sha": "67ece5946463307e38f2d09733692ef325f39deb",
+        "date": "2026-09-24 16:01:54 -0700",
+        "title": "benchmark_epilogue_fusion -> benchmark_template_fusion (#198430)",
+        "author": "Laith Sakka"
+      },
+      "analysis": "分析失败: 401",
+      "github_url": "https://github.com/pytorch/pytorch/commit/67ece5946463307e38f2d09733692ef325f39deb"
+    },
+    {
+      "repo": "pytorch/pytorch",
+      "commit": {
+        "sha": "983d11f91bd577039613d36d58da6c1c729a12e2",
+        "date": "2026-09-26 01:26:09 +0000",
+        "title": "[inductor] Turn off random 4x by default (#198680)",
+        "author": "eellison"
+      },
+      "analysis": "分析失败: 401",
+      "github_url": "https://github.com/pytorch/pytorch/commit/983d11f91bd577039613d36d58da6c1c729a12e2"
+    },
+    {
+      "repo": "pytorch/pytorch",
+      "commit": {
+        "sha": "36739e0856ebe768e44f9d411f535d68f51e38a5",
+        "date": "2026-09-26 00:39:49 +0000",
+        "title": "[ROCm][Inductor][UT] Enable the FP8 scaled_mm swizzle v2 tests (#198600)",
+        "author": "Jagadish Krishnamoorthy"
+      },
+      "analysis": "分析失败: 401",
+      "github_url": "https://github.com/pytorch/pytorch/commit/36739e0856ebe768e44f9d411f535d68f51e38a5"
+    },
+    {
+      "repo": "pytorch/pytorch",
+      "commit": {
+        "sha": "9b9978943e4030e97eeee36a9968db27a3b21163",
+        "date": "2026-09-26 00:29:14 +0000",
+        "title": "[ROCm] Bump AOTriton to 0.14.2b (#197747)",
+        "author": "Xinya Zhang"
+      },
+      "analysis": "分析失败: 401",
+      "github_url": "https://github.com/pytorch/pytorch/commit/9b9978943e4030e97eeee36a9968db27a3b21163"
+    },
+    {
+      "repo": "pytorch/pytorch",
+      "commit": {
+        "sha": "64bd799ac7508ba4d305869fd4ac93206ba843c3",
+        "date": "2026-09-23 16:35:08 -0700",
+        "title": "[CUDA] Expose SM partitions and disjoint green-context splitting (#198278)",
+        "author": "Natalia Gimelshein"
+      },
+      "analysis": "分析失败: 401",
+      "github_url": "https://github.com/pytorch/pytorch/commit/64bd799ac7508ba4d305869fd4ac93206ba843c3"
+    },
+    {
+      "repo": "pytorch/pytorch",
+      "commit": {
+        "sha": "563be9c4f9a9e1687fadc860c552ac0fad498e0b",
+        "date": "2026-09-25 23:38:01 +0000",
+        "title": "Validate key and value sequence lengths in SDPA meta (#198303)",
+        "author": "Manish Khanna"
+      },
+      "analysis": "分析失败: 401",
+      "github_url": "https://github.com/pytorch/pytorch/commit/563be9c4f9a9e1687fadc860c552ac0fad498e0b"
+    },
+    {
+      "repo": "pytorch/pytorch",
+      "commit": {
+        "sha": "3b6c63e7f3f189dd2861fe9fdad313bc24c1ffd8",
+        "date": "2026-09-25 23:19:41 +0000",
+        "title": "Revert \"[FSDP2] Add gradient accumulation finalization API (#196640)\"",
+        "author": "PyTorch MergeBot"
+      },
+      "analysis": "分析失败: 401",
+      "github_url": "https://github.com/pytorch/pytorch/commit/3b6c63e7f3f189dd2861fe9fdad313bc24c1ffd8"
+    },
+    {
+      "repo": "pytorch/pytorch",
+      "commit": {
+        "sha": "8bcb4a343ff8e8e5e7c384614bf445164eada82b",
+        "date": "2026-09-25 22:27:56 +0000",
+        "title": "Revert \"[ATen][CUDA][CUTLASS][SUBMODULE] Update CUTLASS to v4.8.0 and CUTLASS-Operators to v0.3.0 (#198179)\"",
+        "author": "PyTorch MergeBot"
+      },
+      "analysis": "分析失败: 401",
+      "github_url": "https://github.com/pytorch/pytorch/commit/8bcb4a343ff8e8e5e7c384614bf445164eada82b"
+    },
+    {
+      "repo": "pytorch/pytorch",
+      "commit": {
+        "sha": "c3ed1b781bb147282f5e3e8f842cb89f8b0ff476",
+        "date": "2026-09-25 22:19:06 +0000",
+        "title": "[Test] Skip test_checkpointing_without_reentrant_dataparallel on CPU (#198640)",
+        "author": "Arindamsamanta2004"
+      },
+      "analysis": "分析失败: 401",
+      "github_url": "https://github.com/pytorch/pytorch/commit/c3ed1b781bb147282f5e3e8f842cb89f8b0ff476"
+    },
+    {
+      "repo": "pytorch/pytorch",
+      "commit": {
+        "sha": "2822bd77948d0fb7d4fc64b2055fddcf30b5480b",
+        "date": "2026-09-25 22:18:29 +0000",
+        "title": "[ROCm] Run AOTI multi-arch cmake and save_gpu_kernel tests on ROCm (#198516)",
+        "author": "rraminen_amdeng"
+      },
+      "analysis": "分析失败: 401",
+      "github_url": "https://github.com/pytorch/pytorch/commit/2822bd77948d0fb7d4fc64b2055fddcf30b5480b"
+    },
+    {
+      "repo": "pytorch/pytorch",
+      "commit": {
+        "sha": "9e613717699957aff55c587043f84b06e0993479",
+        "date": "2026-09-25 22:03:06 +0000",
+        "title": "[ATen][CUDA][CUTLASS][SUBMODULE] Update CUTLASS to v4.8.0 and CUTLASS-Operators to v0.3.0 (#198179)",
+        "author": "Aidyn-A"
+      },
+      "analysis": "分析失败: 401",
+      "github_url": "https://github.com/pytorch/pytorch/commit/9e613717699957aff55c587043f84b06e0993479"
+    },
+    {
+      "repo": "pytorch/pytorch",
+      "commit": {
+        "sha": "dd9e8f785b19805a1da4a81c1958fbb9b0da82d4",
+        "date": "2026-09-25 21:59:31 +0000",
+        "title": "Revert \"Anchor torch's installed artifacts on the import system, not on `__file__` (#195587)\"",
+        "author": "PyTorch MergeBot"
+      },
+      "analysis": "分析失败: 401",
+      "github_url": "https://github.com/pytorch/pytorch/commit/dd9e8f785b19805a1da4a81c1958fbb9b0da82d4"
+    },
+    {
+      "repo": "pytorch/pytorch",
+      "commit": {
+        "sha": "7683d7d1b1f5386ede5d2c895f3f84f1b20ced77",
+        "date": "2026-09-25 21:22:34 +0000",
+        "title": "[FX] Skip fusion discovery for fully supported graphs (#198519) (#198519)",
+        "author": "Ruichao Xiao"
+      },
+      "analysis": "分析失败: 401",
+      "github_url": "https://github.com/pytorch/pytorch/commit/7683d7d1b1f5386ede5d2c895f3f84f1b20ced77"
+    },
+    {
+      "repo": "pytorch/pytorch",
+      "commit": {
+        "sha": "9552343336cc2a6b9c1fb1314fb4801cde920904",
+        "date": "2026-09-25 21:05:53 +0000",
+        "title": "[Profiler] Read event idx directly in collection.cpp (#198665)",
+        "author": "ryanzhang22"
+      },
+      "analysis": "分析失败: 401",
+      "github_url": "https://github.com/pytorch/pytorch/commit/9552343336cc2a6b9c1fb1314fb4801cde920904"
+    },
+    {
+      "repo": "pytorch/pytorch",
+      "commit": {
+        "sha": "be1c8cbb3d95b27fd8fd99002b22abf0b99be31e",
+        "date": "2026-09-22 07:39:30 -0700",
+        "title": "Increase small tensor tolerance for functorch_dp_cifar10 (#198210)",
+        "author": "William Wen"
+      },
+      "analysis": "分析失败: 401",
+      "github_url": "https://github.com/pytorch/pytorch/commit/be1c8cbb3d95b27fd8fd99002b22abf0b99be31e"
+    },
+    {
+      "repo": "pytorch/pytorch",
+      "commit": {
+        "sha": "aca1d2bbaec7d693d1fdd09e16cc3c1c9c6439f0",
+        "date": "2026-09-25 09:27:19 -0700",
+        "title": "[BE] Move serialTest to class (#198651)",
+        "author": "Nikita Shulga"
+      },
+      "analysis": "分析失败: 401",
+      "github_url": "https://github.com/pytorch/pytorch/commit/aca1d2bbaec7d693d1fdd09e16cc3c1c9c6439f0"
+    },
+    {
+      "repo": "pytorch/pytorch",
+      "commit": {
+        "sha": "df7db83b515ff799255d4e5cf5d51328dd190e55",
+        "date": "2026-09-25 19:20:44 +0000",
+        "title": "[Profiler] Add deprecation warning for EventMetadata (#198405)",
+        "author": "ryanzhang22"
+      },
+      "analysis": "分析失败: 401",
+      "github_url": "https://github.com/pytorch/pytorch/commit/df7db83b515ff799255d4e5cf5d51328dd190e55"
+    },
+    {
+      "repo": "pytorch/pytorch",
+      "commit": {
+        "sha": "adb3a7b465e393ed08ea621408849abcaf2eabf4",
+        "date": "2026-09-25 18:56:50 +0000",
+        "title": "[ROCm][Inductor][UT] Enable the remaining FP8 scaled_mm v2 tests (#198588)",
+        "author": "Jagadish Krishnamoorthy"
+      },
+      "analysis": "分析失败: 401",
+      "github_url": "https://github.com/pytorch/pytorch/commit/adb3a7b465e393ed08ea621408849abcaf2eabf4"
+    },
+    {
+      "repo": "pytorch/pytorch",
+      "commit": {
+        "sha": "062e405c599db02cb1c9cd534c030b6e1fed7586",
+        "date": "2026-09-24 20:07:50 +0000",
+        "title": "[dynamo] Convert bytecode dicts to lists (#196771)",
+        "author": "Benjamin Glass"
+      },
+      "analysis": "分析失败: 401",
+      "github_url": "https://github.com/pytorch/pytorch/commit/062e405c599db02cb1c9cd534c030b6e1fed7586"
+    },
+    {
+      "repo": "pytorch/pytorch",
+      "commit": {
+        "sha": "fbc333ccab50935058ccd31c2b68654ff39be7c3",
+        "date": "2026-09-24 20:07:50 +0000",
+        "title": "[dynamo] Avoid expensive hot-path conversion between C and Python str (#198019)",
+        "author": "Benjamin Glass"
+      },
+      "analysis": "分析失败: 401",
+      "github_url": "https://github.com/pytorch/pytorch/commit/fbc333ccab50935058ccd31c2b68654ff39be7c3"
+    },
+    {
+      "repo": "pytorch/pytorch",
+      "commit": {
+        "sha": "0c6eab52b4c46209e00ab2b89dbad6ee80c1abe4",
+        "date": "2026-09-24 20:07:50 +0000",
+        "title": "[dynamo] Make GenerationTracker marginally faster (#197733)",
+        "author": "Benjamin Glass"
+      },
+      "analysis": "分析失败: 401",
+      "github_url": "https://github.com/pytorch/pytorch/commit/0c6eab52b4c46209e00ab2b89dbad6ee80c1abe4"
+    },
+    {
+      "repo": "pytorch/pytorch",
+      "commit": {
+        "sha": "bf9d878e25873194514e3c012c90b3ce3fc26b93",
+        "date": "2026-09-24 20:07:50 +0000",
+        "title": "[cuda] Improve speed of _check_stray_context (#197566)",
+        "author": "Benjamin Glass"
+      },
+      "analysis": "分析失败: 401",
+      "github_url": "https://github.com/pytorch/pytorch/commit/bf9d878e25873194514e3c012c90b3ce3fc26b93"
+    },
+    {
+      "repo": "pytorch/pytorch",
+      "commit": {
+        "sha": "05236570d539fb63e067ce0bc06fddd232b74e43",
+        "date": "2026-09-24 20:07:50 +0000",
+        "title": "[dynamo] Improve performance of Inductor-utilized guard functions (#197451)",
+        "author": "Benjamin Glass"
+      },
+      "analysis": "分析失败: 401",
+      "github_url": "https://github.com/pytorch/pytorch/commit/05236570d539fb63e067ce0bc06fddd232b74e43"
+    },
+    {
+      "repo": "pytorch/pytorch",
+      "commit": {
+        "sha": "56a92e407e9917043c4fd55d54df31a21d348be9",
+        "date": "2026-09-24 20:07:50 +0000",
+        "title": "[dynamo] Improve speed of checked device index (#195951)",
+        "author": "Benjamin Glass"
+      },
+      "analysis": "分析失败: 401",
+      "github_url": "https://github.com/pytorch/pytorch/commit/56a92e407e9917043c4fd55d54df31a21d348be9"
+    },
+    {
+      "repo": "pytorch/pytorch",
+      "commit": {
+        "sha": "28c78027d03a3fbea6f05ae1f0ac0e16186e4056",
+        "date": "2026-09-25 18:45:22 +0000",
+        "title": "[AArch64] Use native GEMV for single-column BF16 GEMMs (#198411)",
+        "author": "ashuie"
+      },
+      "analysis": "分析失败: 401",
+      "github_url": "https://github.com/pytorch/pytorch/commit/28c78027d03a3fbea6f05ae1f0ac0e16186e4056"
+    },
+    {
+      "repo": "pytorch/pytorch",
+      "commit": {
+        "sha": "33fcafb560665d4a4ae801f32b59f614a41a78c3",
+        "date": "2026-09-25 18:30:23 +0000",
+        "title": "Fix to make AddMM, rmatmul & Cholesky Inverse/Solve on aarch64 preserve COW input tensor (#198625)",
+        "author": "Alexander Grund"
+      },
+      "analysis": "分析失败: 401",
+      "github_url": "https://github.com/pytorch/pytorch/commit/33fcafb560665d4a4ae801f32b59f614a41a78c3"
+    },
+    {
+      "repo": "pytorch/pytorch",
+      "commit": {
+        "sha": "d5b1941b02d2d158e57d7319ca341965898d36a9",
+        "date": "2026-09-25 18:17:31 +0000",
+        "title": "Fix int32 overflow in cdist CUDA backward kernel (#198452)",
+        "author": "RunguoLi"
+      },
+      "analysis": "分析失败: 401",
+      "github_url": "https://github.com/pytorch/pytorch/commit/d5b1941b02d2d158e57d7319ca341965898d36a9"
+    },
+    {
+      "repo": "pytorch/pytorch",
+      "commit": {
+        "sha": "e7a2017fe026d961218c9b8e87f6afcc23806332",
+        "date": "2026-09-25 17:13:14 +0000",
+        "title": "[dynamo] Trace __get__ for user descriptors in a class's own __dict__ (#198410)",
+        "author": "Hakan Sahin"
+      },
+      "analysis": "分析失败: 401",
+      "github_url": "https://github.com/pytorch/pytorch/commit/e7a2017fe026d961218c9b8e87f6afcc23806332"
+    },
+    {
+      "repo": "pytorch/pytorch",
+      "commit": {
+        "sha": "1d10554403cb123c29bb53c2f2c76f153d8a6f6c",
+        "date": "2026-09-25 16:25:40 +0000",
+        "title": "[MPS] Improve adjacent dim reduction (#198635)",
+        "author": "Isalia20"
+      },
+      "analysis": "分析失败: 401",
+      "github_url": "https://github.com/pytorch/pytorch/commit/1d10554403cb123c29bb53c2f2c76f153d8a6f6c"
+    },
+    {
+      "repo": "pytorch/pytorch",
+      "commit": {
+        "sha": "51e4694272b0760243e757af54ad2f5243251bbc",
+        "date": "2026-09-25 16:20:56 +0000",
+        "title": "[MPS] Port norm to the shared reduction kernels (#198611)",
+        "author": "Isalia20"
+      },
+      "analysis": "分析失败: 401",
+      "github_url": "https://github.com/pytorch/pytorch/commit/51e4694272b0760243e757af54ad2f5243251bbc"
+    },
+    {
+      "repo": "pytorch/pytorch",
+      "commit": {
+        "sha": "488a6ebcbf0b1288861712d3ca4609ec763b1f7f",
+        "date": "2026-09-23 11:02:49 -0700",
+        "title": "Construct streams on the runtime CooR device (#196939)",
+        "author": "Aaron Orenstein"
+      },
+      "analysis": "分析失败: 401",
+      "github_url": "https://github.com/pytorch/pytorch/commit/488a6ebcbf0b1288861712d3ca4609ec763b1f7f"
+    },
+    {
+      "repo": "pytorch/pytorch",
+      "commit": {
+        "sha": "77818ed1e27f85d66237f7615b18390ac7c280fe",
+        "date": "2026-09-23 11:02:49 -0700",
+        "title": "Preserve rank-relative devices in Dynamo device contexts (#196938)",
+        "author": "Aaron Orenstein"
+      },
+      "analysis": "分析失败: 401",
+      "github_url": "https://github.com/pytorch/pytorch/commit/77818ed1e27f85d66237f7615b18390ac7c280fe"
+    },
+    {
+      "repo": "pytorch/pytorch",
+      "commit": {
+        "sha": "bd7d3591ca1325ad5ee6a32ba2a32b266f212d56",
+        "date": "2026-09-24 15:50:40 -0400",
+        "title": "[RAWTHROW][15] torch/csrc/jit/tensorexpr: 294 conversions, the burn-down list is empty (#198500)",
+        "author": "albanD"
+      },
+      "analysis": "分析失败: 401",
+      "github_url": "https://github.com/pytorch/pytorch/commit/bd7d3591ca1325ad5ee6a32ba2a32b266f212d56"
+    },
+    {
+      "repo": "pytorch/pytorch",
+      "commit": {
+        "sha": "8540373d3cd96255ab87ee2f2c91353a363690cb",
+        "date": "2026-09-24 15:50:39 -0400",
+        "title": "[RAWTHROW][14] the last two c10/util carve-outs (changes one exception type) (#198268)",
+        "author": "albanD"
+      },
+      "analysis": "分析失败: 401",
+      "github_url": "https://github.com/pytorch/pytorch/commit/8540373d3cd96255ab87ee2f2c91353a363690cb"
+    },
+    {
+      "repo": "pytorch/pytorch",
+      "commit": {
+        "sha": "88543a5b3e4010c6987e26ffcd61986b1da6cae1",
+        "date": "2026-09-24 15:50:39 -0400",
+        "title": "[RAWTHROW][13] widen include_patterns: 20 conversions, 11 that must not be (#198231)",
+        "author": "albanD"
+      },
+      "analysis": "分析失败: 401",
+      "github_url": "https://github.com/pytorch/pytorch/commit/88543a5b3e4010c6987e26ffcd61986b1da6cae1"
+    },
+    {
+      "repo": "pytorch/pytorch",
+      "commit": {
+        "sha": "5569590a11cdd00289a07d2dc95091709a6f4a0b",
+        "date": "2026-09-25 14:42:09 +0000",
+        "title": "Revert \"[ROCm] Free rocFFT plans (#197425)\"",
+        "author": "PyTorch MergeBot"
+      },
+      "analysis": "分析失败: 401",
+      "github_url": "https://github.com/pytorch/pytorch/commit/5569590a11cdd00289a07d2dc95091709a6f4a0b"
+    },
+    {
+      "repo": "pytorch/pytorch",
+      "commit": {
+        "sha": "fd292c2c0a2c60de4265439c3c6cbafc00c2ce6c",
+        "date": "2026-09-25 14:35:28 +0000",
+        "title": " [ROCm][Inductor] Advance CK pin, Generate ck/config.h for the CK wheel and re-enable CI tests (#195658)",
+        "author": "Andriy Roshchenko"
+      },
+      "analysis": "分析失败: 401",
+      "github_url": "https://github.com/pytorch/pytorch/commit/fd292c2c0a2c60de4265439c3c6cbafc00c2ce6c"
+    },
+    {
+      "repo": "pytorch/pytorch",
+      "commit": {
+        "sha": "c42540a507817aee29884b037569bd3e4240554f",
+        "date": "2026-09-25 14:34:38 +0000",
+        "title": "[Profiler] Add a deprecation warning for profiler's nvprof handlers (#198396)",
+        "author": "ryanzhang22"
+      },
+      "analysis": "分析失败: 401",
+      "github_url": "https://github.com/pytorch/pytorch/commit/c42540a507817aee29884b037569bd3e4240554f"
+    },
+    {
+      "repo": "pytorch/pytorch",
+      "commit": {
+        "sha": "727e06ae67f63317f2916efba9dfb2e08dad3076",
+        "date": "2026-09-24 23:50:37 -0700",
+        "title": "[MPS] Check that 1D/2D/3D dispatch grid dims fit in uint32 (#198592)",
+        "author": "Nikita Shulga"
+      },
+      "analysis": "分析失败: 401",
+      "github_url": "https://github.com/pytorch/pytorch/commit/727e06ae67f63317f2916efba9dfb2e08dad3076"
+    },
+    {
+      "repo": "sgl-project/sglang",
+      "commit": {
+        "sha": "3ed56a341b57eb57c8e37e0cec353e67ebb35c3b",
+        "date": "2026-09-25 23:02:44 -0700",
+        "title": "[Score API] Setwise scoring: CausalLM support (batched + --enable-mis) (#41188)",
+        "author": "Sundara Raman Ramachandran"
+      },
+      "analysis": "分析失败: 401",
+      "github_url": "https://github.com/sgl-project/sglang/commit/3ed56a341b57eb57c8e37e0cec353e67ebb35c3b"
+    },
+    {
+      "repo": "sgl-project/sglang",
+      "commit": {
+        "sha": "4bb645b8e2952849befed6cd5be168ea206a8e16",
+        "date": "2026-09-26 05:52:22 +0000",
+        "title": "[DSA] Fix the pooled-indexer breakable prefill bridge under DP attention (#41311)",
+        "author": "Mohammad Miadh Angkad"
+      },
+      "analysis": "分析失败: 401",
+      "github_url": "https://github.com/sgl-project/sglang/commit/4bb645b8e2952849befed6cd5be168ea206a8e16"
+    },
+    {
+      "repo": "sgl-project/sglang",
+      "commit": {
+        "sha": "8772916e06e631f3834fc7ba86f36d9c88a23082",
+        "date": "2026-09-26 13:22:57 +0800",
+        "title": "[DSv4.1] Move the low-ratio index top-k into dsv4/low_ratio_indexer (#41125)",
+        "author": "DarkSharpness"
+      },
+      "analysis": "分析失败: 401",
+      "github_url": "https://github.com/sgl-project/sglang/commit/8772916e06e631f3834fc7ba86f36d9c88a23082"
+    },
+    {
+      "repo": "sgl-project/sglang",
+      "commit": {
+        "sha": "7152aabdcb5c374a141f843c3ba0af5959a754c4",
+        "date": "2026-09-25 22:09:46 -0700",
+        "title": "[sgl-router] Track input_ids forwarding outcomes per chat request (#41185)",
+        "author": "Kan Wu"
+      },
+      "analysis": "分析失败: 401",
+      "github_url": "https://github.com/sgl-project/sglang/commit/7152aabdcb5c374a141f843c3ba0af5959a754c4"
+    },
+    {
+      "repo": "sgl-project/sglang",
+      "commit": {
+        "sha": "38ec649048df9b7d4d2c3355a55d7eb724f572f3",
+        "date": "2026-09-26 12:30:44 +0800",
+        "title": "[Refactor] Restore logical kernel groups and test organization (#41243)",
+        "author": "Xiaoyu Zhang"
+      },
+      "analysis": "分析失败: 401",
+      "github_url": "https://github.com/sgl-project/sglang/commit/38ec649048df9b7d4d2c3355a55d7eb724f572f3"
+    },
+    {
+      "repo": "sgl-project/sglang",
+      "commit": {
+        "sha": "e538489e0e2fd02edb5d087c505db4f802a0113a",
+        "date": "2026-09-26 12:22:47 +0800",
+        "title": "[diffusion] fix: copy small files into overlay materialized trees instead of linking them (#41298)",
+        "author": "Mick"
+      },
+      "analysis": "分析失败: 401",
+      "github_url": "https://github.com/sgl-project/sglang/commit/e538489e0e2fd02edb5d087c505db4f802a0113a"
+    },
+    {
+      "repo": "sgl-project/sglang",
+      "commit": {
+        "sha": "dfdbff931d008dcce81187b2c7b3d341c9a6656b",
+        "date": "2026-09-26 12:21:24 +0800",
+        "title": "[diffusion] fix: fix Qwen-Image 2.1 default RGBA output (#41150)",
+        "author": "WMC"
+      },
+      "analysis": "分析失败: 401",
+      "github_url": "https://github.com/sgl-project/sglang/commit/dfdbff931d008dcce81187b2c7b3d341c9a6656b"
+    },
+    {
+      "repo": "sgl-project/sglang",
+      "commit": {
+        "sha": "3ecb6cd729047c47181061f758d7833b2060bafc",
+        "date": "2026-09-25 20:53:35 -0700",
+        "title": "[MemCache] Unify component eviction cursors and lock receipts (#41276)",
+        "author": "Lianmin Zheng"
+      },
+      "analysis": "分析失败: 401",
+      "github_url": "https://github.com/sgl-project/sglang/commit/3ecb6cd729047c47181061f758d7833b2060bafc"
+    },
+    {
+      "repo": "sgl-project/sglang",
+      "commit": {
+        "sha": "0e2aac500bbd7010503bff67bd221bfbd7f04389",
+        "date": "2026-09-26 05:23:46 +0300",
+        "title": "[ROCm][Perf] aiter: page-level KV view for gfx950 fp8 page-64 asm prefill (#36505)",
+        "author": "Olga Miroshnichenko"
+      },
+      "analysis": "分析失败: 401",
+      "github_url": "https://github.com/sgl-project/sglang/commit/0e2aac500bbd7010503bff67bd221bfbd7f04389"
+    },
+    {
+      "repo": "sgl-project/sglang",
+      "commit": {
+        "sha": "f35ec18d8be68cf43489c6719e3a6d9031d951f2",
+        "date": "2026-09-25 19:22:14 -0700",
+        "title": "[Test] Remove more unit tests that mirror implementation or never run in CI (#41297)",
+        "author": "Liangsheng Yin"
+      },
+      "analysis": "分析失败: 401",
+      "github_url": "https://github.com/sgl-project/sglang/commit/f35ec18d8be68cf43489c6719e3a6d9031d951f2"
+    },
+    {
+      "repo": "sgl-project/sglang",
+      "commit": {
+        "sha": "4273e7de77bdb2923bd6c8195c8c31529eb4b2e6",
+        "date": "2026-09-26 10:21:41 +0800",
+        "title": "[PD] fix: cache resumed decode-radix requests from root instead of an unlocked re-match (#41261)",
+        "author": "Shuwen Wang"
+      },
+      "analysis": "分析失败: 401",
+      "github_url": "https://github.com/sgl-project/sglang/commit/4273e7de77bdb2923bd6c8195c8c31529eb4b2e6"
+    },
+    {
+      "repo": "sgl-project/sglang",
+      "commit": {
+        "sha": "63d320c723e53e4005e71a1ac964693e47095683",
+        "date": "2026-09-26 02:13:13 +0000",
+        "title": "[DSA] Chunk the kpool indexer MQA logits by query rows under a free-memory budget (#40854)",
+        "author": "Mohammad Miadh Angkad"
+      },
+      "analysis": "分析失败: 401",
+      "github_url": "https://github.com/sgl-project/sglang/commit/63d320c723e53e4005e71a1ac964693e47095683"
+    },
+    {
+      "repo": "sgl-project/sglang",
+      "commit": {
+        "sha": "2ee82fe158d111f0b3ecd42ce8cd437bd1a276cb",
+        "date": "2026-09-26 09:53:51 +0800",
+        "title": "[diffusion] model: support Anima Base v1.0 (#41011)",
+        "author": "Mick"
+      },
+      "analysis": "分析失败: 401",
+      "github_url": "https://github.com/sgl-project/sglang/commit/2ee82fe158d111f0b3ecd42ce8cd437bd1a276cb"
+    },
+    {
+      "repo": "sgl-project/sglang",
+      "commit": {
+        "sha": "0967a013c2abe097bc5043511af3d58bf71e9c4d",
+        "date": "2026-09-25 18:28:04 -0700",
+        "title": "[DSv4.1] Move the ratio-1/2 index top-k ops into kernels/ops/attention/dsv4 (#41291)",
+        "author": "Liangsheng Yin"
+      },
+      "analysis": "分析失败: 401",
+      "github_url": "https://github.com/sgl-project/sglang/commit/0967a013c2abe097bc5043511af3d58bf71e9c4d"
+    },
+    {
+      "repo": "sgl-project/sglang",
+      "commit": {
+        "sha": "85374532f265d65ccb276f2f99ced57520acab4f",
+        "date": "2026-09-26 09:24:21 +0800",
+        "title": "[diffusion] Fuse lossless Klein packed QK RMSNorm and RoPE on Hopper (#40490)",
+        "author": "Xiaoyu Zhang"
+      },
+      "analysis": "分析失败: 401",
+      "github_url": "https://github.com/sgl-project/sglang/commit/85374532f265d65ccb276f2f99ced57520acab4f"
+    },
+    {
+      "repo": "sgl-project/sglang",
+      "commit": {
+        "sha": "c842d32b0ab45753178c5f6420662d7812766aca",
+        "date": "2026-09-25 17:39:50 -0700",
+        "title": "[CI] Harden `/rerun-test` dispatch and partitioning (#41285)",
+        "author": "Liangsheng Yin"
+      },
+      "analysis": "分析失败: 401",
+      "github_url": "https://github.com/sgl-project/sglang/commit/c842d32b0ab45753178c5f6420662d7812766aca"
+    },
+    {
+      "repo": "sgl-project/sglang",
+      "commit": {
+        "sha": "50e50e13ab2e67410c15fc9937eb987da29d3f2f",
+        "date": "2026-09-25 17:39:47 -0700",
+        "title": "[DCP] Use logical token capacity for PD admission and load reporting (#39731)",
+        "author": "James Liu"
+      },
+      "analysis": "分析失败: 401",
+      "github_url": "https://github.com/sgl-project/sglang/commit/50e50e13ab2e67410c15fc9937eb987da29d3f2f"
+    },
+    {
+      "repo": "sgl-project/sglang",
+      "commit": {
+        "sha": "1f6ce4b0686232fce5feb0d0d841df7d9bcabc02",
+        "date": "2026-09-25 16:15:02 -0700",
+        "title": "[Test] Remove unit tests that only mirror implementation or never run in CI (#41286)",
+        "author": "Liangsheng Yin"
+      },
+      "analysis": "分析失败: 401",
+      "github_url": "https://github.com/sgl-project/sglang/commit/1f6ce4b0686232fce5feb0d0d841df7d9bcabc02"
+    },
+    {
+      "repo": "sgl-project/sglang",
+      "commit": {
+        "sha": "2afd343934a6a25e5c53f34f2cc2591117e8cc25",
+        "date": "2026-09-25 16:14:13 -0700",
+        "title": "[misc] Call all_gather_single / reduce_scatter_single to drop torch deprecation warnings (#41284)",
+        "author": "Liangsheng Yin"
+      },
+      "analysis": "分析失败: 401",
+      "github_url": "https://github.com/sgl-project/sglang/commit/2afd343934a6a25e5c53f34f2cc2591117e8cc25"
+    },
+    {
+      "repo": "sgl-project/sglang",
+      "commit": {
+        "sha": "efd9a40bb8ab3ebe42da1d4cf3fdfe3da6e706a2",
+        "date": "2026-09-25 16:13:18 -0700",
+        "title": "[PD] Share one head-slice helper across mooncake, mori, and nixl (#39660)",
+        "author": "Liangsheng Yin"
+      },
+      "analysis": "分析失败: 401",
+      "github_url": "https://github.com/sgl-project/sglang/commit/efd9a40bb8ab3ebe42da1d4cf3fdfe3da6e706a2"
+    },
+    {
+      "repo": "sgl-project/sglang",
+      "commit": {
+        "sha": "95047d3464764ccfa2ee3391e1c07e75df37c6aa",
+        "date": "2026-09-25 15:55:21 -0700",
+        "title": "[Fix] Fix cpu CI fail introduced by pr #38652 (#41287)",
+        "author": "Yuwei An"
+      },
+      "analysis": "分析失败: 401",
+      "github_url": "https://github.com/sgl-project/sglang/commit/95047d3464764ccfa2ee3391e1c07e75df37c6aa"
+    },
+    {
+      "repo": "sgl-project/sglang",
+      "commit": {
+        "sha": "516ab7761950e600d73061473dc096f91b195c58",
+        "date": "2026-09-25 15:48:38 -0700",
+        "title": "[Test] Route all sgl-eval benchmarks through run_sgl_eval and deprecate run_eval (#41280)",
+        "author": "Liangsheng Yin"
+      },
+      "analysis": "分析失败: 401",
+      "github_url": "https://github.com/sgl-project/sglang/commit/516ab7761950e600d73061473dc096f91b195c58"
+    },
+    {
+      "repo": "sgl-project/sglang",
+      "commit": {
+        "sha": "27e883a20d2d481fce2b3f8a6fab4367854da573",
+        "date": "2026-09-25 15:45:40 -0700",
+        "title": "dsv4.1-amd: gfx950 MXFP8 matmul kernels and fp8-grid producers (#41018)",
+        "author": "Kevin Mi"
+      },
+      "analysis": "分析失败: 401",
+      "github_url": "https://github.com/sgl-project/sglang/commit/27e883a20d2d481fce2b3f8a6fab4367854da573"
+    },
+    {
+      "repo": "sgl-project/sglang",
+      "commit": {
+        "sha": "c421d1656375099a53936a21171e2b5aa2d18dbd",
+        "date": "2026-09-25 15:03:47 -0700",
+        "title": "[sglang][lora] Support DP attention in LoRA backends (#36389)",
+        "author": "Erik Wijmans"
+      },
+      "analysis": "分析失败: 401",
+      "github_url": "https://github.com/sgl-project/sglang/commit/c421d1656375099a53936a21171e2b5aa2d18dbd"
+    },
+    {
+      "repo": "sgl-project/sglang",
+      "commit": {
+        "sha": "cf5df82680a5a5ae066d8eb3d889f171f0bcfc97",
+        "date": "2026-09-26 05:08:45 +0800",
+        "title": "[KVCache] Support lmcache unified radix cache (#38652)",
+        "author": "chunxiaozheng"
+      },
+      "analysis": "分析失败: 401",
+      "github_url": "https://github.com/sgl-project/sglang/commit/cf5df82680a5a5ae066d8eb3d889f171f0bcfc97"
+    },
+    {
+      "repo": "sgl-project/sglang",
+      "commit": {
+        "sha": "d3e3945e41238749e19192d8bc3335216cd4ef55",
+        "date": "2026-09-26 06:01:08 +0900",
+        "title": "[LoRA] Size dense row/column-parallel LoRA buffers from the base linear's real shard (#39379)",
+        "author": "Ethan (Yusheng) Su"
+      },
+      "analysis": "分析失败: 401",
+      "github_url": "https://github.com/sgl-project/sglang/commit/d3e3945e41238749e19192d8bc3335216cd4ef55"
+    },
+    {
+      "repo": "sgl-project/sglang",
+      "commit": {
+        "sha": "f88572a57c72774ffc69f1667f45f87e60ad263c",
+        "date": "2026-09-25 13:59:17 -0700",
+        "title": "[Test] Add in-process sgl-eval adapter and move validated GSM8K tests to it (#41216)",
+        "author": "Liangsheng Yin"
+      },
+      "analysis": "分析失败: 401",
+      "github_url": "https://github.com/sgl-project/sglang/commit/f88572a57c72774ffc69f1667f45f87e60ad263c"
+    },
+    {
+      "repo": "sgl-project/sglang",
+      "commit": {
+        "sha": "f337f01b80db4a1d48bfdab6e202577db8ee64a3",
+        "date": "2026-09-25 12:50:31 -0700",
+        "title": "[Test] Remove dead eval modules and point GSM8K/MMLU docs to sgl-eval (#41215)",
+        "author": "Liangsheng Yin"
+      },
+      "analysis": "分析失败: 401",
+      "github_url": "https://github.com/sgl-project/sglang/commit/f337f01b80db4a1d48bfdab6e202577db8ee64a3"
+    },
+    {
+      "repo": "sgl-project/sglang",
+      "commit": {
+        "sha": "ac62ddf164a392dc6253381712719b24a83803e1",
+        "date": "2026-09-25 12:47:38 -0700",
+        "title": "[Rust frontend] Decode input_ids without untagged buffering (#41246)",
+        "author": "metamergebot"
+      },
+      "analysis": "分析失败: 401",
+      "github_url": "https://github.com/sgl-project/sglang/commit/ac62ddf164a392dc6253381712719b24a83803e1"
+    },
+    {
+      "repo": "sgl-project/sglang",
+      "commit": {
+        "sha": "24b693007619d95c6e9c1dd36c94e165c8d4d44c",
+        "date": "2026-09-25 12:20:25 -0700",
+        "title": "[Sampling] Stream sampling masks as per-request arrays (#40986)",
+        "author": "Nan Jiang"
+      },
+      "analysis": "分析失败: 401",
+      "github_url": "https://github.com/sgl-project/sglang/commit/24b693007619d95c6e9c1dd36c94e165c8d4d44c"
+    },
+    {
+      "repo": "sgl-project/sglang",
+      "commit": {
+        "sha": "6d35cee7fc92d0ae0bdd3fa16e7767c2c361d5b1",
+        "date": "2026-09-25 12:18:08 -0700",
+        "title": "Fix multimodal feature offload races (#40621)",
+        "author": "cctry"
+      },
+      "analysis": "分析失败: 401",
+      "github_url": "https://github.com/sgl-project/sglang/commit/6d35cee7fc92d0ae0bdd3fa16e7767c2c361d5b1"
+    },
+    {
+      "repo": "sgl-project/sglang",
+      "commit": {
+        "sha": "671000aee669c5af5bc8b40c70867c311050522e",
+        "date": "2026-09-25 12:17:28 -0700",
+        "title": "[unified-memory] Honor move gates in float relocation and size auto HiCache from host capacity (#41248)",
+        "author": "metamergebot"
+      },
+      "analysis": "分析失败: 401",
+      "github_url": "https://github.com/sgl-project/sglang/commit/671000aee669c5af5bc8b40c70867c311050522e"
+    },
+    {
+      "repo": "sgl-project/sglang",
+      "commit": {
+        "sha": "31b931edc358c0ec01119a3a55952c1ea334a00e",
+        "date": "2026-09-26 01:51:33 +0800",
+        "title": "fix(multimodal): return 400 for corrupt image inputs (#28131)",
+        "author": "Ting SUN"
+      },
+      "analysis": "分析失败: 401",
+      "github_url": "https://github.com/sgl-project/sglang/commit/31b931edc358c0ec01119a3a55952c1ea334a00e"
+    },
+    {
+      "repo": "sgl-project/sglang",
+      "commit": {
+        "sha": "0154f72b48d54e96df7dac69bd7677156c2dc1b6",
+        "date": "2026-09-25 20:31:29 +0300",
+        "title": "[ROCm][Bugfix] Keep quantization for mixed Quark Qwen3.5 MTP checkpoints (#39064)",
+        "author": "Olga Miroshnichenko"
+      },
+      "analysis": "分析失败: 401",
+      "github_url": "https://github.com/sgl-project/sglang/commit/0154f72b48d54e96df7dac69bd7677156c2dc1b6"
+    },
+    {
+      "repo": "sgl-project/sglang",
+      "commit": {
+        "sha": "67bb6a58d0dad4a39af80fa1b2bf86f0de0cb99b",
+        "date": "2026-09-25 23:56:22 +0800",
+        "title": "Revert \"[NPU] Fuse FIA KV-cache K/V writes into one npu_scatter_pa_kv_cache call\" (#41132)",
+        "author": "Even Zhou"
+      },
+      "analysis": "分析失败: 401",
+      "github_url": "https://github.com/sgl-project/sglang/commit/67bb6a58d0dad4a39af80fa1b2bf86f0de0cb99b"
+    },
+    {
+      "repo": "sgl-project/sglang",
+      "commit": {
+        "sha": "2f5c9ac43d76eef11e8561c89c55a79db7db715a",
+        "date": "2026-09-25 18:01:06 +0800",
+        "title": "[diffusion] Enable lossless Cosmos3 Super T2I QK fusion on Hopper TP2 (#40486)",
+        "author": "Xiaoyu Zhang"
+      },
+      "analysis": "分析失败: 401",
+      "github_url": "https://github.com/sgl-project/sglang/commit/2f5c9ac43d76eef11e8561c89c55a79db7db715a"
+    },
+    {
+      "repo": "sgl-project/sglang",
+      "commit": {
+        "sha": "a749d843032750435cac8322a4b92888efb4a89f",
+        "date": "2026-09-25 17:27:38 +0800",
+        "title": "[Diffusion] Fix AttributeError in grouped forward_batch by installing the residency manager (#34417)",
+        "author": "Jianghai"
+      },
+      "analysis": "分析失败: 401",
+      "github_url": "https://github.com/sgl-project/sglang/commit/a749d843032750435cac8322a4b92888efb4a89f"
+    },
+    {
+      "repo": "sgl-project/sglang",
+      "commit": {
+        "sha": "62122c838a81c933573a82860bce4fcc1fd86ddc",
+        "date": "2026-09-25 14:24:05 +0530",
+        "title": "[XPU] Disable test_ngram_corpus on XPU and extend XPU CI path filter (#41224)",
+        "author": "ashwini rathi"
+      },
+      "analysis": "分析失败: 401",
+      "github_url": "https://github.com/sgl-project/sglang/commit/62122c838a81c933573a82860bce4fcc1fd86ddc"
+    },
+    {
+      "repo": "sgl-project/sglang",
+      "commit": {
+        "sha": "3450d68d4ede9c5c8fbd7f56aba6b28e57630d9b",
+        "date": "2026-09-25 01:50:35 -0700",
+        "title": "[Refactor] Decide an FFN exit's completion once and declare the group it owes (#41200)",
+        "author": "Cheng Wan"
+      },
+      "analysis": "分析失败: 401",
+      "github_url": "https://github.com/sgl-project/sglang/commit/3450d68d4ede9c5c8fbd7f56aba6b28e57630d9b"
+    },
+    {
+      "repo": "sgl-project/sglang",
+      "commit": {
+        "sha": "26a3214cdae3713feefae0ca67a85baa6a80b188",
+        "date": "2026-09-25 01:49:33 -0700",
+        "title": "[Refactor] Take a layer's last-layer fact from its scatter-mode plan (#41199)",
+        "author": "Cheng Wan"
+      },
+      "analysis": "分析失败: 401",
+      "github_url": "https://github.com/sgl-project/sglang/commit/26a3214cdae3713feefae0ca67a85baa6a80b188"
+    },
+    {
+      "repo": "sgl-project/sglang",
+      "commit": {
+        "sha": "8f5a636f8d1c9e6657fe73d5b1084ded281f2656",
+        "date": "2026-09-25 01:48:30 -0700",
+        "title": "[Refactor] Build prepare_mlp and the layout moves from named steps (#41191)",
+        "author": "Cheng Wan"
+      },
+      "analysis": "分析失败: 401",
+      "github_url": "https://github.com/sgl-project/sglang/commit/8f5a636f8d1c9e6657fe73d5b1084ded281f2656"
+    },
+    {
+      "repo": "sgl-project/sglang",
+      "commit": {
+        "sha": "b7f6d04a9af1a786990754e292551450d640b763",
+        "date": "2026-09-25 01:47:43 -0700",
+        "title": "[Refactor] Move Step-3.5, GLM5-Next, Dots3, MiniMax-M3 and Qwen3.5 onto ffn_exit (#41198)",
+        "author": "Cheng Wan"
+      },
+      "analysis": "分析失败: 401",
+      "github_url": "https://github.com/sgl-project/sglang/commit/b7f6d04a9af1a786990754e292551450d640b763"
+    },
+    {
+      "repo": "sgl-project/sglang",
+      "commit": {
+        "sha": "963e9fb42d9232863da5947ddd6d4c3deb41167c",
+        "date": "2026-09-25 01:47:03 -0700",
+        "title": "[Refactor] Leave the FFN reduction to the next layer under attention DP (#41197)",
+        "author": "Cheng Wan"
+      },
+      "analysis": "分析失败: 401",
+      "github_url": "https://github.com/sgl-project/sglang/commit/963e9fb42d9232863da5947ddd6d4c3deb41167c"
+    },
+    {
+      "repo": "sgl-project/sglang",
+      "commit": {
+        "sha": "9d7f44bdbb1e413858d140d464c2473ccabd3ac4",
+        "date": "2026-09-25 01:46:03 -0700",
+        "title": "[Refactor] Carry a deferred FFN all-reduce as UnreducedOutput and complete it in the next layer without the fused kernel (#41196)",
+        "author": "Cheng Wan"
+      },
+      "analysis": "分析失败: 401",
+      "github_url": "https://github.com/sgl-project/sglang/commit/9d7f44bdbb1e413858d140d464c2473ccabd3ac4"
+    },
+    {
+      "repo": "sgl-project/sglang",
+      "commit": {
+        "sha": "402df23188dbdb16cd5a83392125498285c688b0",
+        "date": "2026-09-25 01:45:00 -0700",
+        "title": "[Fix] Stop counting a deferred FFN sum more than once: replicated TP1 shared expert, dense reduce_scatterv (#41195)",
+        "author": "Cheng Wan"
+      },
+      "analysis": "分析失败: 401",
+      "github_url": "https://github.com/sgl-project/sglang/commit/402df23188dbdb16cd5a83392125498285c688b0"
+    },
+    {
+      "repo": "sgl-project/sglang",
+      "commit": {
+        "sha": "1409f469be467a5114ce08efe91446cdb23a61a2",
+        "date": "2026-09-25 01:43:55 -0700",
+        "title": "[Fix] Plan NextN / MTP draft layers as one-layer models and fix the Bailing V2 NextN draft (#41194)",
+        "author": "Cheng Wan"
+      },
+      "analysis": "分析失败: 401",
+      "github_url": "https://github.com/sgl-project/sglang/commit/1409f469be467a5114ce08efe91446cdb23a61a2"
+    },
+    {
+      "repo": "sgl-project/sglang",
+      "commit": {
+        "sha": "51c92e8df1378cdd9bd16022e46b49d913b6f040",
+        "date": "2026-09-25 01:42:16 -0700",
+        "title": "[Fix] Complete the all-reduce when the flashinfer fused norm declines a batch (#41193)",
+        "author": "Cheng Wan"
+      },
+      "analysis": "分析失败: 401",
+      "github_url": "https://github.com/sgl-project/sglang/commit/51c92e8df1378cdd9bd16022e46b49d913b6f040"
+    },
+    {
+      "repo": "sgl-project/sglang",
+      "commit": {
+        "sha": "515f5be77e74761c269e007ac41a5895191a1b7d",
+        "date": "2026-09-25 15:47:08 +0800",
+        "title": "[AMD] Integrate Aiter MegaMoEv2 for DeepSeek-V4 (#35619)",
+        "author": "kk"
+      },
+      "analysis": "分析失败: 401",
+      "github_url": "https://github.com/sgl-project/sglang/commit/515f5be77e74761c269e007ac41a5895191a1b7d"
+    },
+    {
+      "repo": "sgl-project/sglang",
+      "commit": {
+        "sha": "434c2e3adcd77afe42d6604b693d97aef71938e6",
+        "date": "2026-09-25 15:06:24 +0800",
+        "title": "[HiCache] fix: Drain pending backups before internal Mamba write-back (#41092)",
+        "author": "Shuwen Wang"
+      },
+      "analysis": "分析失败: 401",
+      "github_url": "https://github.com/sgl-project/sglang/commit/434c2e3adcd77afe42d6604b693d97aef71938e6"
+    },
+    {
+      "repo": "sgl-project/sglang",
+      "commit": {
+        "sha": "cbe137727ecc95d9e22e2cd8b14fe3f4f3ff6350",
+        "date": "2026-09-25 15:06:05 +0800",
+        "title": "[HiCache] Give trailing sidecar storage transfers a contiguous prefix_keys chain (#40456)",
+        "author": "Shuwen Wang"
+      },
+      "analysis": "分析失败: 401",
+      "github_url": "https://github.com/sgl-project/sglang/commit/cbe137727ecc95d9e22e2cd8b14fe3f4f3ff6350"
+    }
+  ]
+}
